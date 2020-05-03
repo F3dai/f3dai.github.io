@@ -14,12 +14,7 @@ category: vulnhub
 
 Firstly, a netdiscover scan will reveal how the machine can be identified on the network:
 
-<div class="language-plaintext highlighter-rouge"><pre class="highlight">netdiscover -i eth1</pre></div>
-
-```javascript
-/* My Code */
-netdiscover -i eth1
-```
+	netdiscover -i eth1
     
 ![netdiscover](https://i.imgur.com/IhhB5af.png)
 

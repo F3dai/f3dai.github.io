@@ -16,7 +16,7 @@ category: vulnhub
 
 Firstly, a netdiscover scan will reveal how the machine can be identified on the network:
 
-<pre>netdiscover -i eth1</pre>
+<div class="language-plaintext highlighter-rouge">netdiscover -i eth1</div>
     
 ![netdiscover](https://i.imgur.com/IhhB5af.png)
 

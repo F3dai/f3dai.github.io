@@ -1,5 +1,8 @@
 ---
-published: false
+published: true
+layout: post
+title: Tomcat Host VulnHub
+category: vulnhub
 ---
 # My Tomcat Host: 1 
 
@@ -106,4 +109,3 @@ Let's execute this payload with the following command:
 We get a successful connection from the tomcat machine as seen on meterpreter, the current user has been identified as root!
 
 ![connection](https://imgur.com/4NfW5Ls.png)
-

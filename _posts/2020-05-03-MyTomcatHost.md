@@ -4,8 +4,6 @@ layout: post
 title: Tomcat Host VulnHub
 category: vulnhub
 ---
-# My Tomcat Host: 1 
-
 **Url**: [Tomcat Host 1 VulnHub](https://www.vulnhub.com/entry/my-tomcat-host-1,457/) 
 
 **Difficulty**: Easy/Beginner Level 
@@ -16,7 +14,7 @@ category: vulnhub
 
 Firstly, a netdiscover scan will reveal how the machine can be identified on the network:
 
-<div class="language-plaintext highlighter-rouge">netdiscover -i eth1</div>
+<div class="language-plaintext highlighter-rouge"><pre class="highlight">netdiscover -i eth1</pre></div>
     
 ![netdiscover](https://i.imgur.com/IhhB5af.png)
 

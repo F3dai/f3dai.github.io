@@ -78,7 +78,7 @@ echo -n "rootroot1" | md5sum </pre>
 
 Let's try and use this password for the user "armour" by changing the user with the following command:
 
-<pre>su amour</pre>
+<pre>su armour</pre>
 
 ![armour](https://imgur.com/iJDJnlr.png)
 

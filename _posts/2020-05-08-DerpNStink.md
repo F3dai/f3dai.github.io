@@ -10,7 +10,7 @@ category: vulnhub
 
 ### Enumeration
 
-Set up the Machine with a host-only adapter and run a net discover command to find the associated IP. My interface eth1 is Host Only on my main OS (Kali Linux).
+Set up the Machine with a host-only adapter and run a net discover command to find the associated IP. My interface eth1 is Host-Only on my main OS (Kali Linux).
 
 <pre>netdiscover -i eth1</pre>
 
@@ -22,7 +22,7 @@ The IP 192.168.56.103 has been found so we will do a port scan with the followin
 
 ![nmap](nmap -sS -A -p- -o nmap 192.168.56.103)
 
-The first port that is open is the FTP. Sometimes users can log in as Anonymous with no password needed. 
+The first port that is open is the FTP. Sometimes users can log in as Anonymous with no password needed.
 
 <pre>ftp 192.168.56.103
 Anonymous</pre>
@@ -43,7 +43,7 @@ There is an interesting link worth checking in one of the < script > tags as sho
 
 ![info](https://imgur.com/h4EluwO.png)
 
-There is a message to "stinky" (as possible user) to update the local hosts file with a local dns so the blog website can be accessed. There was no blog seen initially so let's go ahead and update our host file on our local machine. Before this, I want to just double check what else we can find at /webnotes. This is a snippet of what is found:
+There is a message to “stinky” (a possible user) to update the local hosts file with a local DNS so the blog website can be accessed. There was no blog seen initially so let’s go ahead and update our host file on our local machine. Before this, I want to just double-check what else we can find at /webnotes. This is a snippet of what is found:
 
 ![webnotes](https://imgur.com/S3bqGZK.png)
 
@@ -79,7 +79,7 @@ Visit the link and there is a blog. According to the dirb results, there seems t
 
 ![dirbsnip](https://imgur.com/SBIVNDJ.png)
 
-Wordpress is one of the most popular website making tools which attracts lots of hackers. Let's use the popular Wordpress Vulnerability scanner WPScan. Here is a link to their [website](https://github.com/wpscanteam/wpscan). 
+Wordpress is one of the most popular website making tools which attracts lots of hackers. Let’s use the popular Wordpress Vulnerability scanner WPScan. Here is a link to their [website](https://github.com/wpscanteam/wpscan). 
 
 Kali Linux should already have this installed so I will be executing the following command:
 
@@ -91,15 +91,15 @@ Kali Linux should already have this installed so I will be executing the followi
 
 Some users have evidently been found: unclestinky and admin.
 
-All the exploits given by WPScan seem to be authenticated which is not yet possible so we will look for a way to gain user access. 
+All the exploits given by WPScan seem to be authenticated which is not yet possible so we will look for a way to gain user access.
 
 I will try bruteforcing since WPScan has an option for bruting passwords. This is the command:
 
 <pre>wpscan --url http://derpnstink.local/weblog/ --passwords /usr/share/wordlists/rockyou.txt --username { user } </pre>
 
-I have used the --passwords option to indicate a brute forcing session. I have given a path to a passwords list and will provide a username after the --username parameter. I first tried unclestinky then admin.
+I have used the --passwords option to indicate a brute-forcing session. I have given a path to a passwords list and will provide a username after the --username parameter. I first tried unclestinky then admin.
 
-After some time there was no results. I tried the default admin credentials which gave a successful login. For some reason the rockyou.txt file didn't contain "admin".
+After some time there were no results. I tried the default admin credentials which gave a successful login. For some reason, the rockyou.txt file didn’t contain “admin”.
 
 ### User
 
@@ -122,7 +122,7 @@ Edit the payload accordingly. Add your local IP address and a port you will be l
 
 ![edit](https://imgur.com/u6sguJx.png)
 
-This is ready to upload to the slideshow plugin on Wordpress. Go to the WP web interface > slideshow and add your own slide show.
+This is ready to upload to the slideshow plugin on Wordpress. Go to the WP web interface > slideshow and add your slide show.
 
 Add in some information into the fields and upload your payload under "Choose Image". Save the changes.
 
@@ -132,7 +132,7 @@ Before executing the payload, we need to listen on the chosen port. Set up a net
 
 <pre>nc -nvlp 4444</pre>
 
-Everything should be ready. Simply click on the slideshow you have just created to execute the payload. You can do this from the main "slideshow" page. 
+Everything should be ready. Simply click on the slideshow you have just created to execute the payload. You can do this from the main “slideshow” page.
 
 ![session](https://imgur.com/j18SPM2.png)
 
@@ -151,11 +151,11 @@ In order to see other users on this system, we can have a look at /etc/passwd or
 
 ![home](https://imgur.com/8clxvpp.png)
 
-There are 2 users, mrderp and stinky. Looking into stinky's home directory, we find a pastebin link: https://pastebin.com/RzK9WfGw 
+There are 2 users, mrderp and stinky. Looking into stinky’s home directory, we find a pastebin link: https://pastebin.com/RzK9WfGw
 
 <pre>mrderp ALL=(ALL) /home/mrderp/binaries/derpy*</pre>
 
-This is the sudo privileges that mrderp has. We need to get access to his account to exploit this. 
+This is the sudo privileges that mrderp has. We need to get access to his account to exploit this.
 
 If you are not familiar with Wordpress, credentials are kept in plaintext on a wordpress configuration file named wp-config.php. Search for this file and look at the contents using cat. 
 
@@ -170,11 +170,11 @@ These credentials are for the database. Let's try these out. Go to /php/phpmyadm
 
 ![db](https://imgur.com/TbpjMMp.png)
 
-The login was successful.
+The login is successful.
 
 ![dblogin](https://i.imgur.com/3m4wwvC.png)
 
-Earlier on when we scanned the Wordpress website, there was another user account. Let's go to the Wordpress database and change the password to something we know so we can log into that account.
+Earlier on when we scanned the Wordpress website, there was another user account. Let’s go to the Wordpress database and change the password to something we know so we can log into that account.
 
 Go to wordpress > wp_users
 
@@ -190,7 +190,7 @@ There isn't much to see here except for another flag under the posts section:
 
 ![flag](https://imgur.com/zirWTLf.png)
 
-Let's move onto other credentials. We are done with Wordpress. Going back to the phpmyadmin database, go to mysql > user for some hash passwords. We can crack some of these ourselves with John or just search them up. 
+Let’s move onto other credentials. We are done with Wordpress. Going back to the phpmyadmin database, go to mysql > user for some hash passwords. We can crack some of these ourselves with John or just search them up.
 
 ![hash](https://imgur.com/JPnYIun.png)
 
@@ -240,7 +240,7 @@ You can read more about chmod and file permissions [here](https://www.linode.com
 
 <pre>ssh -i ssh stinky@derpnstink.local</pre>
 
-The above code is used to connect to the host derpnstink.local with user stinky. '-i ssh' parameter indicates the ssh file to be used. If your ssh key file has a different name, replace '-i ssh' with '-i {file name}'. 
+The above code is used to connect to the host derpnstink.local with user stinky. ‘-i ssh’ parameter indicates the ssh file to be used. If your ssh key file has a different name, replace ‘-i ssh’ with ‘-i {file name}’.
 
 ![ssh](https://imgur.com/K08XZLN.png)
 
@@ -279,7 +279,7 @@ A successful login.
 
 ### Privilege Escelation
 
-Now we have access to a user where we can start exploiting the sudo rights as mentioned before. A look at derp's documents reveals an email he has saved which outlines a problem with a sudo file.
+Now we have access to a user where we can start exploiting the sudo rights as mentioned before. A look at derp’s documents reveals an email he has saved which outlines a problem with a sudo file.
 
 ![email](https://imgur.com/IZ99Rv3.png)
 
@@ -289,7 +289,7 @@ This could be refering to that pastebin we saw earlier. Check the sudo rights of
 
 ![sudo -l](https://imgur.com/dlspK06.png)
 
-Mr derp is allowed to run sudo commands in the file location /home/mrderp/binaries/derpy*. As you can see in the screenshot, cd didn't work so in order to exploit the sudo rights, let's create a directory called binaries in /home/mrderp:
+Mr derp is allowed to run sudo commands in the file location /home/mrderp/binaries/derpy*. As you can see in the screenshot, cd didn’t work so to exploit the sudo rights, let’s create a directory called binaries in /home/mrderp:
 
 <pre>mkdir binaries
 cd binaries</pre>
@@ -298,7 +298,7 @@ In this case, anything named derpy* (where * means any) has sudo rights.
 
 <pre>echo "/bin/bash" > derpy.sh</pre>
 
-The above command is outputting "/bin/bash" into a file called derpy.sh. If this is executed, it will give derpy root privs. In order to execute this file, it must be made executable.
+The above command is outputting “/bin/bash” into a file called derpy.sh. If this is executed, it will give derpy root privs. To execute this file, it must be made executable.
 
 <pre>chmod +x derpy.sh</pre>
 

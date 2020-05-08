@@ -1,5 +1,6 @@
 ---
-published: false
+published: true
+category: vulnhub
 ---
 **URL:** [DerpNStink](https://www.vulnhub.com/entry/derpnstink-1,221/)
 

@@ -137,10 +137,6 @@ Everything should be ready. Simply click on the slideshow you have just created 
 
 We have a reverse shell!
 
-### Root
-
-Now we are aiming to gain root privileges.
-
 <pre>id
 pwd</pre>
 
@@ -239,3 +235,79 @@ Before using this as a key, change the permissions by executing the following co
 
 <pre>chmod 700 ssh</pre>
 
+You can read more about chmod and file permissions [here](https://www.linode.com/docs/tools-reference/tools/modify-file-permissions-with-chmod/).
+
+<pre>ssh -i ssh stinky@derpnstink.local</pre>
+
+The above code is used to connect to the host derpnstink.local with user stinky. '-i ssh' parameter indicates the ssh file to be used. If your ssh key file has a different name, replace '-i ssh' with '-i {file name}'. 
+
+![ssh](https://imgur.com/K08XZLN.png)
+
+A successful login. The ssh session is easier to work with.
+
+Now in the documents is a pcap file. Let's analyse this. A .pcap file is a file that has some network traffic recorded. Read more about this [here](https://en.wikipedia.org/wiki/Pcap). A popular tool to analyse pcap files is Wireshark.
+
+However, I will be just analysing the strings in this file. 'Strings' prints the strings of printable characters in files. Read more about strings [here](https://linux.die.net/man/1/strings). Hopefully, we can get some sort of password in plaintext from the pcap file.
+
+<pre>strings derpissues.pcap</pre>
+
+Returns this:
+
+![strings](https://imgur.com/fVf2PvS.png)
+
+There is far too many strings to go through. Although we could output it to a file and analyse more, let's try grepping the results. In this case, I will use 'grep "pass"' to see if there is a password field captured in the network traffic. Read more about grep [here](http://man7.org/linux/man-pages/man1/grep.1.html). 
+
+<pre>strings derpissues.pcap | grep "pass"</pre>
+
+The above command essentially finds all the strings in the pcap file and only prints when there is a "pass" in the string. Here is the result:
+
+![grep](https://imgur.com/bg9tmiK.png)
+
+As you can see, the second instance of "pass" looks good. 
+
+<pre>derpderpderpderpderpderpderp</pre>
+
+To test out this password, change user to mrderp and use that password.
+
+<pre>su mrderp
+id</pre>
+
+![derpyderp](https://i.imgur.com/hkJQfTx.png)
+
+A successful login. 
+
+### Privilege Escelation
+
+Now we have access to a user where we can start exploiting the sudo rights as mentioned before. A look at derp's documents reveals an email he has saved which outlines a problem with a sudo file.
+
+![email](https://imgur.com/IZ99Rv3.png)
+
+This could be refering to that pastebin we saw earlier. Check the sudo rights of derp:
+
+<pre>sudo-l</pre>
+
+![sudo -l](https://imgur.com/dlspK06.png)
+
+Mr derp is allowed to run sudo commands in the file location /home/mrderp/binaries/derpy*. As you can see in the screenshot, cd didn't work so in order to exploit the sudo rights, let's create a directory called binaries in /home/mrderp:
+
+<pre>mkdir binaries
+cd binaries</pre>
+
+In this case, anything named derpy* (where * means any) has sudo rights.
+
+<pre>echo "/bin/bash" > derpy.sh</pre>
+
+The above command is outputting "/bin/bash" into a file called derpy.sh. If this is executed, it will give derpy root privs. In order to execute this file, it must be made executable.
+
+<pre>chmod +x derpy.sh</pre>
+
+![sh](https://imgur.com/JlD1B1P.png)
+
+Now execute the file:
+
+<pre>sudo ./derpy.sh
+id</pre>
+
+![exesh](https://imgur.com/gK5pfSw.png)
+
+The id command shows we are root. The flag will be located in /root.

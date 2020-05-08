@@ -4,11 +4,11 @@ layout: post
 category: vulnhub
 title: Escalate My Privileges
 ---
-URL: [Escalate Privs Vulnhub](https://www.vulnhub.com/entry/escalate-my-privileges-1,448/)
+**URL:** [Escalate Privs Vulnhub](https://www.vulnhub.com/entry/escalate-my-privileges-1,448/)
 
-Difficulty: Easy / Beginner Level
+**Difficulty:** Easy / Beginner Level
 
-Author: Akanksha Sachin Verma
+**Author:** Akanksha Sachin Verma
 
 ### Enumeration
 

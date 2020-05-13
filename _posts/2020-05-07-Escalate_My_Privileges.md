@@ -1,7 +1,7 @@
 ---
 published: true
 layout: post
-category: vulnhub
+category: Vulnhub
 title: Escalate My Privileges
 ---
 **URL:** [Escalate Privs Vulnhub](https://www.vulnhub.com/entry/escalate-my-privileges-1,448/)

@@ -2,7 +2,7 @@
 published: true
 layout: post
 title: Tomcat Host
-category: vulnhub
+category: Vulnhub
 ---
 **Url**: [Tomcat Host 1 VulnHub](https://www.vulnhub.com/entry/my-tomcat-host-1,457/) 
 

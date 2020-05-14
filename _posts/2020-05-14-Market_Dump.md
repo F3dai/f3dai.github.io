@@ -67,7 +67,7 @@ This stands out, and it looks like encrypted text.
 
 This following website is a great tool for identifying ciphers:
 
-https://gchq.github.io/CyberChef/
+[Cyber Chef](https://gchq.github.io/CyberChef/)
 
 Use the "magic" option and it should give the correct result in plaintext.
 
@@ -77,4 +77,3 @@ Use the "magic" option and it should give the correct result in plaintext.
 And the flag has been found.
 
 <pre>HTB{DonTRuNAsRoOt!MESsEdUpMarket}</pre>
-

@@ -34,7 +34,7 @@ Here is a snippet of some traffic:
 
 Each entry in Wireshark represents a packet that has been captured on the network. The green packets seen on this screenshot are requests for web-pages, we can tell from "HTTP" in the protocols column. 
 
-This challange description mentioned a hacker that gained access to the network through the web platform so we need to look further down the traffic to find something.
+This challenge description mentioned a hacker that gained access to the network through the web platform so we need to look further down the traffic to find something.
 
 Further on we see a stream of telnet traffic. Telnet is essentially a protocol used to communicate with remote hosts the same way ssh does but without the same security. 
 
@@ -51,7 +51,7 @@ Here is another packet where the user executed the command "ls".
 There is a lot of data to go through. When there are a lot of packets in .pcap files and I am trying to find a string, I use the command "strings" to filter out all the data. This command essentially prints out all the readable ASCII characters in a file. 
 [Here](https://www.howtogeek.com/427805/how-to-use-the-strings-command-on-linux/) is a good article on this. 
 
-The pcap file has a lot of data so we will output the results to a file to analyse.
+The .pcap file has a lot of data so we will output the results to a file to analyse.
 
 <pre>strings MarketDump.pcapng > stringsdump</pre>
 

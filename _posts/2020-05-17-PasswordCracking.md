@@ -2,11 +2,12 @@
 published: true
 category: Ethical
 Title: Password Cracking
+
 ---
 
 ## Introduction
 
-This is an exciting and important topic to understand for everyone, not only for people in cybersecurity but for everyone. It is important to understand how adversaries may utilise the various ways of cracking passwords outlined in this article to gain unauthorised access to an account or system.
+This is an exciting and important topic to understand for everyone. It is important to understand how adversaries may utilise the various ways of cracking passwords outlined in this article to gain unauthorised access to an account or system.
 A password is essentially a basic security mechanism that consists of alphabetic, numeric, alphanumeric, and symbolic characters, or a combination of them all. Passwords are a form of authentication to determine you are the correct owner / authorised person to access whatever is being accesses. It is a method of keeping something restricted.
 
 Password cracking may refer to numerous methods utilised to discover a computer password. Password cracking is an extremely popular and unethical method of gaining access to computers as it usually serves as the only method of authentication. Once a password for a high-level user is cracked, there is no longer a need for finding other vulnerabilities and exploits. These further exploits will not be discussed in this article for this reason, but they are covered in depth in the writeups on this website.

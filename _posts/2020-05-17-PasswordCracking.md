@@ -124,9 +124,9 @@ Proxy > Intercept
 
 7.	Now construct the hydra command:
 
-<pre>hydra <host> -l <user> -P <passwordlist> http-get-form “ <username ^USER^ password ^PASS^ > : F= <Failed Message> : H=Cookie: <Cookie Value>”</pre>
+<pre> hydra <host> -l <user> -P <passwordlist> http-get-form “ <username ^USER^ password ^PASS^ > : F= <Failed Message> : H=Cookie: <Cookie Value>” </pre>
 
-<pre>hydra 192.168.56.118 -l admin -P "/usr/share/wordlists/rockyou.txt" http-get-form "/dvwa/vulnerabilities/brute/:username=^USER^&password=^PASS^&Login=Login:F=Username and/or password incorrect.:H=Cookie: PHPSESSID=b39e1a2e30e1ce45c5927951e84aa52c" 
+<pre> hydra 192.168.56.118 -l admin -P "/usr/share/wordlists/rockyou.txt" http-get-form "/dvwa/vulnerabilities/brute/:username=^USER^&password=^PASS^&Login=Login:F=Username and/or password incorrect.:H=Cookie: PHPSESSID=b39e1a2e30e1ce45c5927951e84aa52c" </pre>
 
 This command is first specifying our host IP, -l user, -P wordlist, http-get-form is the type of traffic (this is a GET request). "/login/page : username and password field : F = Our message we noted if login is incorrect : H=Cookie: Our cookie from this session". Run this command on your machine, you can include -V as well to see the verbose output to see what's going on.
 
@@ -150,7 +150,7 @@ I will save this to a file named “hash” with the following command:
 
 Let us use a tool called Crunch to create our brute force attack wordlist. <min> and <max> is the length of characters that are being specified, and the -o is the file to output the words to.
 
-<pre>Crunch <min> <max> <charset> -o <output></pre>
+<pre> Crunch [min] [max] [charset] -o [output] </pre>
 
 In this example, I am taking a “guess” that it is between 8 and 8 characters. Just to show the mass possibilities, using the full alphabet for just 8 characters results in a file around 1TB in size.
 

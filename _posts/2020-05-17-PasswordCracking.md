@@ -59,7 +59,7 @@ The hash function described above has become quite problematic nowadays as it is
 
 A password salt is another string that is added to a user’s password before it is encrypted. This string could be anything like the user’s name (bad practice) or something completely random. This makes the passwords significantly harder to crack as it makes every password unique. Let us do a really simple example below. We have previously identified that “password” has the md5 hash value of:
 
-<pre>5f4dcc3b5aa765d61d8327deb882cf99<pre>
+<pre>5f4dcc3b5aa765d61d8327deb882cf99</pre>
 
 Below I will show how using salts can make the same passwords, unidentifiable by their hash values. The following command will produce a completely random string of letters and numbers:
 

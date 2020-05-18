@@ -2,6 +2,7 @@
 published: true
 category: Dark Web
 Title: The Dark Web
+title: The Dark Web
 ---
 ## What is the dark web?
 
@@ -29,20 +30,25 @@ Now we are aware of the layout of the web, let’s talk more into the browser wh
 
 The Tor browser is an open-source web browser that allows for anonymous connection into the dark web and protects the privacy on both client and server sides. It works by using something called a relay connection. So, when sending network traffic, it travels through random proxy servers before reaching the final destination. This protects your privacy through virtual tunnels and ultimately renders your IP address untraceable.
  
-Websites on the tor browser are hosted on the .onion domain. This specialized domain which offers services only accessible via the tor network. A typical site would usually look like "http://123456789.com/abcdefg". 
+Websites on the tor browser are hosted on the .onion domain. This specialized domain which offers services only accessible via the tor network. A typical site would usually look like this:
 
-This consists of the protocol used (http), the domain name (12345679.com) and the path it follows (abcdefg). On the contrary, onion sites are usually randomly generated, making them just a string of random characters. A typical site looks like "d72jLElmdbc9a0xlCK10.onion". This often makes them hard to remember.
+"http://123456789.com/abcdefg"
+
+This consists of the protocol used (http), the domain name (12345679.com) and the path it follows (abcdefg). On the contrary, onion sites are usually randomly generated, making them just a string of random characters. A typical site looks like this:
+
+"d72jLElmdbc9a0xlCK10.onion". This often makes them hard to remember.
 
 What makes the .onion so secure is that it uses multiple layers of encryption to hide all information about the packet. A type of network packet contains the data and information, but it also includes the incriminating metadata, which consists of the source and destination of the packet. As previously mentioned, these are sent across a relay of proxy servers, further improving the security.
  
 All in all, It’s a pretty cool browser. You can find the link to download here just below!
-https://www.torproject.org/download/
+
+[Tor Project](https://www.torproject.org/download/)
  
 ### What can you find
 
 There are multiple marketplaces on the dark web, which allows users to purchase a plethora of illegal goods and services. You can buy a wide variety of drugs, counterfeit money, stolen subscription credentials, stolen cards, illicit software, weapons, a diverse selection of services and many more.
  
-However, it’s not all bad! Remember, the network first started as a service to remain anonymous, so there are legitimate websites on it. For example, BBC, The New York Times and even the CIA themselves have their own  .onion sites.
+However, it’s not all bad! Remember, the network first started as a service to remain anonymous, so there are legitimate websites on it. For example, BBC, The New York Times and even the CIA themselves have their own .onion sites.
 
 ![CIA's Tor site](https://imgur.com/gH1b0Iy)
 

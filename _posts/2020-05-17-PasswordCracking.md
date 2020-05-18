@@ -2,6 +2,7 @@
 published: true
 Title: Password Cracking
 category: Ethical
+title: Password Cracking
 ---
 
 ## Introduction
@@ -232,9 +233,4 @@ You'll need to download RainbowCrack and install tables from the following websi
 
 [Rainbow Crack](https://project-rainbowcrack.com/table.htm)
 
-Make sure to have at least half a Terabyte free. As I mentioned before rainbow tables can be extremely large but make cracking a speedy process. 
-
-
-
-
-
+Make sure to have at least half a Terabyte free. As I mentioned before rainbow tables can be extremely large but make cracking a speedy process.

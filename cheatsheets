@@ -6,6 +6,6 @@ published: true
 
 <p>Find useful cheatsheets here:</p>
 
-{% for post in site.categories.Vulnhub %}
+{% for post in site.categories.Cheatsheet %}
 <a href="{{ post.url }}"><p> - {{ post.title }}<p></a>
 {% endfor %}

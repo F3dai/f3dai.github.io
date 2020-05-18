@@ -2,8 +2,10 @@
 layout: default
 published: true
 ---
-<h1>CTF Writeups:</h1>
+<h1>CTF Writeups</h1>
+
+<p>Find wripteups for CTF-style machines here:</p>
 
 {% for post in site.categories.Vulnhub %}
-    <li>{{ post.title }}</li>
+<a href="{{ post.url }}"><p> - {{ post.title }}<p></a>
 {% endfor %}

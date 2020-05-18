@@ -1,0 +1,9 @@
+---
+layout: default
+published: true
+---
+<h1>CTF Writeups:</h1>
+
+{% for post in site.categories.Vulnhub %}
+    <li>{{ post.title }}</li>
+{% endfor %}

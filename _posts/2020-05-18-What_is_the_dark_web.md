@@ -36,11 +36,11 @@ Websites on the tor browser are hosted on the .onion domain. This specialized do
 
 This consists of the protocol used (http), the domain name (12345679.com) and the path it follows (abcdefg). On the contrary, onion sites are usually randomly generated, making them just a string of random characters. A typical site looks like this:
 
-"d72jLElmdbc9a0xlCK10.onion". This often makes them hard to remember.
+"d72jLElmdbc9a0xlCK10.onion". 
 
 What makes the .onion so secure is that it uses multiple layers of encryption to hide all information about the packet. A type of network packet contains the data and information, but it also includes the incriminating metadata, which consists of the source and destination of the packet. As previously mentioned, these are sent across a relay of proxy servers, further improving the security.
  
-All in all, It’s a pretty cool browser. You can find the link to download here just below!
+All in all, It’s a pretty cool browser. You can find the link to download here just below:
 
 [Tor Project](https://www.torproject.org/download/)
  
@@ -50,9 +50,9 @@ There are multiple marketplaces on the dark web, which allows users to purchase 
  
 However, it’s not all bad! Remember, the network first started as a service to remain anonymous, so there are legitimate websites on it. For example, BBC, The New York Times and even the CIA themselves have their own .onion sites.
 
-![CIA's Tor site](https://imgur.com/gH1b0Iy)
+![CIA's Tor site](https://i.imgur.com/gH1b0Iy.png?1)
 
-![NY Times Tor site](https://imgur.com/6keAih0)
+![NY Times Tor site](https://i.imgur.com/6keAih0.jpg)
 
 ### How to access it?
 
@@ -64,7 +64,7 @@ Now the best bit that everyone has been waiting for, how to access the dark web!
  
 2)  Open the browser, and search for the .onion sites you want. A popular site which contains lots of information about the various onion sites is dark.fail
  
-![Dark.fail landing page](https://imgur.com/HeUg4dn)
+![Dark.fail landing page](https://i.imgur.com/HeUg4dn.jpg)
  
 3)  Once on the desired website, continue with your intentions.
  

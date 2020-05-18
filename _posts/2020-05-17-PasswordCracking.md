@@ -8,7 +8,7 @@ title: Password Cracking
 ## Introduction
 
 This is an exciting and important topic to understand for everyone. It is important to understand how adversaries may utilise the various ways of cracking passwords outlined in this article to gain unauthorised access to an account or system.
-A password is essentially a basic security mechanism that consists of alphabetic, numeric, alphanumeric, and symbolic characters, or a combination of them all. Passwords are a form of authentication to determine you are the correct owner / authorised person to access whatever is being accesses. It is a method of keeping something restricted.
+A password is essentially a basic security mechanism that consists of alphabetic, numeric, alphanumeric, and symbolic characters, or a combination of them all. Passwords are a form of authentication to determine you are the correct owner / authorised person to access whatever is being accessed. It is a method of keeping something restricted.
 
 Password cracking may refer to numerous methods utilised to discover a computer password. Password cracking is an extremely popular and unethical method of gaining access to computers as it usually serves as the only method of authentication. Once a password for a high-level user is cracked, there is no longer a need for finding other vulnerabilities and exploits. These further exploits will not be discussed in this article for this reason, but they are covered in depth in the writeups on this website.
 
@@ -97,32 +97,32 @@ These dictionaries may include different languages and common passwords to save 
 
 Here is an example of a dictionary attack on an intentionally vulnerable machine “Metasploitable2”. In this scenario, we are presented with a web login on DVWA (Damn Vulnerable Web Application). 
 
-1.	Make sure you have DVWA set up to low. 
+1. Make sure you have DVWA set up to low. 
 
 ![dvwa](https://imgur.com/l8vJ4nb.png)
 
-2.	Go to the Brute Force page. 
+2. Go to the Brute Force page. 
 
 ![dvwa Brute](https://imgur.com/68dQnNZ.png)
 
-3.	Set up a web proxy, this is on Firefox. And open Burp Suite. Use these settings exactly!
+3. Set up a web proxy, this is on Firefox. And open Burp Suite. Use these settings exactly!
 
 ![proxy](https://imgur.com/AGC5oGz.png)
 
-4.	Switch intercept on in Burp Suite (should already be on). 
+4. Switch intercept on in Burp Suite (should already be on). 
 Proxy > Intercept 
 
 ![intercept](https://imgur.com/Cn4mt94.png)
 
-5.	Make a request – enter in some credentials and analyse the intercepted traffic. Make note of this request, we will use it in a later step.
+5. Make a request – enter in some credentials and analyse the intercepted traffic. Make note of this request, we will use it in a later step.
 
 ![intercepted](https://imgur.com/IU829SC.png)  
 
-6.	Forward the traffic, and stop the intercept. Make not of the failed login message. “Username and/or password incorrect.”
+6. Forward the traffic, and stop the intercept. Make not of the failed login message. “Username and/or password incorrect.”
 
 ![failed msg](https://imgur.com/wEPhtZB.png)
 
-7.	Now construct the hydra command:
+7. Now construct the hydra command:
 
 <pre> hydra <host> -l <user> -P <passwordlist> http-get-form “ <username ^USER^ password ^PASS^ > : F= <Failed Message> : H=Cookie: <Cookie Value>” </pre>
 

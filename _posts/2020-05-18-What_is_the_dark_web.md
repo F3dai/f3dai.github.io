@@ -1,7 +1,6 @@
 ---
 published: true
-category: Dark Web
-Title: The Dark Web
+category: Dark
 title: The Dark Web
 ---
 ## What is the dark web?

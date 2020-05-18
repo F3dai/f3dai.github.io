@@ -1,8 +1,7 @@
 ---
 published: true
-category: Ethical
 Title: Password Cracking
-
+category: Ethical
 ---
 
 ## Introduction

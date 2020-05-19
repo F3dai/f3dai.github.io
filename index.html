@@ -9,10 +9,8 @@ published: true
 <p>Here are some of the latest articles:</p>
 
 {% for post in site.posts offset:1 limit:3 %}
-<a href="{{ post.url }}">
-  <p>{{ post.title }}<p>
-</a>
-
-
-
+<li>
+  <a href="{{ post.url }}">{{ post.title }}</a>
+  <p>{{ post.excerpt }}<p>
+</li>
 {% endfor %}

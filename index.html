@@ -11,6 +11,21 @@ published: true
 {% for post in site.posts offset:1 limit:3 %}
 <li>
   <a href="{{ post.url }}">{{ post.title }}</a>
-  <p class="excerpt">{{ post.excerpt }}</p>
+  <p class="excerpt"> {{ post.excerpt }} </p>
 </li>
 {% endfor %}
+
+<h2> ---- TEST ---- </h2>
+
+<div class="outerblogpost"> <a href="{{ post.url }}">
+
+  <div class="blogimage">
+    <img class="featimg" src="https://camo.githubusercontent.com/9af6c02c1ba6420a4f241da328c0d635380c78fb/68747470733a2f2f696d6775722e636f6d2f704f56793575572e706e67">
+  </div>
+  <div class="blogpost">
+    <p class="blogtitle">{{ post.title }}</p>
+    <p class="blogmeta">{{ post.author }} - {{ post.date | date: "%b %-d, %Y" }}</p> 
+    <p class="blogexcerpt"> {{ post.excerpt }} </p>
+  </div>
+  </a>
+</div>

@@ -292,27 +292,6 @@ footer {
 
 // Blog Previews \\
 
-.blogpost {
-  width: 430px;
-  height: 200px;
-  text-align: left;
-  verticle-align: center;
-  border: 1px solid black;
-  margin: 10px;
-}
-.blogimage {
-  width: 200px;
-  height: 200px;
-  border: 1px solid black;
-  overflow: hidden;
-  margin: 10px;
-}
-.featimg {
-  height: 100%;
-  left: 150%; /* move the whole width of the image to the right */
-  margin-left: -200%; /* magic! */
-  position: relative; 
-}
 .outerblogpost {
   display: flex;
   margin: 20px;
@@ -320,8 +299,30 @@ footer {
   width: 100%;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
+.blogpost {
+  width: 730px;
+  height: 200px;
+  text-align: left;
+  verticle-align: center;
+  border: 1px solid black;
+  margin: 30px;
+}
+.blogimage {
+  float: left;
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  overflow: hidden;
+  margin: 30px;
+}
+.featimg {
+  height: 100%;
+  left: 150%; /* move the whole width of the image to the right */
+  margin-left: -200%; /* magic! */
+  position: relative; 
+}
+
 .blogtitle {
   line-height: 1.5;
   font-size: 25px;

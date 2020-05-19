@@ -16,30 +16,21 @@
   </head>
 
   <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-          <!--<a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a> -->
+  <div class="menuArea">
+  <p data-item='Rohit' class="bigMenu">Rohit</p>
+  <nav>
+    <ul class="menuItems">
+      <li><a href='#' data-item='Home'>Home</a></li>
+      <li><a href='#' data-item='About'>About</a></li>
+      <li><a href='#' data-item='Projects'>Projects</a></li>
+      <li><a href='#' data-item='Blog'>Blog</a></li>
+      <li><a href='#' data-item='Contact'>Contact</a></li>
+    </ul>
+  </nav>
+  </div>
 
-          <div class="site-info">
-            <!-- <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1> 
-            <p class="site-description">{{ site.description }}</p> -->
-            <div class="menuArea">
-              <p data-item='WEBSITE NAME' class="bigMenu">WEBSITE NAME</p>
-            </div
-          </div>
 
-          <nav>
-            <a href="{{ site.baseurl }}/index.html">Home</a>
-            <a href="{{ site.baseurl }}/vulnhub">Vulnhub</a>
-            <a href="{{ site.baseurl }}/hackthebox">Hack The Box</a>
-            <a href="{{ site.baseurl }}/ethicalhacking">Ethical Hacking</a>
-            <a href="{{ site.baseurl }}/darkweb">Dark Web</a>
-            <a href="{{ site.baseurl }}/cheatsheets">Cheat Sheets</a>
-          </nav>
-        </header>
-      </div>
-    </div>
+        
 
     <div id="main" role="main" class="container">
       {{ content }}

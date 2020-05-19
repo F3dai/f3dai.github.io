@@ -3,6 +3,7 @@ published: true
 Title: Password Cracking
 category: Ethical
 title: Password Cracking
+image: https://imgur.com/xRXW0Xj.png
 ---
 
 This is an exciting and important topic to understand for everyone. It is vital to understand how adversaries may utilise the various ways of cracking passwords outlined in this article to gain unauthorised access to an account or system.
@@ -123,7 +124,7 @@ Proxy > Intercept
 
 7. Now construct the hydra command:
 
-<pre> hydra <host> -l <user> -P <passwordlist> http-get-form “ <username ^USER^ password ^PASS^ > : F= <Failed Message> : H=Cookie: <Cookie Value>” </pre>
+<pre> hydra [host] -l [user] -P [passwordlist] http-get-form “ [username ^USER^ password ^PASS^ ] : F=[<Failed Message] : H=Cookie: [Cookie Value]” </pre>
 
 <pre> hydra 192.168.56.118 -l admin -P "/usr/share/wordlists/rockyou.txt" http-get-form "/dvwa/vulnerabilities/brute/:username=^USER^&password=^PASS^&Login=Login:F=Username and/or password incorrect.:H=Cookie: PHPSESSID=b39e1a2e30e1ce45c5927951e84aa52c" </pre>
 
@@ -145,7 +146,7 @@ In this example, I will create use the md5 hash value for password:
 
 I will save this to a file named “hash” with the following command:
 
-<pre>echo "5f4dcc3b5aa765d61d8327deb882cf99" > hash</pre>
+<pre>echo "5f4dcc3b5aa765d61d8327deb882cf99" > hash </pre>
 
 Let us use a tool called Crunch to create our brute force attack wordlist. <min> and <max> is the length of characters that are being specified, and the -o is the file to output the words to.
 

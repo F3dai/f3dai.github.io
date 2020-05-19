@@ -294,32 +294,38 @@ footer {
 // Blog Previews \\
 
 .outerblogpost {
-  display: flex;
+  //display: flex;
   //margin: 20px;
   //border: 1px solid black;
   //width: 100%;
-  align-items: center;
-  justify-content: center;
+  //align-items: center;
+  //justify-content: center;
+  height: 200px;
 }
 .blogpost {
   width: 730px;
   height: 200px;
   text-align: left;
-  border: 1px solid black;
+  border: 1px solid white;
   margin: 30px;
   padding-right: 30px
 }
 .blogimage {
-  height: 100%;
+  height: 200px;
+  overflow: hidden;
+  float:left;
+  width:200px;
+  margin-right: 25px;
 }
 .featimg {
   height: 100%;
+  margin-left: -100px;
 }
 
 .blogtitle {
   //line-height: 1.5;
   font-size: 25px;
-  margin-botton: -4px;
+  margin-bottom: -4px;
   color: black;
   font-weight: bold;
 }

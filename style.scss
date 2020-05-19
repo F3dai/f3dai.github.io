@@ -317,9 +317,10 @@ footer {
   display: flex;
   margin: 20px;
   border: 1px solid black;
-  width: 40%;
+  width: 100%;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .blogtitle {
   line-height: 1.5;

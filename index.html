@@ -4,4 +4,14 @@ published: true
 ---
 <h1>Landing Page!</h1>
 
-<p>Here goes the text for the landing page. The site is under construction but you may use the nav-bar to explore some articles.</p>
+<p>The site is currently under construction but you may use the nav-bar to explore some articles.</p>
+
+<p>Here are some of the latest articles:</p>
+
+{% for post in site.posts limit:1 %}
+... Show the first post all big ...
+{% endfor %}
+<h1>Recent Posts</h1>
+{% for post in site.posts offset:1 limit:2 %}
+... Show the next two posts ...
+{% endfor %}

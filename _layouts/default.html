@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-<html>
+<div class="menuArea">
+  <!DOCTYPE html>
+  <html>
+
   <head>
     <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
-    
+
     {% include meta.html %}
 
     <!--[if lt IE 9]>
@@ -16,21 +18,18 @@
   </head>
 
   <body>
-  <div class="menuArea">
-  <p data-item='Rohit' class="bigMenu">Rohit</p>
-  <nav>
-    <ul class="menuItems">
-      <li><a href='#' data-item='Home'>Home</a></li>
-      <li><a href='#' data-item='About'>About</a></li>
-      <li><a href='#' data-item='Projects'>Projects</a></li>
-      <li><a href='#' data-item='Blog'>Blog</a></li>
-      <li><a href='#' data-item='Contact'>Contact</a></li>
-    </ul>
-  </nav>
-  </div>
-
-
-        
+    <div class="menuArea">
+      <p data-item='Rohit' class="bigMenu">Rohit</p>
+      <nav>
+        <ul class="menuItems">
+          <li><a href="{{ site.baseurl }}/index.html">Home</a></li>
+          <li><a href='{{ site.baseurl }}/writeups'>CTF Writeups</a></li>
+          <li><a href="{{ site.baseurl }}/ethicalhacking">Ethical Hacking</a></li>
+          <li><a href="{{ site.baseurl }}/cheatsheets">Cheat Sheets</a></li>
+          <li><a href='{{ site.baseurl }}/other'>Other</a></li>
+        </ul>
+      </nav>
+    </div>
 
     <div id="main" role="main" class="container">
       {{ content }}
@@ -44,6 +43,7 @@
       </div>
     </div>
 
-  {%- include analytics.html -%}
+    {%- include analytics.html -%}
   </body>
-</html>
+
+  </html>

@@ -26,14 +26,17 @@
             <p class="site-description">{{ site.description }}</p>
           </div>
 
+          <div class="menuArea">
           <nav>
-            <a href="{{ site.baseurl }}/index.html">Home</a>
-            <a href="{{ site.baseurl }}/vulnhub">Vulnhub</a>
-            <a href="{{ site.baseurl }}/hackthebox">Hack The Box</a>
-            <a href="{{ site.baseurl }}/ethicalhacking">Ethical Hacking</a>
-            <a href="{{ site.baseurl }}/darkweb">Dark Web</a>
-            <a href="{{ site.baseurl }}/cheatsheets">Cheat Sheets</a>
+            <ul class="menuItems">
+              <li><a href='{{ site.baseurl }}' data-item='Home'>Home</a></li>
+              <li><a href='{{ site.baseurl }}/writeups' data-item='Writeups'>Writeups</a></li>
+              <li><a href='{{ site.baseurl }}/ethicalhacking' data-item='Ethical'>Ethical Hacking</a></li>
+              <li><a href='{{ site.baseurl }}/cheatsheets' data-item='Cheat'>Cheat Sheets</a></li>
+              <li><a href="{{ site.baseurl }}/other" data-item='Other'>Other</a></li>
+            </ul>
           </nav>
+          </div>
         </header>
       </div>
     </div>

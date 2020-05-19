@@ -6,6 +6,8 @@ published: true
 
 <p>The site is currently under construction but you may use the nav-bar to explore some articles.</p>
 
+<p>This site was created by F3dai and articles written by LargeBoy and F3dai</p>
+
 <p>Here are some of the latest articles:</p>
 
 {% for post in site.posts offset:1 limit:3 %}
@@ -17,10 +19,9 @@ published: true
   <div class="blogpost">
     <p class="blogtitle">{{ post.title }}</p>
     <p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - by {{ post.author }}</p> 
-    <span class="blogexcerpt"> {{ post.excerpt | truncatewords:47}} ... Read More! </span>
+    <span class="blogexcerpt"> {{ post.excerpt | truncatewords:47}} </span>
   </div>
   </a>
 </div>
 {% endfor %}
 
-<h1 style="font-family: Hack, monospace;">HELLO WORLD</h1>

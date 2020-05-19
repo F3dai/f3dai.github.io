@@ -17,6 +17,7 @@ published: true
 
 <h2> ---- TEST ---- </h2>
 
+{% for post in site.posts offset:1 limit:3 %}
 <div class="outerblogpost"> <a href="{{ post.url }}">
 
   <div class="blogimage">
@@ -29,3 +30,4 @@ published: true
   </div>
   </a>
 </div>
+{% endfor %}

@@ -4,6 +4,7 @@ Title: Password Cracking
 category: Ethical
 title: Password Cracking
 image: https://imgur.com/xRXW0Xj.png
+author: F3dai
 ---
 
 This is an exciting and important topic to understand for everyone. It is vital to understand how adversaries may utilise the various ways of cracking passwords outlined in this article to gain unauthorised access to an account or system.

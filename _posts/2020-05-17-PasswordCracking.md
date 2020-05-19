@@ -199,7 +199,7 @@ I have stored these in a file called “hashz”.
 
 Let’s get a wordlist of common names / usernames: 
 
-![names wordlist](https://imgur.com/LgBfloP.png)
+![names wordlist](https://imgur.com/ZiblCu5.png)
 
 And I will create another wordlist with numbers 5 characters long with just numbers using crunch again:
 

@@ -25,7 +25,7 @@ published: true
   </div>
   <div class="blogpost">
     <p class="blogtitle">{{ post.title }}</p>
-    <p class="blogmeta">{{ post.author }} - {{ post.date | date: "%b %-d, %Y" }}</p> 
+    <p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - by {{ post.author }}</p> 
     <span class="blogexcerpt"> {{ post.excerpt }} </span>
   </div>
   </a>

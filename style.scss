@@ -290,11 +290,53 @@ footer {
   text-align: center;
 }
 
-// Excerpt Text
-.excerpt { 
-  color: #949494;
-  font-size: 16px;
+// Blog Previews \\
+
+.blogpost {
+  width: 430px;
+  height: 200px;
+  text-align: left;
+  verticle-align: center;
+  border: 1px solid black;
+  margin: 10px;
 }
+.blogimage {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  overflow: hidden;
+  margin: 10px;
+}
+.featimg {
+  height: 100%;
+  left: 150%; /* move the whole width of the image to the right */
+  margin-left: -200%; /* magic! */
+  position: relative; 
+}
+.outerblogpost {
+  display: flex;
+  margin: 20px;
+  border: 1px solid black;
+  width: 40%;
+  align-items: center;
+  justify-content: center;
+}
+.blogtitle {
+  line-height: 1.5;
+  font-size: 25px;
+  margin: 15px;
+  color: black;
+}
+.blogmeta {
+  font-size: 15px;
+  margin: 15px;
+  
+}
+.blogexcerpt {
+  margin: 15px;
+}
+
+// End of blog previews --
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start

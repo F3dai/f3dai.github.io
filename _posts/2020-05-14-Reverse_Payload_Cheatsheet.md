@@ -2,6 +2,7 @@
 published: true
 category: Cheatsheet
 title: Reverse Shell Cheatsheet
+image: https://imgur.com/izNMySh.png
 ---
 
 When penetration testing, hackers often find themselves in a compromised system with a command execution vulnerability. Whenever the opportunity persists, the attacker must establish a reverse shell. 

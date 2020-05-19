@@ -111,9 +111,10 @@ strong, b {
   font-weight: bold;
 }
 
-img {
-  max-width: 100%;
-}
+// Causing issues!
+//img { 
+//  max-width: 100%;
+//}
 
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img {
@@ -294,9 +295,9 @@ footer {
 
 .outerblogpost {
   display: flex;
-  margin: 20px;
-  border: 1px solid black;
-  width: 100%;
+  //margin: 20px;
+  //border: 1px solid black;
+  //width: 100%;
   align-items: center;
   justify-content: center;
 }
@@ -309,33 +310,31 @@ footer {
   margin: 30px;
 }
 .blogimage {
-  float: left;
-  width: 200px;
-  height: 200px;
-  border: 1px solid black;
-  overflow: hidden;
-  margin: 30px;
+  height: 100%;
 }
 .featimg {
   height: 100%;
   left: 100%; /* move the whole width of the image to the right */
-  margin-left: -200%; /* magic! */
+  margin-left: -130%; /* magic! */
   position: relative; 
 }
 
 .blogtitle {
-  line-height: 1.5;
+  //line-height: 1.5;
   font-size: 25px;
-  margin: 15px;
+  margin-botton: -4px;
   color: black;
+  font-weight: bold;
 }
 .blogmeta {
   font-size: 15px;
-  margin: 15px;
-  
+  margin-bottom: -4px
+  //margin: 15px;
+  color: #00000061;
 }
 .blogexcerpt {
-  margin: 15px;
+  font-size: 15px;
+  color: black;
 }
 
 // End of blog previews --

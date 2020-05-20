@@ -335,8 +335,8 @@ nav {
       margin-top: 10px;
       margin-left: 30px;
       margin-right: 30px;
-      padding: 15px;
-      margin: 5px;
+      padding: 18px;
+      
       a {
         text-decoration: none;
         color: #8f8f8f;
@@ -369,6 +369,9 @@ nav {
     }
     li:hover {
       background-color: black;
+      a {
+        color: white;
+      }
     }
   }
 }

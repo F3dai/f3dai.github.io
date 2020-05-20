@@ -22,7 +22,7 @@ html {
 
 body {
   background: $white;
-  font: 18px/1.4 $helvetica;
+  font-family: "Inconsolata", monospace;
   color: $darkGray;
 }
 
@@ -89,7 +89,9 @@ a {
     color: $blue;
   }
 }
-
+li {
+  font-family: "Inconsolata", monospace;
+}
 ul,
 ol {
   margin: 15px 0;
@@ -336,16 +338,16 @@ nav {
       margin-left: 30px;
       margin-right: 30px;
       padding: 18px;
-      
+      font-family: Hack, monospace;
       a {
         text-decoration: none;
         color: #8f8f8f;
-        font-size: 18px;
+        font-size: 24px;
         font-weight: 400;
         transition: all 0.5s ease-in-out;
         position: relative;
         text-transform: uppercase;
-
+        
         &::before {
           content: attr(data-item);
           transition: 0.5s;

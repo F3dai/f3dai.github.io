@@ -28,7 +28,7 @@ body {
 
 .container {
   margin: 0 auto;
-  max-width: 740px;
+  max-width: 780px;
   padding: 0 10px;
   width: 100%;
 }
@@ -53,7 +53,7 @@ h6 {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 45px;
   font-family: Hack, monospace a {
     color: inherit;
   }
@@ -78,6 +78,7 @@ h4 {
 p {
   margin: 15px 0;
   font-family: "Inconsolata", monospace;
+  font-size: 17px;
 }
 
 a {
@@ -91,6 +92,7 @@ a {
 }
 li {
   font-family: "Inconsolata", monospace;
+  font-size: 17px;
 }
 ul,
 ol {

@@ -330,7 +330,8 @@ footer {
 nav {
   margin: 20px;
   background: #f9f9f9;
-  padding: 16px;
+  padding: 10px;
+  height: 100px
   .menuItems {
     list-style: none;
     display: flex;
@@ -415,7 +416,7 @@ nav {
 .blogtitle {
   font-family: Hack, monospace;
   font-size: 25px;
-  margin-bottom: -15px;
+  margin-bottom: -8px;
   margin-top: -5px;
   color: black;
   font-weight: bold;

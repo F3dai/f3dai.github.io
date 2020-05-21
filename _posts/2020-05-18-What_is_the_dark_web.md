@@ -32,11 +32,11 @@ The Tor browser is an open-source web browser that allows for anonymous connecti
  
 Websites on the tor browser are hosted on the .onion domain. This specialized domain which offers services only accessible via the tor network. A typical site would usually look like this:
 
-"http://123456789.com/abcdefg"
+<pre>http://123456789.com/abcdefg</pre>
 
 This consists of the protocol used (http), the domain name (12345679.com) and the path it follows (abcdefg). On the contrary, onion sites are usually randomly generated, making them just a string of random characters. A typical site looks like this:
 
-"d72jLElmdbc9a0xlCK10.onion". 
+<pre>d72jLElmdbc9a0xlCK10.onion</pre> 
 
 What makes the .onion so secure is that it uses multiple layers of encryption to hide all information about the packet. A type of network packet contains the data and information, but it also includes the incriminating metadata, which consists of the source and destination of the packet. As previously mentioned, these are sent across a relay of proxy servers, further improving the security.
  

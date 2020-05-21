@@ -2,6 +2,8 @@
 published: true
 category: HackTheBox
 title: Market Dump
+author: F3dai
+image: https://imgur.com/X0nx72y.png
 ---
 
 ## Market Dump

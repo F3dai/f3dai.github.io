@@ -2,7 +2,12 @@
 published: true
 category: Vulnhub
 title: DerpNStink
+author: F3dai
+image: https://i.imgur.com/35zMoqV.png
 ---
+
+Mr. Derp and Uncle Stinky are two system administrators who are starting their own company, DerpNStink. Instead of hiring qualified professionals to build up their IT landscape, they decided to hack together their own system which is almost ready to go live...
+
 **URL:** [DerpNStink](https://www.vulnhub.com/entry/derpnstink-1,221/)
 
 **Difficulty:** Beginner

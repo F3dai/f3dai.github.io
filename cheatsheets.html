@@ -7,5 +7,19 @@ published: true
 <p>Find useful cheatsheets here:</p>
 
 {% for post in site.categories.Cheatsheet %}
-<a href="{{ post.url }}"><p> - {{ post.title }}<p></a>
+<div class="outerblogpost"> <a href="{{ post.url }}">
+
+  <div class="blogimage">
+    <img class="featimg" src="{{ post.image }}">
+  </div>
+  <div class="blogpost">
+    <p class="blogtitle">Vuln Hub</p>
+    <p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - by {{ post.author }}</p> 
+    <span class="blogexcerpt"> {{ post.excerpt | truncatewords:47}} </span>
+  </div>
+  </a>
+</div>
 {% endfor %}
+
+
+

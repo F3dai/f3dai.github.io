@@ -1,0 +1,37 @@
+---
+layout: default
+published: true
+---
+<h1>Cheatsheets</h1>
+
+<p>Here you can find what I consider important commands for different topics compiled into articles for your convenience.</p>
+
+{% for post in category.Vulnhub %}
+<div class="outerblogpost"> <a href="{{ post.url }}">
+
+  <div class="blogimage">
+    <img class="featimg" src="{{ post.image }}">
+  </div>
+  <div class="blogpost">
+    <p class="blogtitle">Vuln Hub</p>
+    <p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - by {{ post.author }}</p> 
+    <span class="blogexcerpt"> {{ post.excerpt | truncatewords:47}} </span>
+  </div>
+  </a>
+</div>
+{% endfor %}
+
+{% for post in category.HackTheBox %}
+<div class="outerblogpost"> <a href="{{ post.url }}">
+
+  <div class="blogimage">
+    <img class="featimg" src="{{ post.image }}">
+  </div>
+  <div class="blogpost">
+    <p class="blogtitle">Hack The Box</p>
+    <p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - by {{ post.author }}</p> 
+    <span class="blogexcerpt"> {{ post.excerpt | truncatewords:47}} </span>
+  </div>
+  </a>
+</div>
+{% endfor %}

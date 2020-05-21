@@ -129,6 +129,10 @@ strong,
 b {
   font-weight: bold;
 }
+// Need a better fix for img (mobile)
+img { 
+  max-width: 700px;
+}
 
 // Causing issues!
 //img {

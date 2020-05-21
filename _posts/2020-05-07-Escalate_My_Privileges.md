@@ -3,7 +3,12 @@ published: true
 layout: post
 category: Vulnhub
 title: Escalate My Privileges
+author: F3dai
+image: https://imgur.com/1H07JlN.png
 ---
+
+This VM is made for playing with privileges. As its name, this box is specially made for learning and sharpening Linux Privilege Escalation skills. There are number of ways to playing with the privileges. Goal: First get the User of the Target then Start Playing with Privileges.
+
 **URL:** [Escalate Privs Vulnhub](https://www.vulnhub.com/entry/escalate-my-privileges-1,448/)
 
 **Difficulty:** Easy / Beginner Level

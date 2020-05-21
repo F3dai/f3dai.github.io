@@ -1,6 +1,6 @@
 ---
 published: true
-category: Vulnhub
+category: writeup
 title: DerpNStink
 author: F3dai
 image: https://i.imgur.com/35zMoqV.png

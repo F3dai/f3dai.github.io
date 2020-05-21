@@ -1,7 +1,7 @@
 ---
 published: true
 layout: post
-category: Vulnhub
+category: writeup
 title: Escalate My Privileges
 author: F3dai
 image: https://imgur.com/1H07JlN.png

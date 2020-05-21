@@ -2,8 +2,9 @@
 published: true
 category: Dark
 title: The Dark Web
+author: LARGEBOYKEITH
+image: https://i.imgur.com/gH1b0Iy.png?1
 ---
-## What is the dark web?
 
 In this article were going to talk about what the dark web is, how it works, what you can find on it and, most importantly, how to access it.
  
@@ -70,5 +71,3 @@ Now the best bit that everyone has been waiting for, how to access the dark web!
 For added security, you can download a VPN to mask your web traffic. To even further protect your identity, you can host the browser on a disposable virtual machine, more specifically, Tails! Stay tuned for our tutorial on how to set up a tails virtual machine.
  
 Hope you found this article informative, leave a comment with any questions you may have and happy browsing!
- 
-LARGEBOYKEITH

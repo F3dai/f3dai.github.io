@@ -3,7 +3,12 @@ published: true
 layout: post
 title: Tomcat Host
 category: Vulnhub
+author: F3dai
+image: https://imgur.com/e78J3dy.png
 ---
+
+Welcome to "My Tomcat Host". This boot to root VM is designed for testing your basic enumeration skills and concepts.
+
 **Url**: [Tomcat Host 1 VulnHub](https://www.vulnhub.com/entry/my-tomcat-host-1,457/) 
 
 **Difficulty**: Easy/Beginner Level 

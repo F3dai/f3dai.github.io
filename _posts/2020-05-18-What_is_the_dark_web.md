@@ -1,6 +1,6 @@
 ---
 published: true
-category: Dark
+category: other
 title: The Dark Web
 author: LARGEBOYKEITH
 image: https://i.imgur.com/gH1b0Iy.png?1

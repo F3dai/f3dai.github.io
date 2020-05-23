@@ -519,13 +519,17 @@ and (max-width:800px) {
 /*  BLOG   PREVIEWS  */
 /*********************/
 
+ /* smartphones, iPhone */
+@media only screen  
+and (max-width:800px) {
+
+  .blogimage { display: none; }
+  .outerblogpost { height: auto; }
+  .blogpost { height: auto; margin: 30px 30px 30px 0px;}
+
+}
+
 .outerblogpost {
-  //display: flex;
-  //margin: 20px;
-  //border: 1px solid black;
-  //width: 100%;
-  //align-items: center;
-  //justify-content: center;
   height: 200px;
 }
 .blogpost {

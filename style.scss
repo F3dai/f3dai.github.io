@@ -290,6 +290,186 @@ footer {
 /*  MENU  NAV  BAR   */
 /*********************/
 
+ /* big landscape tablets, laptops, and desktops */ 
+@media (min-width:1025px) { 
+  
+nav {
+  margin: 20px;
+  background: #f9f9f9;
+  padding: 10px;
+  height: 100px;
+  width: 70%;
+  .menuItems {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    li {
+      margin-top: 10px;
+      margin-left: 20px;
+      margin-right: 20px;
+      padding: 18px;
+      font-family: Hack, monospace;
+      a {
+        text-decoration: none;
+        color: #8f8f8f;
+        font-size: 20px;
+        font-weight: 400;
+        transition: all 0.5s ease-in-out;
+        position: relative;
+        text-transform: uppercase;
+        
+        &::before {
+          content: attr(data-item);
+          transition: 0.5s;
+          color: #8254ff;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 0;
+          overflow: hidden;
+        }
+
+        &:hover {
+          &::before {
+            width: 100%;
+            transition: all 0.5s ease-in-out;
+          }
+        }
+      }
+    }
+    li:hover {
+      background-color: black;
+      a {
+        color: white;
+      }
+    }
+  }
+}
+
+}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */ 
+@media (min-width:800px)  { 
+
+nav {
+  margin: 20px;
+  background: #f9f9f9;
+  padding: 10px;
+  height: 100px;
+  width: 80%;
+  .menuItems {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    li {
+      margin-top: 10px;
+      margin-left: 23px;
+      margin-right: 23px;
+      padding: 18px;
+      font-family: Hack, monospace;
+      a {
+        text-decoration: none;
+        color: #8f8f8f;
+        font-size: 15px;
+        font-weight: 400;
+        transition: all 0.5s ease-in-out;
+        position: relative;
+        text-transform: uppercase;
+        
+        &::before {
+          content: attr(data-item);
+          transition: 0.5s;
+          color: #8254ff;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 0;
+          overflow: hidden;
+        }
+
+        &:hover {
+          &::before {
+            width: 100%;
+            transition: all 0.5s ease-in-out;
+          }
+        }
+      }
+    }
+    li:hover {
+      background-color: black;
+      a {
+        color: white;
+      }
+    }
+  }
+}
+
+}
+
+ /* smartphones, iPhone */
+@media (min-width:300px)  { 
+
+nav {
+  margin-top: 20px;
+  background: #f9f9f9;
+  padding: 5px;
+  height: auto;
+  width: 90%;
+  margin-top: -15px;
+  .menuItems {
+    list-style: none;
+    display: inline;
+    li {
+      margin-top: 5px;
+      padding: 18px;
+      font-family: Hack, monospace;
+      a {
+        text-decoration: none;
+        color: #8f8f8f;
+        font-size: 15px;
+        font-weight: 400;
+        transition: all 0.5s ease-in-out;
+        position: relative;
+        text-transform: uppercase;
+        
+        &::before {
+          content: attr(data-item);
+          transition: 0.5s;
+          color: #8254ff;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 0;
+          overflow: hidden;
+        }
+
+        &:hover {
+          &::before {
+            width: 100%;
+            transition: all 0.5s ease-in-out;
+          }
+        }
+      }
+    }
+    li:hover {
+      background-color: black;
+      a {
+        color: white;
+      }
+    }
+  }
+}
+
+}
+
+
+
 .menuArea {
   display: flex;
   flex-direction: column;
@@ -331,59 +511,6 @@ footer {
   }
 }
 
-nav {
-  margin: 20px;
-  background: #f9f9f9;
-  padding: 10px;
-  height: 100px;
-  .menuItems {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    li {
-      margin-top: 10px;
-      margin-left: 30px;
-      margin-right: 30px;
-      padding: 18px;
-      font-family: Hack, monospace;
-      a {
-        text-decoration: none;
-        color: #8f8f8f;
-        font-size: 20px;
-        font-weight: 400;
-        transition: all 0.5s ease-in-out;
-        position: relative;
-        text-transform: uppercase;
-        
-        &::before {
-          content: attr(data-item);
-          transition: 0.5s;
-          color: #8254ff;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          width: 0;
-          overflow: hidden;
-        }
-
-        &:hover {
-          &::before {
-            width: 100%;
-            transition: all 0.5s ease-in-out;
-          }
-        }
-      }
-    }
-    li:hover {
-      background-color: black;
-      a {
-        color: white;
-      }
-    }
-  }
-}
 
 /*********************/
 /*  BLOG   PREVIEWS  */

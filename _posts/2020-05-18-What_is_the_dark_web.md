@@ -6,7 +6,7 @@ author: LARGEBOYKEITH
 image: https://i.imgur.com/gH1b0Iy.png?1
 ---
 
-In this article were going to talk about what the dark web is, how it works, what you can find on it and, most importantly, how to access it.
+The internet is much bigger than you may expect. You wont see the dark or deep web with normal search engines like Google. This article will be outlining what the so called "dark web" is, how it works, what you can find on it and how to access it.
  
 ### The Basics
 

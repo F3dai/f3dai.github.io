@@ -25,9 +25,49 @@ Go to the Brute Force page on DVWA. If you are not logged in, these are the cred
 <pre>admin
 password</pre>
 
-Do not log into the login page on the brute forcing section. We are presented with a username input and password input. Our goal is to gain authorised access to the log in page by utlising the Brute Force technique with a dictionary attack.
+Do not log into the login page on the brute forcing section. We are presented with a username input and password input.
 
-A dictionary attack essentially systematically uses words from a list as passwords to gain access to a system.
+Let's analyse the code for the low security setting:
+
+<pre> <?php
+
+if( isset( $_GET['Login'] ) ) {
+
+    $user = $_GET['username'];
+    
+    $pass = $_GET['password'];
+    $pass = md5($pass);
+
+    $qry = "SELECT * FROM `users` WHERE user='$user' AND password='$pass';";
+    $result = mysql_query( $qry ) or die( '<pre>' . mysql_error() . '</pre>' );
+
+    if( $result && mysql_num_rows( $result ) == 1 ) {
+        // Get users details
+        $i=0; // Bug fix.
+        $avatar = mysql_result( $result, $i, "avatar" );
+
+        // Login Successful
+        echo "<p>Welcome to the password protected area " . $user . "</p>";
+        echo '<img src="' . $avatar . '" />';
+    } else {
+        //Login failed
+        echo "<pre><br>Username and/or password incorrect.</pre>";
+    }
+
+    mysql_close();
+}
+
+?> </pre>
+
+The first thing that comes to mind when analysing log in form code is to check if there is any sanitisation. Here is the following SQL command that is executed:
+
+<pre>SELECT * FROM `users` WHERE user='$user' AND password='$pass';"</pre>
+
+There is no apparently filtering so we can try testing out a selection of SQL commands and look at the responses. Visit this paste bin for a list of SQL injection commands to test if there are any vulnerabiltiies:
+
+[https://pastebin.com/Mwtk0EKc](https://pastebin.com/Mwtk0EKc)
+
+We don't want to be manually entering the commands so we can use a tool called Burp Suite to automate this for us. Let's set up our machine to start bruting this potentially SQL vulnerable log in form. 
 
 Let's set up our attack with the following steps. I will be performing this attack on a Kali Linux machine.
 
@@ -68,16 +108,118 @@ Connection: close
 Cookie: security=low; PHPSESSID=3f319f0402f5ec006e7b70da8ea92bf4
 Upgrade-Insecure-Requests: 1</pre>
 
+**Intercept**
+
+Now we are ready to analyse the request, go back to the log in page on DVWA and enter any random credentials. It does not matter what is entered, as long as you provide incorrect details.
+
+![test creds](https://imgur.com/mzWzbDu.png)
+
+Once you submit the details, the request should pop up in Burp Suite. 
+
+This is my request to http://192.168.56.118:
+
+<pre>GET /dvwa/vulnerabilities/brute/?username=test&password=test&Login=Login HTTP/1.1
+Host: 192.168.56.118
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.56.118/dvwa/vulnerabilities/brute/
+Connection: close
+Cookie: security=low; PHPSESSID=3f319f0402f5ec006e7b70da8ea92bf4
+Upgrade-Insecure-Requests: 1</pre>
+
 If you are unaware, there are different types of web requests such as GET, POST, PUT and more. Please read more about this on this website if you want to research more:
 
 [Mozilla Developer](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
 
-Here we can see all types of information being sent to DVWA such as the GET request, host, browser info, cookie etc. Right now we are interested in the GET request and cookie. Take note of these as we will use this repeatly for the brute forcing. 
+Here we can see all types of information being sent to DVWA such as the GET request, host, browser info, cookie etc. 
+
+Now that we have this request in Burp Suite, we want to send this to the intruder. Right click and sent to intruder.
+
+![send to intruder](https://imgur.com/Ko6AFoD.png)
+
+The intruder is a section in Burp Suite which we will use to perform a simple brute-force that will test all of our SQL commands. 
+
+You may switch off the proxy now as we have our relevant information.
+
+Go to the "Intruder" tab (same level as the proxy tab), then go to "Positions". 
+
+![positions](https://imgur.com/gjk6yD7.png)
+
+This will be the request we captured. We want to clear all of the variables Burp Suite has automatically set for us. Do this by selecting the "clear §" button on the right hand side of the request box. You should now see the original request.
+
+We want to specify our own variables instead. Highlight the username we inputted ("test") in the GET request and create a variable with "add §" like so:
+
+![add var](https://imgur.com/Uwg2YLe.png)
+
+The GET request should look like this:
+
+<pre>GET /dvwa/vulnerabilities/brute/?username=§test§#&password=test&Login=Login HTTP/1.1</pre>
+
+This is telling Burp Suite to replace the §test§ with our own specified words. Let's specify our wordlist.
+
+Copy all of the SQL commands from the [pastebin](https://pastebin.com/Mwtk0EKc). Go to the payloads tab just next to positions and click "paste" in the Payload Options [simple list] section. It should look like this:
+
+![paste]()
+
+
+## Medium security
+
+Here is the code for the medium security:
+
+<pre> <?php
+
+if( isset( $_GET[ 'Login' ] ) ) {
+
+    // Sanitise username input
+    $user = $_GET[ 'username' ];
+    $user = mysql_real_escape_string( $user );
+
+    // Sanitise password input
+    $pass = $_GET[ 'password' ];
+    $pass = mysql_real_escape_string( $pass );
+    $pass = md5( $pass );
+
+    $qry = "SELECT * FROM `users` WHERE user='$user' AND password='$pass';";
+    $result = mysql_query( $qry ) or die( '<pre>' . mysql_error() . '</pre>' );
+
+    if( $result && mysql_num_rows($result) == 1 ) {
+        // Get users details
+        $i=0; // Bug fix.
+        $avatar = mysql_result( $result, $i, "avatar" );
+
+        // Login Successful
+        echo "<p>Welcome to the password protected area " . $user . "</p>";
+        echo '<img src="' . $avatar . '" />';
+    } else {
+        //Login failed
+        echo "<pre><br>Username and/or password incorrect.</pre>";
+    }
+
+    mysql_close();
+}
+
+?> </pre>
+
+The main difference I see is the SQL sanitising meaning we can't execute arbituary SQL commands in a brute-force method to reveal the password. The code has some functions called "mysql_real_escape_string"  which seems to sanitise the username and password input. 
+
+Our goal is to gain authorised access to the log in page by utlising the Brute Force technique with a dictionary attack.
+
+A dictionary attack essentially systematically uses words from a list as passwords to gain access to a system.
+
+Set up your machine the same way as we did in Low security:
+
+1 - Set up proxy for 127.0.0.1
+2 - Launch Burp Suite
+3 - Intercept the traffic with random credentials.
+
+Make note of the web request interception, you will need to copy the following information as these will be needed for constructing the brute forcing attack:
 
 <pre>GET /dvwa/vulnerabilities/brute/?username=test&password=test&Login=Login HTTP/1.1
 Cookie: security=low; PHPSESSID=3f319f0402f5ec006e7b70da8ea92bf4</pre>
 
-Once you have this information, you can close down Burp Suite and turn your proxy off. 
+Once you have noted the GET request and Cookie information, you can close down Burp Suite and turn your proxy off. 
 
 **Hydra**
 
@@ -93,7 +235,7 @@ This command is first specifying our host IP, -l user, -P wordlist, http-get-for
 
 I have used a premade wordlist in Kali Linux, but you can use anything you like. This is the output: 
 
-![dictionary](https://imgur.com/G1gxpfG.png) 
+![dictionary](https://imgur.com/YwO5AfI.png) 
 
 The password “password” has been found by looking at the responses of the web requests made by hydra. Hydra keeps testing passwords until it receives anything but the failed login message we specified.
 
@@ -101,17 +243,53 @@ We can confirm this with the DVWA page.
 
 ![success](https://imgur.com/alQco9v.png)
 
-## Medium Security
+## High Security
 
-Let's start by running our previous hydra command from low security.
+Let's start by running our previous hydra command.
 
-If you run the command again, you will notice the attack taking a significantly longer amount of time. Let's see how long the response time is. 
+If you run the command again, you will notice the attack taking a significantly longer amount of time. Let's see how long the response time is. We can compare the medium and high security level response times.
 
+I'll set up a for loop to make sure the results are reliable.
 
+<pre>for loop in {1..3}; do
+time curl -s -b 'security=medium; PHPSESSID=3f319f0402f5ec006e7b70da8ea92bf4' -b dvwa.cookie 'http://192.168.56.118/dvwa/vulnerabilities/brute/?username=123&password=123&Login=Login#' > /dev/null
+done</pre>
 
+And this is the result:
 
+![time test1](https://imgur.com/N5DNcWS.png)
 
+The medium security takes less than a millisecond to respond. Now for the high security:
 
+<pre>for loop in {1..3}; do
+time curl -s -b 'security=high; PHPSESSID=3f319f0402f5ec006e7b70da8ea92bf4' -b dvwa.cookie 'http://192.168.56.118/dvwa/vulnerabilities/brute/?username=123&password=123&Login=Login#' > /dev/null
+done</pre>
+
+![time test2](https://imgur.com/kvrVPeJ.png)
+
+This takes more than 3 seconds for each response. This is significantly longer than before. If you look at the source code, there is a noticable addition of sleep(3) if the login is incorrect. Here is a snippet of the code:
+
+<pre>if( $result && mysql_num_rows( $result ) == 1 ) {
+    // Get users details
+    $i=0; // Bug fix.
+    $avatar = mysql_result( $result, $i, "avatar" );
+
+    // Login Successful
+    echo "<p>Welcome to the password protected area " . $user . "</p>";
+    echo '<img src="' . $avatar . '" />';
+} 
+else {
+    // Login failed
+    sleep(3);
+    echo "<pre><br>Username and/or password incorrect.</pre>";
+}
+</pre>
+
+This means that the above method would still work but it would take a significantly longer amount of time to crack.
+
+In fact, if the response time for medium security is around 0.024 seconds, and high security is around 3.2 seconds, the time to brute force with our traditional method would in theory take 133 times as long. 
+
+As a result of this time delay, there are a couple of ways we could approach this.
 
 
 

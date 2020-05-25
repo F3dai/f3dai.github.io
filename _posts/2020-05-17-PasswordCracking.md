@@ -92,7 +92,7 @@ For reference, I will be using my Kali Linux OS running as a virtual machine. Ka
 
 ## Dictionary Attack
 
-Dictionary attacks utilise a dictionary where every word is used to guess the password against the hash. 
+Dictionary attacks utilise a dictionary where every word is used to guess the password against a hash or log in page. 
 
 These dictionaries may include different languages and common passwords to save time. These types of attacks are used when trying to exploit weak passwords (commonly used). As a result of this laziness, dictionary attacks are often quite successful. 
 

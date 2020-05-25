@@ -98,32 +98,32 @@ These dictionaries may include different languages and common passwords to save 
 
 Here is an example of a dictionary attack on an intentionally vulnerable machine “Metasploitable2”. In this scenario, we are presented with a web login on DVWA (Damn Vulnerable Web Application). 
 
-1. Make sure you have DVWA set up to low. 
+1 - Make sure you have DVWA set up to low. 
 
 ![dvwa](https://imgur.com/l8vJ4nb.png)
 
-2. Go to the Brute Force page. 
+2 - Go to the Brute Force page. 
 
 ![dvwa Brute](https://imgur.com/68dQnNZ.png)
 
-3. Set up a web proxy, this is on Firefox. And open Burp Suite. Use these settings exactly!
+3 - Set up a web proxy, this is on Firefox. And open Burp Suite. Use these settings exactly!
 
 ![proxy](https://imgur.com/AGC5oGz.png)
 
-4. Switch intercept on in Burp Suite (should already be on). 
+4 - Switch intercept on in Burp Suite (should already be on). 
 Proxy > Intercept 
 
 ![intercept](https://imgur.com/Cn4mt94.png)
 
-5. Make a request – enter in some credentials and analyse the intercepted traffic. Make note of this request, we will use it in a later step.
+5 - Make a request – enter in some credentials and analyse the intercepted traffic. Make note of this request, we will use it in a later step.
 
 ![intercepted](https://imgur.com/IU829SC.png)  
 
-6. Forward the traffic, and stop the intercept. Make not of the failed login message. “Username and/or password incorrect.”
+6 - Forward the traffic, and stop the intercept. Make not of the failed login message. “Username and/or password incorrect.”
 
 ![failed msg](https://imgur.com/wEPhtZB.png)
 
-7. Now construct the hydra command:
+7 - Now construct the hydra command:
 
 <pre> hydra [host] -l [user] -P [passwordlist] http-get-form “ [username ^USER^ password ^PASS^ ] : F=[<Failed Message] : H=Cookie: [Cookie Value]” </pre>
 

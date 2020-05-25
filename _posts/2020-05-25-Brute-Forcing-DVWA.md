@@ -1,10 +1,14 @@
 ---
-published: false
+published: true
+category: Ethical
+title: Brute Forcing (DVWA)
+author: F3dai
+image: https://imgur.com/xxzUmYh.png
 ---
 
 This post is part of the DVWA series. You can find more DVWA walkthrough's in the [Ethical Hacking](/ethicalhacking/) section of this website. According to [OWASP](https://owasp.org/www-community/attacks/Code_Injection), Code Injection is the general term for attack types which consist of injecting code that is then interpreted/executed by the application. 
 
-Attackers can utlisie different types of password cracking techniques which is elaborated more on this article:
+Attackers can utilise different types of password cracking techniques which is elaborated more on this article:
 
 [Password Cracking](/ethical/PasswordCracking/)
 
@@ -63,7 +67,7 @@ The first thing that comes to mind when analysing log in form code is to check i
 
 <pre>SELECT * FROM `users` WHERE user='$user' AND password='$pass';"</pre>
 
-There is no apparently filtering so we can try testing out a selection of SQL commands and look at the responses. Visit this paste bin for a list of SQL injection commands to test if there are any vulnerabiltiies:
+There is no apparent filtering so we can try testing out a selection of SQL commands and look at the responses. Visit this paste bin for a list of SQL injection commands to test if there are any vulnerabilties:
 
 [https://pastebin.com/qwqcu3am](https://pastebin.com/qwqcu3am)
 
@@ -150,7 +154,7 @@ Click on one of the requests, go to the "Response" tab and analyse the raw text.
 
 ![raw](https://imgur.com/uakdQ5A.png)
 
-A close look reveals this is simple the wrong username and password. We can see the failed message:
+A close look reveals this is simply the wrong username and password. We can see the failed message:
 
 <pre>Username and/or password incorrect</pre>
 
@@ -164,7 +168,7 @@ This one is interesting as it has a length of 4832, very similar to our first on
 
 ![first true](https://imgur.com/aicFIgt.png)
 
-I have put the results in ascenting length order to group all responses of 4832 length together:  
+I have put the results in ascending length order to group all responses of 4832 length together:  
 
 ![second true](https://imgur.com/kY9XeUs.png)
 
@@ -181,11 +185,11 @@ Let's test one out on the DVWA web page.
 
 We have successfully obtained authorised access without entering a password.
 
-I'll break this down but I wont go too much into detail as this article is aimed at brute forcing, not SQL injection.
+I'll break this down but I won't go too much into detail as this article is aimed at brute-forcing, not SQL injection.
 
 As you may have noticed, all the responses identified above end with the character "#". This is a character used for comments, meaning the rest of the SQL query was ignored. 
 
-This was our original SQL query we found in the source code:
+This was the original SQL query we found in the source code:
 
 ![sql](https://imgur.com/B1QPwVC.png)
 
@@ -233,9 +237,9 @@ if( isset( $_GET[ 'Login' ] ) ) {
 
 ?> </pre>
 
-The main difference I see is the SQL sanitising meaning we can't execute arbituary SQL commands in a brute-force method to reveal the password. The code has some functions called "mysql_real_escape_string"  which seems to sanitise the username and password input. 
+The main difference I see is the SQL sanitising meaning we can't execute arbitrary SQL commands in a brute-force method to reveal the password. The code has some functions called "mysql_real_escape_string"  which seem to sanitise the username and password input. 
 
-Our goal is to gain authorised access to the log in page by utlising the Brute Force technique with a dictionary attack.
+Our goal is to gain authorised access to the log in page by utilising the Brute Force technique with a dictionary attack.
 
 A dictionary attack essentially systematically uses words from a list as passwords to gain access to a system.
 
@@ -345,4 +349,4 @@ Now use the same hydra command as before but with our new wordlist:
 
 ![done](https://imgur.com/HVJjaT3.png)
 
-Creating wordlists according to the person is also an intelligent approach. Attackers often enumerate infroamtion about their victim such as family names, pets, DOB, where they live etc. to create a more efficient dictionary. 
+Creating wordlists according to the person is also an intelligent approach. Attackers often enumerate information about their victim such as family names, pets, DOB, where they live etc. to create a more efficient dictionary. 

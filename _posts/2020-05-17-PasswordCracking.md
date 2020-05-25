@@ -3,7 +3,7 @@ published: true
 Title: Password Cracking
 category: Ethical
 title: Password Cracking
-image: https://imgur.com/xRXW0Xj.png
+image: 'https://imgur.com/xRXW0Xj.png'
 author: F3dai
 ---
 

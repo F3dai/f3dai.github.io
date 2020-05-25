@@ -108,27 +108,6 @@ Connection: close
 Cookie: security=low; PHPSESSID=3f319f0402f5ec006e7b70da8ea92bf4
 Upgrade-Insecure-Requests: 1</pre>
 
-**Intercept**
-
-Now we are ready to analyse the request, go back to the log in page on DVWA and enter any random credentials. It does not matter what is entered, as long as you provide incorrect details.
-
-![test creds](https://imgur.com/mzWzbDu.png)
-
-Once you submit the details, the request should pop up in Burp Suite. 
-
-This is my request to http://192.168.56.118:
-
-<pre>GET /dvwa/vulnerabilities/brute/?username=test&password=test&Login=Login HTTP/1.1
-Host: 192.168.56.118
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate
-Referer: http://192.168.56.118/dvwa/vulnerabilities/brute/
-Connection: close
-Cookie: security=low; PHPSESSID=3f319f0402f5ec006e7b70da8ea92bf4
-Upgrade-Insecure-Requests: 1</pre>
-
 If you are unaware, there are different types of web requests such as GET, POST, PUT and more. Please read more about this on this website if you want to research more:
 
 [Mozilla Developer](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
@@ -161,7 +140,10 @@ This is telling Burp Suite to replace the §test§ with our own specified words.
 
 Copy all of the SQL commands from the [pastebin](https://pastebin.com/Mwtk0EKc). Go to the payloads tab just next to positions and click "paste" in the Payload Options [simple list] section. It should look like this:
 
-![paste]()
+![paste](https://imgur.com/HsmJc5U.png)
+
+Now that Burp has our wordlist and the web request, we can systematically test all the SQL commands. Select "Start Attack" on the same payloads tab and wait for all the responses to go through.
+
 
 
 ## Medium security

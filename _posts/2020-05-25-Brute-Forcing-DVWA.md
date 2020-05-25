@@ -65,7 +65,7 @@ The first thing that comes to mind when analysing log in form code is to check i
 
 There is no apparently filtering so we can try testing out a selection of SQL commands and look at the responses. Visit this paste bin for a list of SQL injection commands to test if there are any vulnerabiltiies:
 
-[https://pastebin.com/Mwtk0EKc](https://pastebin.com/Mwtk0EKc)
+[https://pastebin.com/qwqcu3am](https://pastebin.com/qwqcu3am)
 
 We don't want to be manually entering the commands so we can use a tool called Burp Suite to automate this for us. Let's set up our machine to start bruting this potentially SQL vulnerable log in form. 
 
@@ -138,13 +138,62 @@ The GET request should look like this:
 
 This is telling Burp Suite to replace the §test§ with our own specified words. Let's specify our wordlist.
 
-Copy all of the SQL commands from the [pastebin](https://pastebin.com/Mwtk0EKc). Go to the payloads tab just next to positions and click "paste" in the Payload Options [simple list] section. It should look like this:
+Copy all of the SQL commands from the [pastebin](https://pastebin.com/qwqcu3am). Go to the payloads tab just next to positions and click "paste" in the Payload Options [simple list] section. It should look like this:
 
 ![paste](https://imgur.com/HsmJc5U.png)
 
 Now that Burp has our wordlist and the web request, we can systematically test all the SQL commands. Select "Start Attack" on the same payloads tab and wait for all the responses to go through.
 
+Once all attempts are complete, look through all of the responses. The length column is a good indicator that we have found something interesting.
 
+Click on one of the requests, go to the "Response" tab and analyse the raw text.
+
+![raw](https://imgur.com/uakdQ5A.png)
+
+A close look reveals this is simple the wrong username and password. We can see the failed message:
+
+<pre>Username and/or password incorrect</pre>
+
+This is another request with a length of 549:
+
+![req 2](https://imgur.com/tJpbPYi.png)
+
+This has an SQL error which means we were right to identify the SQL vulnerability but this has incorrect syntax according to the error message. We are therefore looking for something similar to the first request we have looked at - no error and successful login.
+
+This one is interesting as it has a length of 4832, very similar to our first one. A closer look at the response shows no error messages:
+
+![first true](https://imgur.com/aicFIgt.png)
+
+I have put the results in ascenting length order to group all responses of 4832 length together:  
+
+![second true](https://imgur.com/kY9XeUs.png)
+
+<pre>or 1=1#
+admin' #
+admin' or '1'='1'#
+admin' or 1=1#
+admin' AND password='1=1'#
+admin' AND password=password#</pre>
+
+Let's test one out on the DVWA web page.
+
+![success](https://imgur.com/5MZRU0v.png)
+
+We have successfully obtained authorised access without entering a password.
+
+I'll break this down but I wont go too much into detail as this article is aimed at brute forcing, not SQL injection.
+
+As you may have noticed, all the responses identified above end with the character "#". This is a character used for comments, meaning the rest of the SQL query was ignored. 
+
+This was our original SQL query we found in the source code:
+
+![sql](https://imgur.com/B1QPwVC.png)
+
+And this would be the query submitted with our SQL example:
+
+![sql](https://imgur.com/F9nhSXj.png)
+
+As you can see, the rest of the SQL query has been commented out meaning we could modify the SQL statement to return user='admin' and TRUE (password=password).
 
 ## Medium security
 
@@ -272,10 +321,3 @@ This means that the above method would still work but it would take a significan
 In fact, if the response time for medium security is around 0.024 seconds, and high security is around 3.2 seconds, the time to brute force with our traditional method would in theory take 133 times as long. 
 
 As a result of this time delay, there are a couple of ways we could approach this.
-
-
-
-
-
-
-

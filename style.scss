@@ -38,7 +38,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Hack, monospace a;
+  font-family: Hack, monospace;
   color: $darkerGray;
   font-weight: bold;
 
@@ -53,7 +53,7 @@ h6 {
 
 h1 {
   font-size: 45px;
-  font-family: Hack, monospace a {
+  font-family: Hack, monospace {
     color: inherit;
   }
 }

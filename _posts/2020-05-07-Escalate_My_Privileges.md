@@ -1,7 +1,7 @@
 ---
 published: true
 layout: post
-category: writeup
+category: Writeup
 title: Escalate My Privileges
 author: F3dai
 image: https://imgur.com/1H07JlN.png

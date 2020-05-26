@@ -566,10 +566,30 @@ and (max-width:800px) {
   color: #7c7c7c;
 }
 .blogexcerpt {
-  
   color: black;
-  p { font-size: 15px; }
+  font-size: 16px;
+  line-height: 20px;
 }
+
+.span-Ethical {
+  padding: 3px;
+  background-color: #ffcece;
+}
+
+.span-writeup {
+  padding: 3px;
+  background-color: #e2ffce;
+}
+
+.span-Cheatsheet { 
+  padding: 3px;
+  background-color: #f2ceff;
+}
+
+.span-other { 
+  padding: 3px;
+  background-color: #cedfff;
+} 
 
 // End of blog previews --
 

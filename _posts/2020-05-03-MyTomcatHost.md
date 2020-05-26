@@ -2,7 +2,7 @@
 published: true
 layout: post
 title: Tomcat Host
-category: writeup
+category: Writeup
 author: F3dai
 image: https://imgur.com/e78J3dy.png
 ---

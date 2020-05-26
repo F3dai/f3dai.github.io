@@ -1,7 +1,7 @@
 ---
 published: true
 title: Analysing Windows Logs
-category: other
+category: Other
 image: 'https://imgur.com/ivkrOwm.png'
 author: F3dai
 ---

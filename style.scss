@@ -295,9 +295,9 @@ footer {
   
   nav {
     margin: 20px;
-    background: #f9f9f9;
+    background: #f0f0f0;
     padding: 10px;
-    height: 100px;
+    height: 105px;
     width: 70%;
     .menuItems {
       list-style: none;
@@ -312,7 +312,7 @@ footer {
         a {
           text-decoration: none;
           color: #8f8f8f;
-          font-size: 20px;
+          font-size: 18px;
           font-weight: 400;
           transition: all 0.5s ease-in-out;
           position: relative;
@@ -486,7 +486,7 @@ and (max-width:800px) {
 }
 
 .bigMenu {
-  margin: 16px;
+  margin: 10px 5px 5px 5px;
   font-size: 96px;
   color: #ccc;
   text-transform: uppercase;

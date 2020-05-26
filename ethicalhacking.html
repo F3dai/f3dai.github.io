@@ -14,7 +14,7 @@ published: true
   </div>
   <div class="blogpost">
     <p class="blogtitle">{{ post.title }}</p>
-    <p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - by {{ post.author }}</p> 
+    <p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - by {{ post.author }} - <span class="span-{{ post.category }}">{{ post.category }}</span></p> 
     <span class="blogexcerpt"> {{ post.excerpt | truncatewords:47}} </span>
   </div>
   </a>

@@ -52,10 +52,33 @@ h6 {
 }
 
 h1 {
-  font-size: 45px;
   font-family: Hack, monospace {
     color: inherit;
   }
+}
+
+ /* big landscape tablets, laptops, and desktops */ 
+@media only screen and (min-width: 1025px) {
+  h1 { font-size: 45px; }
+  .blogmeta{ margin: -8px; }
+  img { max-width: 700px;}
+}
+
+/* tablet, landscape iPad */ 
+@media only screen 
+and (min-width:800px)
+  and (max-width:1025px)  { 
+    h1{ font-size: 41px; }
+    .blogmeta{ margin: -8px; }
+    img { max-width: 700px;}
+}
+
+ /* smartphones, iPhone */
+@media only screen  
+  and (max-width:800px) { 
+  h1 { font-size: 30px; }
+  .blogmeta{ margin: 0; }
+  img { max-width: 100%;}
 }
 
 h2 {
@@ -129,15 +152,6 @@ strong,
 b {
   font-weight: bold;
 }
-// Need a better fix for img (mobile)
-img { 
-  max-width: 700px;
-}
-
-// Causing issues!
-//img {
-//  max-width: 100%;
-//}
 
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img {
@@ -421,12 +435,12 @@ and (max-width:1025px)  {
 and (max-width:800px) { 
 
   nav {
-    margin-top: 20px;
+    //margin-top: 20px;
     background: #f9f9f9;
-    padding: 5px;
+    //padding: 5px;
     height: auto;
-    width: 90%;
-    margin-top: -15px;
+    width: 85%;
+    margin-top: -5px;
     .menuItems {
       list-style: none;
       display: inline;
@@ -437,7 +451,7 @@ and (max-width:800px) {
         a {
           text-decoration: none;
           color: #8f8f8f;
-          font-size: 15px;
+          font-size: 17px;
           font-weight: 400;
           transition: all 0.5s ease-in-out;
           position: relative;
@@ -473,7 +487,7 @@ and (max-width:800px) {
     }
   }
   .bigMenu {
-  font-size: 70px;
+  font-size: 60px;
   }
 }
 
@@ -563,8 +577,8 @@ and (max-width:800px) {
 }
 .blogmeta {
   font-size: 15px;
-  margin: -8px;
   color: #7c7c7c;
+  //margin: -8px; In the @media part top of css 
 }
 .blogexcerpt {
   color: black;

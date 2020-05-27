@@ -368,11 +368,18 @@ footer {
   .goat {
     height: 250px;
     margin-top: -40px;
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
   }
   .goattitle {
     display: flex;
     justify-content: center;
     margin-left: -60px;
+    margin-top: 50px;
   }
 }
 
@@ -441,6 +448,12 @@ and (max-width:1025px)  {
   .goat {
     height: 250px;
     margin-top: -40px;
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
   }
   .goattitle {
     display: flex;
@@ -532,7 +545,7 @@ and (max-width:800px) {
 
 .bigMenu {
   margin: 10px 5px 5px 5px;
-  color: #ccc;
+  color: #727272;
   text-transform: uppercase;
   font-weight: 600;
   transition: all 1s ease-in-out;

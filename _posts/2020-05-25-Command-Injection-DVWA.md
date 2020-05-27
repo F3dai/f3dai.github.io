@@ -73,35 +73,7 @@ As you can see, the "pwd" command to show the current path has worked. This was 
 
 Now let's focus on the "medium" security setting for the same section. This is the source code provided:
 
-<pre><?php
-
-if( isset( $_POST[ 'submit'] ) ) {
-
-    $target = $_REQUEST[ 'ip' ];
-
-    // Remove any of the charactars in the array (blacklist).
-    $substitutions = array(
-        '&&' => '',
-        ';' => '',
-    );
-
-    $target = str_replace( array_keys( $substitutions ), $substitutions, $target );
-    
-    // Determine OS and execute the ping command.
-    if (stristr(php_uname('s'), 'Windows NT')) { 
-    
-        $cmd = shell_exec( 'ping  ' . $target );
-        echo '<pre>'.$cmd.'</pre>';
-        
-    } else { 
-    
-        $cmd = shell_exec( 'ping  -c 3 ' . $target );
-        echo '<pre>'.$cmd.'</pre>';
-        
-    }
-}
-
-?> </pre>
+<pre></pre>
 
 The page has added some minimal filtering to exclude exclude "&&" and ";". As noted earlier, we can use the PIPE operator. Adding an IP with a PIPE operator with our own command will result in the following:
 
@@ -115,48 +87,35 @@ Although there is some improvement, it is still vulnerable.
 
 Here is the source code for the command execution page on the high-security setting:
 
-<pre><?php
+<pre>&lt;?php
 
-if( isset( $_POST[ 'submit' ] ) ) {
+if( isset( $_POST[ 'submit'] ) ) {
 
-    $target = $_REQUEST["ip"];
+    $target = $_REQUEST[ 'ip' ];
+
+    // Remove any of the charactars in the array (blacklist).
+    $substitutions = array(
+        '&amp;&amp;' =&gt; '',
+        ';' =&gt; '',
+    );
+
+    $target = str_replace( array_keys( $substitutions ), $substitutions, $target );
     
-    $target = stripslashes( $target );
+    // Determine OS and execute the ping command.
+    if (stristr(php_uname('s'), 'Windows NT')) { 
     
-    
-    // Split the IP into 4 octects
-    $octet = explode(".", $target);
-    
-    // Check IF each octet is an integer
-    if ((is_numeric($octet[0])) && (is_numeric($octet[1])) && (is_numeric($octet[2])) && (is_numeric($octet[3])) && (sizeof($octet) == 4)  ) {
-    
-    // If all 4 octets are int's put the IP back together.
-    $target = $octet[0].'.'.$octet[1].'.'.$octet[2].'.'.$octet[3];
-    
-    
-        // Determine OS and execute the ping command.
-        if (stristr(php_uname('s'), 'Windows NT')) { 
-    
-            $cmd = shell_exec( 'ping  ' . $target );
-            echo '<pre>'.$cmd.'</pre>';
+        $cmd = shell_exec( 'ping  ' . $target );
+        echo '&lt;pre&gt;'.$cmd.'&lt;/pre&gt;';
         
-        } else { 
+    } else { 
     
-            $cmd = shell_exec( 'ping  -c 3 ' . $target );
-            echo '<pre>'.$cmd.'</pre>';
+        $cmd = shell_exec( 'ping  -c 3 ' . $target );
+        echo '&lt;pre&gt;'.$cmd.'&lt;/pre&gt;';
         
-        }
-    
     }
-    
-    else {
-        echo '<pre>ERROR: You have entered an invalid IP</pre>';
-    }
-    
-    
 }
 
-?> </pre>
+?&gt;  </pre>
 
 Now the source code checks if each octet of the given IP is a valid IP by diving the IP into octets and checking if they are integers. This means any extra command we include like before will most likely not work as they aren't in an IP format.
 

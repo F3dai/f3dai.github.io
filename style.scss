@@ -165,12 +165,13 @@ b {
 
 // Specify the color of the selection
 ::-moz-selection {
-  color: $black;
-  background: $lightGray;
+  color: white;
+  background: black;
 }
+
 ::selection {
-  color: $black;
-  background: $lightGray;
+  color: white;
+  background: black;
 }
 
 // Nicolas Gallagher's micro clearfix hack

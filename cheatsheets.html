@@ -13,9 +13,9 @@ published: true
     <img class="featimg" src="{{ post.image }}">
   </div>
   <div class="blogpost">
-    <p class="blogtitle">Vuln Hub</p>
+    <p class="blogtitle">{{ post.title }}</p>
     <p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - by {{ post.author }} - <span class="span-{{ post.category }}">{{ post.category }}</span></p> 
-    <span class="blogexcerpt"> {{ post.excerpt | strip_html | strip_newlines | truncatewords:47}} </span>
+    <p class="blogexcerpt"> {{ post.excerpt | strip_html | strip_newlines | truncatewords:47}} </p>
   </div>
   </a>
 </div>

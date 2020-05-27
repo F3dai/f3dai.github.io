@@ -365,6 +365,15 @@ footer {
   .bigMenu {
     font-size: 96px;
   }
+  .goat {
+    height: 250px;
+    margin-top: -40px;
+  }
+  .goattitle {
+    display: flex;
+    justify-content: center;
+    margin-left: -60px;
+  }
 }
 
 /* tablet, landscape iPad */ 
@@ -429,6 +438,15 @@ and (max-width:1025px)  {
   .bigMenu {
     font-size: 96px;
   }
+  .goat {
+    height: 250px;
+    margin-top: -40px;
+  }
+  .goattitle {
+    display: flex;
+    justify-content: center;
+    margin-left: -60px;
+  }
 }
 
  /* smartphones, iPhone */
@@ -489,6 +507,14 @@ and (max-width:800px) {
   }
   .bigMenu {
   font-size: 60px;
+  }
+  .goat {
+    display:none;
+  }
+  .goattitle {
+    display: flex;
+    justify-content: center;
+    margin-left: -60px;
   }
 }
 

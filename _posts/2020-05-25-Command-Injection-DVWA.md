@@ -27,7 +27,7 @@ password</pre>
 
 Having a quick look at the source code provided, we can identify an unsanitised / un-filtered command execution. 
 
-<pre> <?php
+<pre> &lt;?php
 
 if( isset( $_POST[ 'submit' ] ) ) {
 
@@ -37,17 +37,17 @@ if( isset( $_POST[ 'submit' ] ) ) {
     if (stristr(php_uname('s'), 'Windows NT')) { 
     
         $cmd = shell_exec( 'ping  ' . $target );
-        echo '<pre>'.$cmd.'</pre>';
+        echo '&lt;pre&gt;'.$cmd.'&lt;/pre&gt;';
         
     } else { 
     
         $cmd = shell_exec( 'ping  -c 3 ' . $target );
-        echo '<pre>'.$cmd.'</pre>';
+        echo '&lt;pre&gt;'.$cmd.'&lt;/pre&gt;';
         
     }
     
 }
-?> </pre>
+?&gt; </pre>
 
 The page essentially takes the IP given and attempts to ping it with the following code:
 

@@ -33,7 +33,7 @@ Do not log into the login page on the brute forcing section. We are presented wi
 
 Let's analyse the code for the low security setting:
 
-<pre> <?php
+<pre> &lt;?php
 
 if( isset( $_GET['Login'] ) ) {
 
@@ -42,26 +42,26 @@ if( isset( $_GET['Login'] ) ) {
     $pass = $_GET['password'];
     $pass = md5($pass);
 
-    $qry = "SELECT * FROM `users` WHERE user='$user' AND password='$pass';";
-    $result = mysql_query( $qry ) or die( '<pre>' . mysql_error() . '</pre>' );
+    $qry = &quot;SELECT * FROM `users` WHERE user='$user' AND password='$pass';&quot;;
+    $result = mysql_query( $qry ) or die( '&lt;pre&gt;' . mysql_error() . '&lt;/pre&gt;' );
 
-    if( $result && mysql_num_rows( $result ) == 1 ) {
+    if( $result &amp;&amp; mysql_num_rows( $result ) == 1 ) {
         // Get users details
         $i=0; // Bug fix.
-        $avatar = mysql_result( $result, $i, "avatar" );
+        $avatar = mysql_result( $result, $i, &quot;avatar&quot; );
 
         // Login Successful
-        echo "<p>Welcome to the password protected area " . $user . "</p>";
-        echo '<img src="' . $avatar . '" />';
+        echo &quot;&lt;p&gt;Welcome to the password protected area &quot; . $user . &quot;&lt;/p&gt;&quot;;
+        echo '&lt;img src=&quot;' . $avatar . '&quot; /&gt;';
     } else {
         //Login failed
-        echo "<pre><br>Username and/or password incorrect.</pre>";
+        echo &quot;&lt;pre&gt;&lt;br&gt;Username and/or password incorrect.&lt;/pre&gt;&quot;;
     }
 
     mysql_close();
 }
 
-?> </pre>
+?&gt; </pre>
 
 The first thing that comes to mind when analysing log in form code is to check if there is any sanitisation. Here is the following SQL command that is executed:
 
@@ -203,7 +203,7 @@ As you can see, the rest of the SQL query has been commented out meaning we coul
 
 Here is the code for the medium security:
 
-<pre> <?php
+<pre> &lt;?php
 
 if( isset( $_GET[ 'Login' ] ) ) {
 
@@ -216,26 +216,26 @@ if( isset( $_GET[ 'Login' ] ) ) {
     $pass = mysql_real_escape_string( $pass );
     $pass = md5( $pass );
 
-    $qry = "SELECT * FROM `users` WHERE user='$user' AND password='$pass';";
-    $result = mysql_query( $qry ) or die( '<pre>' . mysql_error() . '</pre>' );
+    $qry = &quot;SELECT * FROM `users` WHERE user='$user' AND password='$pass';&quot;;
+    $result = mysql_query( $qry ) or die( '&lt;pre&gt;' . mysql_error() . '&lt;/pre&gt;' );
 
-    if( $result && mysql_num_rows($result) == 1 ) {
+    if( $result &amp;&amp; mysql_num_rows($result) == 1 ) {
         // Get users details
         $i=0; // Bug fix.
-        $avatar = mysql_result( $result, $i, "avatar" );
+        $avatar = mysql_result( $result, $i, &quot;avatar&quot; );
 
         // Login Successful
-        echo "<p>Welcome to the password protected area " . $user . "</p>";
-        echo '<img src="' . $avatar . '" />';
+        echo &quot;&lt;p&gt;Welcome to the password protected area &quot; . $user . &quot;&lt;/p&gt;&quot;;
+        echo '&lt;img src=&quot;' . $avatar . '&quot; /&gt;';
     } else {
         //Login failed
-        echo "<pre><br>Username and/or password incorrect.</pre>";
+        echo &quot;&lt;pre&gt;&lt;br&gt;Username and/or password incorrect.&lt;/pre&gt;&quot;;
     }
 
     mysql_close();
 }
 
-?> </pre>
+?&gt; </pre>
 
 The main difference I see is the SQL sanitising meaning we can't execute arbitrary SQL commands in a brute-force method to reveal the password. The code has some functions called "mysql_real_escape_string"  which seem to sanitise the username and password input. 
 
@@ -304,21 +304,20 @@ done</pre>
 
 This takes more than 3 seconds for each response. This is significantly longer than before. If you look at the source code, there is a noticable addition of sleep(3) if the login is incorrect. Here is a snippet of the code:
 
-<pre>if( $result && mysql_num_rows( $result ) == 1 ) {
+<pre>if( $result &amp;&amp; mysql_num_rows( $result ) == 1 ) {
     // Get users details
     $i=0; // Bug fix.
-    $avatar = mysql_result( $result, $i, "avatar" );
+    $avatar = mysql_result( $result, $i, &quot;avatar&quot; );
 
     // Login Successful
-    echo "<p>Welcome to the password protected area " . $user . "</p>";
-    echo '<img src="' . $avatar . '" />';
+    echo &quot;&lt;p&gt;Welcome to the password protected area &quot; . $user . &quot;&lt;/p&gt;&quot;;
+    echo '&lt;img src=&quot;' . $avatar . '&quot; /&gt;';
 } 
 else {
     // Login failed
     sleep(3);
-    echo "<pre><br>Username and/or password incorrect.</pre>";
-}
-</pre>
+    echo &quot;&lt;pre&gt;&lt;br&gt;Username and/or password incorrect.&lt;/pre&gt;&quot;;
+}</pre>
 
 This means that the above method would still work but it would take a significantly longer amount of time to crack.
 

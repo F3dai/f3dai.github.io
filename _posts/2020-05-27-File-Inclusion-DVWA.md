@@ -24,11 +24,11 @@ This article will be focusing on the exploitation of the intentionally vulnerabl
 
 This is the source code provided for low security:
 
-<pre> <?php
+<pre>&lt;?php
 
     $file = $_GET['page']; //The page we wish to display 
 
-?> </pre>
+?&gt; </pre>
 
 The low and sometimes medium security settings on DVWA often have no input validation. This is the case for LFI low security. The code just gets any page we specify.
 
@@ -66,16 +66,16 @@ Not only can you view potentially sensitive information but you can also include
 
 Here is the source code for medium security:
 
-<pre> <?php
+<pre> &lt;?php
 
     $file = $_GET['page']; // The page we wish to display 
 
     // Bad input validation
-    $file = str_replace("http://", "", $file);
-    $file = str_replace("https://", "", $file);        
+    $file = str_replace(&quot;http://&quot;, &quot;&quot;, $file);
+    $file = str_replace(&quot;https://&quot;, &quot;&quot;, $file);        
 
 
-?> </pre>
+?&gt; </pre>
 
 This has introduced some low level validation which replaces "https://" with nothing, attempting to avoid any external pages. Although DVWA has put external pages off in the web configuration, a way to bypass this would be to use uppercase letters such as "HtTpS://", or hthttp://tp:// => http://.
 
@@ -85,17 +85,17 @@ The directory traversal vulnerability still remains as demonstrated below.
 
 Finally, the source code for the highest security setting:
 
-<pre> <?php
+<pre>&lt;?php
         
     $file = $_GET['page']; //The page we wish to display 
 
     // Only allow include.php
-    if ( $file != "include.php" ) {
-        echo "ERROR: File not found!";
+    if ( $file != &quot;include.php&quot; ) {
+        echo &quot;ERROR: File not found!&quot;;
         exit;
     }
         
-?> </pre>
+?&gt;  </pre>
 
 As the code suggests, the page only gets the "include.php" page, else, display an error. This has significantly improved the sanitisation of file inclusion. I was unsure how to bypass this.
 

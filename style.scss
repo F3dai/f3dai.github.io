@@ -347,7 +347,9 @@ footer {
       }
     }
   }
-
+  .bigMenu {
+    font-size: 96px;
+  }
 }
 
 /* tablet, landscape iPad */ 
@@ -409,7 +411,9 @@ and (max-width:1025px)  {
       }
     }
   }
-
+  .bigMenu {
+    font-size: 96px;
+  }
 }
 
  /* smartphones, iPhone */
@@ -487,7 +491,6 @@ and (max-width:800px) {
 
 .bigMenu {
   margin: 10px 5px 5px 5px;
-  font-size: 96px;
   color: #ccc;
   text-transform: uppercase;
   font-weight: 600;

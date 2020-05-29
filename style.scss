@@ -32,6 +32,34 @@ body {
   width: 100%;
 }
 
+// TESTING CSS
+
+.containerz {
+  padding: 10px 10px 10px 30px;
+  width: 60%;
+  border: 1px solid grey;
+  float: left;
+}
+
+.mainwrapper {
+  
+  width: 63%;
+  margin-right: auto;
+  margin-left: auto;
+  height: 100%;
+  border: 1px solid black;
+}
+
+.aside {
+  border: 1px solid grey;
+  width: 30%;
+  padding: 10px 10px 10px 30px;
+  border: 1px solid grey;
+  float: right;
+}
+
+// END OF TESTING --
+
 h1,
 h2,
 h3,
@@ -313,7 +341,7 @@ footer {
     background: #f0f0f0;
     padding: 10px;
     height: 105px;
-    width: 70%;
+    width: 63%;
     .menuItems {
       list-style: none;
       display: flex;

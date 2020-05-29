@@ -10,7 +10,7 @@ published: true
 
 <p>Find some of the most recent articles here:</p>
 
-{% for post in site.posts offset:1 limit:3 %}
+{% for post in site.posts limit:5 %}
 <div class="outerblogpost"> <a href="{{ post.url }}">
 
   <div class="blogimage">

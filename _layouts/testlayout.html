@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+
+  {% include meta.html %}
+
+  <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  {%- include analytics.html -%}
+</head>
+
+<body>
+  <div class="menuArea">
+    <div class="goattitle">
+      <h1 class="bigMenu">CYBER</h1>
+      <img class="goat" src="https://www.cybergoat.co.uk/images/goathead.jpg">
+      <h1 class="bigMenu">GOAT</h1>
+    </div>
+    <nav>
+      <ul class="menuItems">
+        <li><a href="{{ site.baseurl }}/index.html">Home</a></li>
+        <li><a href='{{ site.baseurl }}/writeups'>CTF Writeups</a></li>
+        <li><a href="{{ site.baseurl }}/ethicalhacking">Ethical Hacking</a></li>
+        <li><a href="{{ site.baseurl }}/cheatsheets">Cheat Sheets</a></li>
+        <li><a href='{{ site.baseurl }}/other'>Other</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="mainwrapper">
+    {{ content }}
+  </div>
+
+  <div class="wrapper-footer">
+    <div class="container">
+      <footer class="footer">
+        {% include svg-icons.html %}
+      </footer>
+    </div>
+  </div>
+
+</body>
+
+</html>

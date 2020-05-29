@@ -4,9 +4,10 @@ published: true
 ---
 
 <div class="aside">
-  <h1> Title here</h1>
-  <p>This site was designed and constructed by F3dai.</p>
-  <p>CyberGoat.com is still under construction.</p>
+  <h1>Categories:</h1>
+  {% for category in page.categories %}
+  <p class="blogexcerpt">> {{ category | first }}</p>
+  {% endfor %}
 </div>
 
 <div id="main" role="main" class="containerz">

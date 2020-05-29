@@ -37,24 +37,24 @@ body {
 .containerz {
 	padding: 10px 20px 10px 30px;
 	width: 63%;
-	border: 1px solid #9f9f9f6e;
+	/* border: 1px solid #9f9f9f6e; */
 	float: left;
 }
 
 .mainwrapper {
-  
-  width: 63%;
-  margin-right: auto;
-  margin-left: auto;
-  height: 100%;
-  border: 1px solid black;
+	width: 63%;
+	margin-right: auto;
+	margin-left: auto;
+	height: 100%;
+	/* border: 1px solid black; */
+	display: table;
 }
 
 .aside {
 	/* border: 1px solid grey; */
 	width: 35%;
 	padding: 10px 20px 10px 30px;
-	border: 1px solid #9f9f9f6e;
+	/* border: 1px solid #9f9f9f6e; */
 	float: right;
 	/* display: table-row; */
 }

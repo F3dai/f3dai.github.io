@@ -32,18 +32,8 @@ body {
   width: 100%;
 }
 
-// TESTING CSS
 
-hr {
-  border: 1px solid #c8c8c8;
-}
-
-.containerz {
-  padding: 10px 38px 10px 38px;
-  width: 63%;
-  border: 1px solid #cecece6e;
-  float: left;
-}
+// Container Wrapper
 
 .mainwrapper {
   width: 63%;
@@ -53,6 +43,38 @@ hr {
   display: table;
 }
 
+// Count Number
+.postcount { 
+	float: right;
+	background-color: #0088ff;
+	text-align: center;
+	font-size: 87%;
+	padding: 0 5px;
+	min-width: 24px;
+	height: 22px;
+	line-height: 22px;
+	color: #ffffff;
+	border-radius: 2px;
+	transition: box-shadow 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+// Line Break
+
+hr {
+  border: 1px solid #cecece6e;
+}
+
+// Post index container
+
+.containerz {
+  padding: 10px 38px 10px 38px;
+  width: 63%;
+  border: 1px solid #cecece6e;
+  float: left;
+}
+
+// Right box
+
 .aside {
   /* border: 1px solid grey; */
   width: 35%;
@@ -60,6 +82,10 @@ hr {
   border: 1px solid #cecece6e;
   float: right;
   /* display: table-row; */
+}
+
+.aside p {
+	line-height: 20px;
 }
 
 // END OF TESTING --

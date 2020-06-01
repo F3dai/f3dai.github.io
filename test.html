@@ -7,14 +7,14 @@ published: true
   <h1>Categories:</h1>
   <hr>
   {% for category in site.categories %}
-    <p class="blogexcerpt">> {{ category | first }}</p>
+    <p class="blogexcerpt">> {{ category | first }}
     {% assign counter = 0 %}
     {% for post in page.categories.category %}
       {% unless item.published == false %}
         {% assign counter = counter | plus:1 %}
         {% endunless %}
       {% endfor %}
-    <span>, {{ counter }}<span>
+    <span>, {{ counter }}<span></p>
     {% endfor %}
   
 </div>

@@ -7,7 +7,7 @@ published: true
   <h1>Categories:</h1>
   <hr>
   {% for category in site.categories %}
-    <p class="blogexcerpt">> {{ category | first }} <span class="postcount">, {{ category[1].size }}<span></p>
+    <p class="blogexcerpt">> {{ category | first }} <span class="postcount">{{ category[1].size }}<span></p>
     {% endfor %}
   
 </div>

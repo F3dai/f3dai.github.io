@@ -44,18 +44,19 @@ body {
 }
 
 // Count Number
+
 .postcount { 
-	float: right;
-	background-color: #0088ff;
-	text-align: center;
-	font-size: 87%;
-	padding: 0 5px;
-	min-width: 24px;
-	height: 22px;
-	line-height: 22px;
-	color: #ffffff;
-	border-radius: 2px;
-	transition: box-shadow 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  float: right;
+  background-color: #0088ff;
+  text-align: center;
+  font-size: 87%;
+  padding: 0 5px;
+  min-width: 24px;
+  height: 22px;
+  line-height: 22px;
+  color: #ffffff;
+  border-radius: 2px;
+  transition: box-shadow 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 // Line Break
@@ -85,7 +86,7 @@ hr {
 }
 
 .aside p {
-	line-height: 20px;
+  line-height: 20px;
 }
 
 // END OF TESTING --
@@ -115,28 +116,59 @@ h1 {
   }
 }
 
- /* big landscape tablets, laptops, and desktops */ 
-@media only screen and (min-width: 1025px) {
-  h1 { font-size: 35px; }
-  .blogmeta{ margin: -8px; }
-  img { max-width: 700px;}
-}
+@media only screen and (min-width: 1325px) {
+  h1 {
+    font-size: 35px;
+  }
 
-/* tablet, landscape iPad */ 
-@media only screen 
-and (min-width:800px)
-  and (max-width:1025px)  { 
-    h1{ font-size: 41px; margin-top: 10px;}
-    .blogmeta{ margin: -8px; }
-    img { max-width: 700px;}
-}
+  .blogmeta {
+    margin: -8px;
+  }
 
- /* smartphones, iPhone */
-@media only screen  
-  and (max-width:800px) { 
-  h1 { font-size: 30px; }
-  .blogmeta{ margin: 0; }
-  img { max-width: 100%;}
+  img {
+    max-width: 700px;
+  }
+  .mainwrapper {
+    width: 63%; }
+}
+/* tablet, landscape iPad */
+@media only screen and (min-width: 700px) and (max-width: 1325px) {
+  h1 {
+    font-size: 30px;
+    margin-top: 10px;
+  }
+  
+    .aside {display: none;}
+  .containerz{ width: 100%}
+
+  .blogmeta {
+    margin: -8px;
+  }
+
+  img {
+    max-width: 700px;
+  }
+  .mainwrapper {
+    width: 80%; }
+}
+/* smartphones, iPhone */
+@media only screen and (max-width: 700px) {
+  h1 {
+    font-size: 25px;
+  }
+  .aside {display: none;}
+  .containerz{ width: 100%}
+
+  .blogmeta {
+    margin: 0;
+  }
+
+  img {
+    max-width: 100%;
+  }
+  .mainwrapper {
+    width: 85%;
+  margin-top: 20px;}
 }
 
 h2 {
@@ -377,7 +409,6 @@ footer {
       display: flex;
       justify-content: center;
       li {
-        //margin-top: 10px;
         margin-left: 20px;
         margin-right: 20px;
         padding: 18px;
@@ -448,25 +479,24 @@ and (max-width:1025px)  {
 
   nav {
     margin: 20px;
-    background: #f9f9f9;
+    background: #a4a4a4;
     padding: 10px;
-    height: 100px;
+    height: 80px;
     width: 80%;
     .menuItems {
       list-style: none;
       display: flex;
       justify-content: center;
       li {
-        margin-top: 10px;
-        margin-left: 23px;
-        margin-right: 23px;
+        margin-left: 10px;
+        margin-right: 10px;
         padding: 18px;
         font-family: Hack, monospace;
         a {
           text-decoration: none;
-          color: #8f8f8f;
+          color: #fff;
           font-size: 15px;
-          font-weight: 400;
+          font-weight: 550;
           transition: all 0.5s ease-in-out;
           position: relative;
           text-transform: uppercase;
@@ -525,9 +555,7 @@ and (max-width:1025px)  {
 and (max-width:800px) { 
 
   nav {
-    //margin-top: 20px;
-    background: #f9f9f9;
-    //padding: 5px;
+    background: #a4a4a4;
     height: auto;
     width: 85%;
     margin-top: -5px;
@@ -540,9 +568,9 @@ and (max-width:800px) {
         font-family: Hack, monospace;
         a {
           text-decoration: none;
-          color: #8f8f8f;
-          font-size: 17px;
-          font-weight: 400;
+          color: #fff;
+          font-size: 15px;
+          font-weight: 550;
           transition: all 0.5s ease-in-out;
           position: relative;
           text-transform: uppercase;
@@ -636,25 +664,19 @@ and (max-width:800px) {
 
 .outerblogpost {
   height: 200px;
-  margin-top: 70px;
-  @media only screen and (max-width:700px) { height: auto; }
+  @media only screen and (max-width:800px) { height: auto; }
 }
-
-.catlist {
-	font-size: 15px;
-}
-
 .blogpost {
   width: 100%;
   text-align: left;
   border: 1px solid white;
   padding-right: 30px;
   
-  @media only screen and (min-width:700px) {
+  @media only screen and (min-width:800px) {
     height: 200px;
     margin: 30px;
   }
-  @media only screen and (max-width:700px) {
+  @media only screen and (max-width:800px) {
   height: auto; 
   margin: 30px 30px 30px 0px;
   }
@@ -688,11 +710,7 @@ and (max-width:800px) {
   color: black;
   font-size: 14px;
   line-height: 23px;
-  overflow: hidden;
-  height: 120px;
 }
-
-// Category Colour tag things
 
 .span-Ethical {
   padding: 3px;

@@ -14,8 +14,9 @@ published: true
         {% assign counter = counter | plus:1 %}
         {% endunless %}
       {% endfor %}
+    <span>, {{ counter }}<span>
     {% endfor %}
-  <span>, {{ counter }}<span>
+  
 </div>
 
 <div id="main" role="main" class="containerz">

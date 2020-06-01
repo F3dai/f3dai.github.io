@@ -7,7 +7,7 @@ published: true
   <h1>Categories:</h1>
   <hr>
   {% for category in site.categories %}
-    <a href="{{ category.url }}"><p class="blogexcerpt">> {{ category | first }} <span class="postcount">{{ category[1].size }}<span></p></a>
+    <a href="{{ category.url }}"><p class="catlist">> {{ category | first }} <span class="postcount">{{ category[1].size }}<span></p></a>
     {% endfor %}
   
 </div>
@@ -32,7 +32,7 @@ published: true
   </div>
   <div class="blogpost">
     <p class="blogtitle">{{ post.title }}</p>
-    <p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - <i class="fas fa-user"></i> {{ post.author }} - <span class="span-{{ post.category | capitalize }}">{{ post.category }}</span></p> 
+    <p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - by {{ post.author }} - <span class="span-{{ post.category | capitalize }}">{{ post.category }}</span></p> 
     <p class="blogexcerpt"> {{ post.excerpt | strip_html | strip_newlines | truncatewords:47}} </p>
   </div>
   </a>

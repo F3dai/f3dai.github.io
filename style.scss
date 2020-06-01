@@ -34,29 +34,32 @@ body {
 
 // TESTING CSS
 
+hr {
+  border: 1px solid #c8c8c8;
+}
+
 .containerz {
-	padding: 10px 20px 10px 30px;
-	width: 63%;
-	/* border: 1px solid #9f9f9f6e; */
-	float: left;
+  padding: 10px 38px 10px 38px;
+  width: 63%;
+  border: 1px solid #cecece6e;
+  float: left;
 }
 
 .mainwrapper {
-	width: 63%;
-	margin-right: auto;
-	margin-left: auto;
-	height: 100%;
-	/* border: 1px solid black; */
-	display: table;
+  width: 63%;
+  margin-right: auto;
+  margin-left: auto;
+  height: 100%;
+  display: table;
 }
 
 .aside {
-	/* border: 1px solid grey; */
-	width: 35%;
-	padding: 10px 20px 10px 30px;
-	/* border: 1px solid #9f9f9f6e; */
-	float: right;
-	/* display: table-row; */
+  /* border: 1px solid grey; */
+  width: 35%;
+  padding: 10px 20px 10px 30px;
+  border: 1px solid #cecece6e;
+  float: right;
+  /* display: table-row; */
 }
 
 // END OF TESTING --
@@ -88,7 +91,7 @@ h1 {
 
  /* big landscape tablets, laptops, and desktops */ 
 @media only screen and (min-width: 1025px) {
-  h1 { font-size: 45px; }
+  h1 { font-size: 35px; }
   .blogmeta{ margin: -8px; }
   img { max-width: 700px;}
 }
@@ -339,25 +342,25 @@ footer {
   
   nav {
     margin: 20px;
-    background: #f0f0f0;
+    background: #a4a4a4;
     padding: 10px;
-    height: 105px;
+    height: 80px;
     width: 63%;
     .menuItems {
       list-style: none;
       display: flex;
       justify-content: center;
       li {
-        margin-top: 10px;
+        //margin-top: 10px;
         margin-left: 20px;
         margin-right: 20px;
         padding: 18px;
         font-family: Hack, monospace;
         a {
           text-decoration: none;
-          color: #8f8f8f;
+          color: #fff;
           font-size: 18px;
-          font-weight: 400;
+          font-weight: 600;
           transition: all 0.5s ease-in-out;
           position: relative;
           text-transform: uppercase;

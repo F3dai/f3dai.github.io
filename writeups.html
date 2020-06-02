@@ -1,23 +1,49 @@
 ---
-layout: default
+layout: testlayout
 published: true
 permalink: /writeup/
 ---
-<h1>Writeups</h1>
 
-<p>Here are a list of CTF style writeups:</p>
+<div class="aside">
+	<div class="cats">
+	  <h1>Categories:</h1>
+	  <hr>
+	  {% for category in site.categories %}
+		<a href="/{{ category | first | downcase }}"><p class="catlist">> {{ category | first }} <span class="postcount">{{ category[1].size }}<span></p></a>
+		{% endfor %}
+	  
 
-{% for post in site.categories.Writeup  %}
-<div class="outerblogpost"> <a href="{{ post.url }}">
+	</div>
+	<div class="socials">
 
-  <div class="blogimage">
-    <img class="featimg" src="{{ post.image }}">
-  </div>
-  <div class="blogpost">
-    <p class="blogtitle">{{ post.title }}</p>
-    <p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - by {{ post.author }} - <span class="span-{{ post.category }}">{{ post.category }}</span></p> 
-    <p class="blogexcerpt"> {{ post.excerpt | strip_html | strip_newlines | truncatewords:47}} </p>
-  </div>
-  </a>
+		<h1>Find me on:</h1>
+			<hr>
+		<p class="catlist"><a href="https://github.com/F3dai">>> Github <<</a></p>
+    	</div>
 </div>
-{% endfor %}
+
+	<div id="main" role="main" class="containerz">
+
+		<h1>Writeups</h1>
+
+		<p>Here are a list of CTF style writeups:</p>
+
+		{% for post in site.categories.Writeup  %}
+		<div class="outerblogpost"> <a href="{{ post.url }}">
+
+		  <div class="blogimage">
+			<img class="featimg" src="{{ post.image }}">
+		  </div>
+		  <div class="blogpost">
+			<p class="blogtitle">{{ post.title }}</p>
+			<p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - by {{ post.author }} - <span class="span-{{ post.category }}">{{ post.category }}</span></p> 
+			<p class="blogexcerpt"> {{ post.excerpt | strip_html | strip_newlines | truncatewords:47}} </p>
+		  </div>
+		  </a>
+		</div>
+		{% endfor %}
+
+
+	</div>
+
+

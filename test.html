@@ -4,39 +4,50 @@ published: true
 ---
 
 <div class="aside">
-  <h1>Categories:</h1>
-  <hr>
-  {% for category in site.categories %}
-    <a href="/{{ category | first | downcase }}"><p class="catlist">> {{ category | first }} <span class="postcount">{{ category[1].size }}<span></p></a>
-    {% endfor %}
-  
+	<div class="cats">
+	  <h1>Categories:</h1>
+	  <hr>
+	  {% for category in site.categories %}
+		<a href="/{{ category | first | downcase }}"><p class="catlist">> {{ category | first }} <span class="postcount">{{ category[1].size }}<span></p></a>
+		{% endfor %}
+	  
+
+	</div>
+	<div class="socials">
+        
+        <h1>Find me on:</h1>
+		<hr>
+        <p class="catlist">Github and stuff</p>
+    </div>
 </div>
 
-<div id="main" role="main" class="containerz">
+	<div id="main" role="main" class="containerz">
 
-<h1>Cybersecurity blog - Writeups, tutorials and more.</h1>
-  
-  <hr>
+		<h1>Cybersecurity blog - Writeups, tutorials and more.</h1>
+		  
+		<hr>
 
-<p>This site was designed and constructed by F3dai.</p>
+		<p>This site was designed and constructed by F3dai.</p>
 
-<p>CyberGoat.com is still under construction.</p>
+		<p>CyberGoat.com is still under construction.</p>
 
-<p>Find some of the most recent articles here:</p>
+		<p>Find some of the most recent articles here:</p>
 
-{% for post in site.posts limit:5 %}
-<div class="outerblogpost"> <a href="{{ post.url }}">
+		{% for post in site.posts limit:5 %}
+		<div class="outerblogpost"> <a href="{{ post.url }}">
 
-  <div class="blogimage">
-    <img class="featimg" src="{{ post.image }}">
-  </div>
-  <div class="blogpost">
-    <p class="blogtitle">{{ post.title }}</p>
-    <p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - by {{ post.author }} - <span class="span-{{ post.category | capitalize }}">{{ post.category }}</span></p> 
-    <p class="blogexcerpt"> {{ post.excerpt | strip_html | strip_newlines | truncatewords:47}} </p>
-  </div>
-  </a>
-</div>
-{% endfor %}
+			<div class="blogimage">
+				<img class="featimg" src="{{ post.image }}">
+			</div>
+			<div class="blogpost">
+				<p class="blogtitle">{{ post.title }}</p>
+				<p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - by {{ post.author }} - <span class="span-{{ post.category | capitalize }}">{{ post.category }}</span></p> 
+				<p class="blogexcerpt"> {{ post.excerpt | strip_html | strip_newlines | truncatewords:47}} </p>
+			</div></a>
+		  
+		</div>
+		{% endfor %}
 
-</div>
+	</div>
+
+

@@ -132,7 +132,7 @@ h1 {
     width: 63%; }
 }
 /* tablet, landscape iPad */
-@media only screen and (min-width: 700px) and (max-width: 1325px) {
+@media only screen and (min-width: 800px) and (max-width: 1325px) {
   h1 {
     font-size: 30px;
     margin-top: 10px;
@@ -152,7 +152,7 @@ h1 {
     width: 80%; }
 }
 /* smartphones, iPhone */
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
   h1 {
     font-size: 25px;
   }
@@ -710,6 +710,8 @@ and (max-width:800px) {
   color: black;
   font-size: 14px;
   line-height: 23px;
+  overflow: hidden;
+  height: 140px;
 }
 
 .span-Ethical {

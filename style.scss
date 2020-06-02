@@ -69,7 +69,7 @@ hr {
 
 .containerz {
   padding: 10px 38px 10px 38px;
-  width: 70%;
+  width: 75.5%;
   border: 1px solid #cecece6e;
   float: left;
 }
@@ -78,7 +78,7 @@ hr {
 
 .aside {
   
-  width: 28%;
+  width: 23%;
   //padding: 10px 20px 10px 30px;
   //border: 1px solid #cecece6e;
   float: right;
@@ -89,14 +89,22 @@ hr {
 }
 
 .cats {
-  padding: 10px 20px 10px 30px;
+  padding: 10px 30px 10px 30px;
   border: 1px solid #cecece6e;
+}
+
+.cats h1 {
+  font-size: 26px;
 }
 
 .socials {
 	border: 1px solid #cecece6e;
-	padding: 10px 20px 10px 30px;
+	padding: 10px 30px 10px 30px;
 	margin-top: 30px;
+}
+
+.socials h1 {
+	font-size: 26px;
 }
 
 // END OF TESTING --
@@ -139,7 +147,7 @@ h1 {
     max-width: 700px;
   }
   .mainwrapper {
-    width: 70%; }
+    width: 67%; }
 }
 /* tablet, landscape iPad */
 @media only screen and (min-width: 800px) and (max-width: 1325px) {
@@ -413,7 +421,7 @@ footer {
     background: #a4a4a4;
     padding: 10px;
     height: 80px;
-    width: 70%;
+    width: 67%;
     .menuItems {
       list-style: none;
       display: flex;

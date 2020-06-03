@@ -62,7 +62,7 @@ An effective example of Least Privilege is my computer - I strictly operate on a
 
 ## Hacking Terminology:
 
-![BWG hats](https://i.imgur.com/JuADwNo)
+![BWG hats](https://i.imgur.com/PmmLfBA.png)
 
 ### White hat hackers
 
@@ -86,5 +86,4 @@ People who typically law-abiding citizens, but in some cases will venture into i
 
 Motivations can widely vary - conducting illegal activities for reasons they feel are ethical, for example, accessing a system belonging to a corporation that the hacker feels is engaged in unethical activities. 
 
-Grey hat hackers may also look for vulnerabilities in a system without the owner’s permission or knowledge. If issues are found, they will report them to the owner, sometimes requesting a small fee to fix the issue. 
-
+Grey hat hackers may also look for vulnerabilities in a system without the owner’s permission or knowledge. If issues are found, they will report them to the owner, sometimes requesting a small fee to fix the issue.

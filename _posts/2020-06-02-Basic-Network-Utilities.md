@@ -63,7 +63,7 @@ This command is an advanced / "deluxe" version of ping. Tracert not only tells y
 
 ![tracert](https://i.imgur.com/sDSliNE.png)
 
-As the internet is such as large network, packets always hop across several routers. This command shows which nodes the packet is sent to get to the destination. In this case, I have following the steps to get to www.cybergoat.co.uk.
+As the internet is such as large network, packets always hop across several routers. This command shows which nodes the packet is sent to get to the destination. In this case, I have followed the steps to get to www.cybergoat.co.uk.
 
 ## Netstat
 
@@ -76,4 +76,3 @@ Netstat is an abbreviation for Network Status. This useful command essentially t
 ![netstat](https://i.imgur.com/wSgGkMF.png)
 
 These four commands we have just examined are the **core utilities**. These four (ipconfig, ping, tracert, and netstat) are absolutely essential to any network administrator.
-

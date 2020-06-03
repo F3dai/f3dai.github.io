@@ -55,7 +55,7 @@ This is assigning the **minimum privileges** required for that person to do his 
 
 This diagram represents the system of privileges on an operating system (privilege rings for the Intel x86).
 
-![kernel](https://i.imgur.com/M2bwBhy)
+![kernel](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Priv_rings.svg/1280px-Priv_rings.svg.png)
 [Source](https://en.wikipedia.org/wiki/Principle_of_least_privilege)
 
 An effective example of Least Privilege is my computer - I strictly operate on a non-administrative account so **when** there is an attack on my system, I can **control and minimise** the damage caused when there is malicious activity is on my computer. 

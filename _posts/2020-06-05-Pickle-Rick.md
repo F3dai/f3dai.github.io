@@ -86,9 +86,9 @@ The landing page for Ricks Portal has command execution. I executed the shell co
 
 ![ls](https://imgur.com/iPiYZcd.png)
 
-We haven't viewed Sup3rS3cretPickl3Ingred.txt, let's open this up in our browser:
+We haven't viewed Sup3rS3cretPickl3Ingred.txt, let's open this using less (the command cat is disabled):
 
-![ing](https://imgur.com/FeZQbDE.png)
+![ing](https://imgur.com/NrJU4Pl.png)
 
 This looks like our first Ingredient or flag for this CTF challenge. 
 

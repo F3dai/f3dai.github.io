@@ -7,7 +7,7 @@ author: F3dai
 ---
 This Rick and Morty themed challenge requires you to exploit a webserver to find 3 ingredients that will help Rick make his potion to transform himself back into a human from a pickle. This is a TryHackMe box. To access this you must sign up to [https://tryhackme.com/](https://tryhackme.com/).
 
-**URL:** [tomghost](https://www.tryhackme.com/room/picklerick)
+**URL:** [picklerick](https://www.tryhackme.com/room/picklerick)
 
 **Difficulty:** Easy
 
@@ -68,8 +68,6 @@ This doesn't seem like a hidden path. I tried using **R1ckRul3s:Wubbalubbadubdub
 
 <pre>nikto -h 10.10.213.134</pre>
 
-![nikto]()
-
 We found a login page:
 
 <pre>http://10.10.213.134/login.php</pre>
@@ -84,6 +82,8 @@ Using the credentials here gives us authenticated access:
 
 The landing page for Ricks Portal has command execution. I executed the shell command "ls" to list the current directory:
 
+<pre>ls</pre>
+
 ![ls](https://imgur.com/iPiYZcd.png)
 
 We haven't viewed Sup3rS3cretPickl3Ingred.txt, let's open this up in our browser:
@@ -96,7 +96,7 @@ This looks like our first Ingredient or flag for this CTF challenge.
 
 ## Ingredient 2
 
-I traverse to the home directory to see other users that are on the system. There is "ubuntu" and "rick". Remember, command inject means you cant cd, you must use ls to explore the system.
+I traverse to the home directory to see other users that are on the system. There is "ubuntu" and "rick". Remember, command injection means you cant cd, you must use ls to explore the system as the working directory will always be the path to where the code injection takes place.
 
 <pre>ls -la /home/rick</pre>
 
@@ -145,6 +145,3 @@ We have the last Ingredient:
 <pre>fleeb juice</pre>
 
 ![potion](https://imgur.com/WLzYZkY.png)
-
-
-

@@ -1,7 +1,7 @@
 ---
 published: true
 image: 'https://imgur.com/7DNKTEN.png'
-title: Tomghost - TryHackMe
+title: Tomghost - TryHackMe Walkthrough
 category: Writeup
 author: F3dai
 ---
@@ -170,4 +170,3 @@ Then exploit this using the following command:
 ![zip exploit](https://imgur.com/u12vB7J.png)
 
 We have spawned a root shell, and found the root flag.
-

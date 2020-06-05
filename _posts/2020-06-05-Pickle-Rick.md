@@ -88,9 +88,7 @@ The landing page for Ricks Portal has command execution. I executed the shell co
 
 We haven't viewed Sup3rS3cretPickl3Ingred.txt, let's open this up in our browser:
 
-![ing](https://imgur.com/Gh3nUsm.png)
-
-<pre>mr. meeseek hair</pre>
+![ing](https://imgur.com/FeZQbDE.png)
 
 This looks like our first Ingredient or flag for this CTF challenge. 
 
@@ -106,9 +104,7 @@ The command "cat" is disabled on this system so we should use less to see the co
 
 <pre>less /home/rick/'second ingredients'</pre>
 
-![less](https://imgur.com/1ijHXsX.png)
-
-<pre>1 jerry tear</pre>
+![less](https://imgur.com/zknEmvr.png)
 
 Now we're onto our third Ingredient. 
 
@@ -136,12 +132,10 @@ This means the current user can execute anything! Usually, I would execute sudo 
 
 <pre>sudo less /root/3rd.txt</pre>
 
-![3rd](https://imgur.com/atQbaxz.png)
-
 We have the last Ingredient: 
 
-![fleeb](fleeb juice)
+![fleeb](https://imgur.com/hi0tzNf.png)
 
-<pre>fleeb juice</pre>
+No idea what these ingrediants are for, but this was a simple box aimed at understanding the command injection vulnerability and simple file system enumeration. 
 
 ![potion](https://imgur.com/WLzYZkY.png)

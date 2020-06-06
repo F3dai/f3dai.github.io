@@ -418,7 +418,7 @@ footer {
   
   nav {
     margin: 20px;
-    background: #a4a4a4;
+    background: #6a6a6a;
     padding: 10px;
     height: 80px;
     width: 67%;
@@ -497,7 +497,7 @@ and (max-width:1325px)  {
 
   nav {
     margin: 20px;
-    background: #a4a4a4;
+    background: #6a6a6a;
     padding: 10px;
     height: 80px;
     width: 80%;
@@ -564,6 +564,7 @@ and (max-width:1325px)  {
   .goattitle {
     display: flex;
     justify-content: center;
+    margin-top: 40px;
     margin-left: -60px;
   }
 }
@@ -573,7 +574,7 @@ and (max-width:1325px)  {
 and (max-width:800px) { 
 
   nav {
-    background: #a4a4a4;
+    background: #6a6a6a;
     height: auto;
     width: 85%;
     margin-top: -5px;
@@ -631,7 +632,7 @@ and (max-width:800px) {
   .goattitle {
     display: flex;
     justify-content: center;
-    margin-left: -60px;
+    
   }
 }
 

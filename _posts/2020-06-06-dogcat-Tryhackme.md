@@ -40,7 +40,7 @@ I'll open up port 80 on my browser:
 
 This website has a basic function to display either a dog or a cat depending on the button the user clicks. I'd like to investigate how these images are displayed on the website.
 
-The url changes from ?view=cat to ?view=dog. I remoted the ?view= and appended .php and this was the result: 
+The url changes from ?view=cat to ?view=dog. I removed the ?view= and appended .php and this was the result: 
 
 <pre>http://10.10.0.15/dog.php</pre>
 
@@ -50,7 +50,7 @@ I try testing some random inputs out and I get an error message:
 
 ![error](https://imgur.com/klKhov0.png)
 
-Therefore, it's safe to say that ?view= run an "include" on the parameter for dog and cat, and **appends .php**. 
+Therefore, it's safe to say that ?view= runs an "include" on the parameter for dog and cat, and **appends .php**. 
 
 Since the input needs "dog" or "cat", I will try using the following url to see if I can view the /etc/passwd file on the system:
 
@@ -189,11 +189,11 @@ And finally, the other flag is in the actual web directory:
 
 ![flag](https://imgur.com/9OaDcef.png)
 
-These flags are presented in reverse order - I usually just own the system.
+These flags are presented in reverse order - I usually just aim to own the system, it's better practice to record the flags at each step.
 
 ## Last flag
 
-Finally, I checked the /opt/backups which had a script called backup.sh,.
+Finally, there is still one more flag - I checked the /opt/backups which had a script called backup.sh.
 
 I added this command to the file:
 
@@ -203,13 +203,12 @@ I set up my netcat listener on 5555
 
 <pre>netcat -nvlp 5555</pre>
 
-Executed the script and got the reverse shell again.
+Execute the script and get the reverse shell again.
 
 <pre>./backup.sh</pre>
 
 ![rev shell](https://i.imgur.com/XEpsJPG.png)
 
-And the final flag:
+And the final flag has been found:
 
 ![final](https://i.imgur.com/YB68YRa.png)
-

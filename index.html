@@ -4,48 +4,58 @@ published: true
 ---
 
 <div class="aside">
-	<div class="cats">
-	  <h1>Categories:</h1>
-	  <hr>
-	  {% for category in site.categories %}
-		<a href="/{{ category | first | downcase }}"><p class="catlist">> {{ category | first }} <span class="postcount">{{ category[1].size }}<span></p></a>
-		{% endfor %}
-	  
+  <div class="cats">
+    <h1>Categories:</h1>
+    <hr>
+    {% for category in site.categories %}
+    <a href="/{{ category | first | downcase }}">
+      <p class="catlist">> {{ category | first }} <span class="postcount">{{ category[1].size }}<span></p>
+    </a>
+    {% endfor %}
 
-	</div>
-	<div class="socials">
+  </div>
+  <div class="socials"> 
 
-		<h1>Find me on:</h1>
-			<hr>
-		<p class="catlist"><a href="https://github.com/F3dai">>> Github <<</a></p>
-    	</div>
+    <h1><span class="BLM-Side">Black Lives Matter</span></h1>
+    <hr>
+    <p class="catlist">We stand strongly against racism.</p>
+
+    <p class="catlist"><a href="https://secure.actblue.com/donate/ms_blm_homepage_2019">&gt;&gt; Support BLM &lt;&lt;</a></p>
+  </div>
+  <div class="socials">
+    <h1>Find me on:</h1>
+    <hr>
+    <p class="catlist"><a href="https://github.com/F3dai">>> Github <<< /a>
+    </p>
+  </div>
 </div>
 
-	<div id="main" role="main" class="containerz">
+<div id="main" role="main" class="containerz">
 
-		<h1>Cybersecurity blog - Writeups, tutorials and more.</h1>
-		  
-		<hr>
+  <h1>Cybersecurity blog - Writeups, tutorials and more.</h1>
 
-		<p>Welcome to CyberGoat, a website made for collaboration cybersecurity related topics.</p>
+  <hr>
 
-		<p>Find a collection of walkthroughs for various CTFs, learn about the art of ethical hacking and understand cybersecurity concepts.</p>
+  <p>Welcome to CyberGoat, a website made for collaboration cybersecurity related topics.</p>
 
-		<p>Find some of the most recent articles here:</p>
+  <p>Find a collection of walkthroughs for various CTFs, learn about the art of ethical hacking and understand cybersecurity concepts.</p>
 
-		{% for post in site.posts limit:5 %}
-		<div class="outerblogpost"> <a href="{{ post.url }}">
+  <p>Find some of the most recent articles here:</p>
 
-			<div class="blogimage">
-				<img class="featimg" src="{{ post.image }}">
-			</div>
-			<div class="blogpost">
-				<p class="blogtitle">{{ post.title }}</p>
-				<p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - by {{ post.author }} - <span class="span-{{ post.category | capitalize }}">{{ post.category }}</span></p> 
-				<p class="blogexcerpt"> {{ post.excerpt | strip_html | strip_newlines | truncatewords:47}} </p>
-			</div></a>
-		  
-		</div>
-		{% endfor %}
+  {% for post in site.posts limit:5 %}
+  <div class="outerblogpost"> <a href="{{ post.url }}">
 
-	</div>
+      <div class="blogimage">
+        <img class="featimg" src="{{ post.image }}">
+      </div>
+      <div class="blogpost">
+        <p class="blogtitle">{{ post.title }}</p>
+        <p class="blogmeta">{{ post.date | date: "%b %-d, %Y" }} - by {{ post.author }} - <span class="span-{{ post.category | capitalize }}">{{ post.category }}</span></p>
+        <p class="blogexcerpt"> {{ post.excerpt | strip_html | strip_newlines | truncatewords:47}} </p>
+      </div>
+    </a>
+
+  </div>
+  {% endfor %}
+
+</div>

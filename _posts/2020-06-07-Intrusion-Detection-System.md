@@ -1,5 +1,9 @@
 ---
-published: false
+published: True
+title: Intrusion Detection Systems - Concepts and Examples
+category: Other
+author: F3dai
+image: https://imgur.com/Hk9oY43.png
 ---
 There are six basic approaches to intrusion-detection and prevention. Some of these methods are implemented in various software packages, and others are simply strategies that an organisation can employ to decrease the likelihood of a successful intrusion.
 

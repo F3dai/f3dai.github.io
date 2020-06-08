@@ -95,7 +95,7 @@ Cisco advertises some of the following features on their IDS systems:
 - Integration (plugs into your network without major hardware changes)
 - High-performance appliances (4100 Series and 9000 Series)
 
-![products](https://imgur.com/xOxKi1t)
+![products](https://imgur.com/xOxKi1t.png)
 
 ** Please note, these systems are no longer being sold **
 

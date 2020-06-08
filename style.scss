@@ -436,14 +436,15 @@ footer {
         margin-right: 20px;
         padding: 18px;
         font-family: Hack, monospace;
+	text-decoration: none;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 600;
+        transition: all 0.5s ease-in-out;
+        position: relative;
+        text-transform: uppercase;
         a {
-          text-decoration: none;
-          color: #fff;
-          font-size: 18px;
-          font-weight: 600;
-          transition: all 0.5s ease-in-out;
-          position: relative;
-          text-transform: uppercase;
+          // REMOVED
 
           &::before {
             content: attr(data-item);

@@ -516,15 +516,16 @@ and (max-width:1325px)  {
         margin-right: 10px;
         padding: 18px;
         font-family: Hack, monospace;
+        text-decoration: none;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 550;
+        transition: all 0.5s ease-in-out;
+        position: relative;
+        text-transform: uppercase;
         a {
-          text-decoration: none;
-          color: #fff;
-          font-size: 15px;
-          font-weight: 550;
-          transition: all 0.5s ease-in-out;
-          position: relative;
-          text-transform: uppercase;
-
+          // REMOVED
+          
           &::before {
             content: attr(data-item);
             transition: 0.5s;
@@ -591,14 +592,15 @@ and (max-width:800px) {
         margin-top: 5px;
         padding: 18px;
         font-family: Hack, monospace;
+        text-decoration: none;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 550;
+        transition: all 0.5s ease-in-out;
+        position: relative;
+        text-transform: uppercase;
         a {
-          text-decoration: none;
-          color: #fff;
-          font-size: 15px;
-          font-weight: 550;
-          transition: all 0.5s ease-in-out;
-          position: relative;
-          text-transform: uppercase;
+          // REMOVED 
 
           &::before {
             content: attr(data-item);

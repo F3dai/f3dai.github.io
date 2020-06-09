@@ -1,9 +1,9 @@
 ---
-published: True
+published: true
 title: Intrusion Detection Systems - Concepts and Examples
 category: Other
 author: F3dai
-image: https://imgur.com/Hk9oY43.png
+image: 'https://imgur.com/Hk9oY43.png'
 ---
 There are six basic approaches to intrusion-detection and prevention. Some of these methods are implemented in various software packages, and others are simply strategies that an organisation can employ to decrease the likelihood of a successful intrusion.
 
@@ -108,4 +108,10 @@ The products include malware protection as well as sandboxing.
 
 The 4100 series is meant for small networks and the 9000 series is designed for large scale networks.
 
+## Honey Pots
 
+Honeypots are computer security mechanisms set to detect, deflect, or, in some manner, counteract attempts at unauthorized use of information systems.
+
+Read about this IDS concept on my next article:
+
+[Honey Pots - cybergoat.co.uk/other/Honeypots-Concept/](/other/Honeypots-Concept/)

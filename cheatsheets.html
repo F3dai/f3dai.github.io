@@ -4,21 +4,31 @@ published: true
 permalink: /cheatsheet/
 ---
 <div class="aside">
-	<div class="cats">
-	  <h1>Categories:</h1>
-	  <hr>
-	  {% for category in site.categories %}
-		<a href="/{{ category | first | downcase }}"><p class="catlist">> {{ category | first }} <span class="postcount">{{ category[1].size }}<span></p></a>
-		{% endfor %}
-	  
+  <div class="cats">
+    <h1>Categories:</h1>
+    <hr>
+    {% for category in site.categories %}
+    <a href="/{{ category | first | downcase }}">
+      <p class="catlist">> {{ category | first }} <span class="postcount">{{ category[1].size }}<span></p>
+    </a>
+    {% endfor %}
 
-	</div>
-	<div class="socials">
+  </div>
+  <div class="socials"> 
 
-		<h1>Find me on:</h1>
-			<hr>
-		<p class="catlist"><a href="https://github.com/F3dai">>> Github <<</a></p>
-    	</div>
+    <h1><span class="BLM-Side">Black Lives Matter</span></h1>
+    <hr>
+    <p class="catlist">We stand strongly against racism.</p>
+
+    <p class="catlist"><a href="https://secure.actblue.com/donate/ms_blm_homepage_2019">&gt;&gt; Support BLM &lt;&lt;</a></p>
+  </div>
+  <div class="socials">
+    <h1>Find me on:</h1>
+    <hr>
+    <p class="catlist"><a href="https://github.com/F3dai">>> Github <<< </a></p>
+    <p class="catlist"><a href="mailto:f3da1@protonmail.com">>> f3da1@protonmail.com << </a></p>
+    
+  </div>
 </div>
 
 	<div id="main" role="main" class="containerz">

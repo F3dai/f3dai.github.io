@@ -99,18 +99,18 @@ I check to see if this is a path on the web directory:
 
 We get an image, let's download and inspect it. I try a few commands to see if there is any steganography involved. Some possible tools for inspecting steganography are:
 
-Strings
-Steghide
-Exiftool
-Stegsolve
-Exiv2
-Binwalk
-Zsteg
-Foremost
+- Strings
+- Steghide
+- Exiftool
+- Stegsolve
+- Exiv2
+- Binwalk
+- Zsteg
+- Foremost
 
-And there are plenty more depending on the challenge you are facing. Since the first question of the TryHackMe challenge is "What hidden file did you find?", I will try and see if there are any hidden files in this image.
+There are plenty more depending on the challenge you are facing. Since the first question of the TryHackMe challenge is "What hidden file did you find?", I will try and see if there are any hidden files in this image.
 
-Running exiftools revealed a lot of metadata about the image such as the creator, but I had some trouble finding anything so I resorted to using online tools.
+Running exiftools revealed a lot of metadata about the image such as the creator, but I had some trouble finding anything interesting so I resorted to using online tools.
 
 Please refer to this website for linux tools and stego web tools:
 

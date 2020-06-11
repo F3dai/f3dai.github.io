@@ -9,7 +9,7 @@ permalink: /writeup/
     <h1>Categories:</h1>
     <hr>
     {% for category in site.categories %}
-    <a href="/{{ category | first | downcase }}">
+    <a href="/{{ category | first | downcase }}" target="_self">
       <p class="catlist">> {{ category | first }} <span class="postcount">{{ category[1].size }}<span></p>
     </a>
     {% endfor %}
@@ -26,8 +26,8 @@ permalink: /writeup/
   <div class="socials">
     <h1>Find me on:</h1>
     <hr>
-    <p class="catlist"><a href="https://github.com/F3dai">>> Github <<< </a></p>
-    <p class="catlist"><a href="mailto:f3da1@protonmail.com">>> f3da1@protonmail.com << </a></p>
+    <p class="catlist"><a href="https://github.com/F3dai">>> Github </a></p>
+    <p class="catlist"><a href="mailto:f3da1@protonmail.com">>> f3da1@protonmail.com</a></p>
     
   </div>
 </div>
@@ -39,7 +39,7 @@ permalink: /writeup/
 		<p>Here are a list of CTF style writeups:</p>
 
 		{% for post in site.categories.Writeup  %}
-		<div class="outerblogpost"> <a href="{{ post.url }}">
+		<div class="outerblogpost"> <a href="{{ post.url }}" target="_self">
 
 		  <div class="blogimage">
 			<img class="featimg" src="{{ post.image }}">

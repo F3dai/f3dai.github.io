@@ -67,7 +67,7 @@ It is using the theme "**twentyfifteen**":
 
 There were **81 vulnerabilities** found with the Wordpress version:
 
-[WP vulns](https://imgur.com/tpTddTl.png)
+![WP vulns](https://imgur.com/tpTddTl.png)
 
 There is a robots.txt file:
 
@@ -98,7 +98,7 @@ This file contains 858160 lines of text, it looks like a wordlist for something.
 
 ![key 1](https://imgur.com/AF6X5mm.png)
 
-This is the first key for the challange.
+This is the first key for the challenge.
 
 There wasn't much else to find. Wordpress boxes usually entail brute-forcing but I have no usernames. We were given that dictionary from earlier so maybe the username is in there.
 

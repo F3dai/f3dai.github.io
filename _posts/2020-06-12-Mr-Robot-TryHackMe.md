@@ -1,6 +1,6 @@
 ---
 published: true
-title: Mr. Robot - TryHackMe
+title: Mr. Robot - TryHackMe Walkthrough
 category: Writeup
 author: F3dai
 image: 'https://imgur.com/OJwI5my.png'

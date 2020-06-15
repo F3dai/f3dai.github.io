@@ -41,7 +41,7 @@ This is a default apache2 web page. Let's use dirb to find any other paths in th
 
 <pre>dirb http://10.10.62.162/</pre>
 
-![dirb]()
+![dirb](https://imgur.com/aOTbmyk.png)
 
 **assets**:
 
@@ -259,11 +259,3 @@ So we can construct the following command to use vi and escelate the privileges:
 ![sudo rooooottttt](https://imgur.com/0gNulGc.png)
 
 The last flag is in /root/root.txt.
-
-
-
-
-
-
-
-

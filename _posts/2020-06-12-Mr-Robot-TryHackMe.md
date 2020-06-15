@@ -19,6 +19,8 @@ This is a TryHackMe box. To access this you must sign up to [https://tryhackme.c
 
 We are given the IP 10.10.235.143. Run an nmap scan with the following command:
 
+<pre>nmap -p- -A -o portscan 10.10.235.143</pre>
+
 <pre>PORT    STATE  SERVICE  VERSION
 22/tcp  closed ssh
 80/tcp  open   http     Apache httpd
@@ -293,8 +295,3 @@ And now we can run the next command for elevated privileges:
 And we have root! Nice and simple SUID exploitation for elevating rights. The last flag will be in /root:
 
 ![root](https://imgur.com/cnUTcPr.png)
-
-
-
-
-

@@ -259,7 +259,7 @@ This looks like it has been encrypted. I used cyberchef to identify and decrypt 
 
 [CyberChef](https://gchq.github.io/CyberChef)
 
-![Cyber Chef Base64 Decode](https://imgur.com/Q8xIHRT)
+![Cyber Chef Base64 Decode](https://imgur.com/Q8xIHRT.png)
 
 <pre>backup@spookysec.local:b***********0</pre>
 

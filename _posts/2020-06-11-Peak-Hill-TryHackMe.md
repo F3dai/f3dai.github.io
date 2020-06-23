@@ -209,9 +209,11 @@ Then run this command to decompile your file:
 
 <pre>uncompyle6 -o . cmd_service.pyc</pre>
 
-![decompile](https://imgur.com/fBq327R.png)
+![decompile](https://imgur.com/7JEj3rG.png)
 
 *Please note* my command "py" is an alias for python3 (image above).
+
+This is the uncompiled code:
 
 <pre># uncompyle6 version 3.7.0
 # Python bytecode 3.8 (3413)
@@ -282,7 +284,9 @@ def main():
 if __name__ == '__main__':
 </pre>
 
-We have two variables called username and password. Luckily for us, the credentials are hardcoded into this script. The python code seems to create a connection like a shell server.
+We have two variables called username and password. Luckily for us, the credentials are hardcoded into this script. 
+
+The python code seems to create a connection like a shell server. It looks like it creates a service on port 7321.
 
 I refered to this website about the python function long_to_bytes():
 
@@ -303,11 +307,13 @@ I noticed a user called "dill" in the /home directory so let's try and connect t
 
 ## Dill
 
+I execute the following netcat using the IP and port from the script we saw earlier:
+
 <pre>nc 10.10.251.122 7321
 dill
 n*****************t</pre>
 
-![netcat](https://imgur.com/8BqeH14.PNG)
+![netcat](https://imgur.com/8BqeH14.png)
 
 I noticed this was a very limiting shell as it is just stuck in /var/cmd.
 

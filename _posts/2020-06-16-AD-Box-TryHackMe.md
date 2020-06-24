@@ -21,18 +21,6 @@ We are given the IP 10.10.62.162. Run an nmap scan with the following command:
 
 Here are the open ports:
 
-<pre></pre>
-
-Let's visit port 80:
-
-![port 80](https://imgur.com/vsNyWnX.png)
-
-The image on this page is a link to the following website:
-
-[https://www.iis.net/?utm_medium=iis-deployment](https://www.iis.net/?utm_medium=iis-deployment)
-
-We already know this box will be based around Internet Information Services (IIS). 
-
 <pre>PORT      STATE SERVICE       VERSION
 53/tcp    open  domain?
 | fingerprint-strings: 
@@ -85,6 +73,16 @@ We already know this box will be based around Internet Information Services (IIS
 49688/tcp open  msrpc         Microsoft Windows RPC
 49696/tcp open  msrpc         Microsoft Windows RPC
 49793/tcp open  msrpc         Microsoft Windows RPC</pre>
+
+Let's visit port 80:
+
+![port 80](https://imgur.com/vsNyWnX.png)
+
+The image on this page is a link to the following website:
+
+[https://www.iis.net/?utm_medium=iis-deployment](https://www.iis.net/?utm_medium=iis-deployment)
+
+We already know this box will be based around Internet Information Services (IIS). 
 
 A lot of ports open which seem to all point towards an Active Directory environment. 
 
@@ -300,4 +298,3 @@ We can now either decrypt the NTLM hash and connect as Administrator, or use **e
 ![evil winrm](https://imgur.com/JxLTDA6.png)
 
 Now we are logged in as the Administrator. Each flag is located in the user's Desktop directory.
-

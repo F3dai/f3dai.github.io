@@ -221,5 +221,136 @@ This challenge was credit by cloudshark"
 We have another traffic capture file which we need to investigate.
 
 
+### When you find the first (most obvious) ascii pumpkin, what was the destination IP address? 
+
+This first question is asking us for information about the "obvious" ascii pumpkin. Since this is apparently obvious, I try scanning throught the packets, paying attention to the ascii text in the data. 
+
+Since most of the connections are through HTTP, we can see all the unencrypted websites and data transfered.
+
+This packet caught my eye:
+
+![ascii](https://imgur.com/qaayCHF.png)
+
+The user visited a website:
+
+<pre>[Full request URI: http://Thank you for visiting https://asciiart.website//]</pre>
+
+### Download all images found in the pcap file. What is the name of the pumpkin image?
+
+As mentioned before, there is a lot of HTTP traffic which *dangerously* allows us to see all the data transfered, including images, videos etc.
+
+Wireshark has a function to scan and identify all images found during the packet capture. 
+
+Go to File > Export Object > HTTP
+
+![Export Objects Setting](https://imgur.com/P00xtEL.png)
+
+Wireshark extracts all the files:
+
+![Extract files](https://imgur.com/Uzj9sVP.png)
+
+Let's save all of these to our local machine, I removed all the non-image files by creating a tmp directory, moving all the images there and deleting the rest of the files:
+
+<pre>mkdir tmp && mv *.GIF *.gif *.png *.jpg  tmp/
+rm * -f && mv tmp/* .&& rm tmp/</pre>
+
+Now we have all our images in the current direcotry, have a look at each image:
+
+<pre>eog *</pre>
+
+I couldn't view this image:
+
+![Wrong format](https://imgur.com/pAiNkWr.png)
+
+<pre>Not a JPEG file: starts with 0x89 0x50</pre>
+
+I checked out the magic number / file signature and turns out it's a .png file so let's change the format and try again.
+
+<pre>head jack-o-lantern.jpg
+mv jack-o-lantern.jpg jack-o-lantern.png
+eog jack-o-lantern.png</pre>
+
+![File signature](https://imgur.com/PHbZO1y.png)
+
+Turns out this is our pumpkin:
+
+![Pumpkin lantern](https://imgur.com/jMvMQZu.png)
+
+### Find the pumpkin that on TCP port 666. Whats the main character that makes the pumpkin up? 
+
+Thanks to Wireshark's filter functionality, we can easily display packets on TCP port 666:
+
+<pre>tcp.port == 666</pre>
+
+I had a scroll through the packets and found this strange looking packet:
+
+![strange???](https://imgur.com/mFPVWnm.png)
+
+Follow the TCP stream and you will find the third pumpkin.
+
+![Pumpkin 3](https://imgur.com/aOvBX0G.png)
+
+### Find the pre-master token and decrypt the traffic. What the file data size of this next pumpkin (in bytes)?
+
+Before starting this, I *highly* reccommend you read this article about SSL / TLS handshake to understand the different steps when authenticating a user, using a "pre-master token".
+
+[TLS / SSL Handshake - CyberGoat](/other/TLS-Handshake/)
+
+*TLS is an encryption protocol designed to secure Internet commonunications. As for any TCP communication, there is a handshake. The TLS handshake is the process which initiates the communication sessions with TLS encryption.*
+
+During the handshake, the user and server exchanges the "premaster secret":
+
+*The premaster secret: Client sends another string of random bytes – “the premaster secret”. This can only be decrypted with the private key by the server.*
+
+I know that HTTPS operates on port 443, I have identified the encrypted HTTPS traffic by using the filter:
+
+<pre>tcp.port == 443</pre>
+
+If you have a look at some of the application data, it is evidently unreadable:
+
+![Unreadable SSL traffic](https://imgur.com/A06YBO8.png)
+
+We need to find the pre-master token to be able to read this. Let's logically assume that it has been exchnaged before this instance. 
+
+To identify all the conversations on a packet capture, go to Statistics > Conversations > TCP.
+
+![Conversations](https://imgur.com/GxkONsV.png)
+
+On the TCP tab, you can see all the conversations between clients:
+
+![TCP tab](https://imgur.com/wfHq2D5.png)
+
+Most of them are on port 80. It's unlikely the key would have been shared over a web page of some sort but the conversation on port 25 looks interesting. SMTP operates on this port, maybe they exchanged the key over e-mail?
+
+Right click this and find this on the packet capture, or just look for SMTP traffic:
+
+![Right Click Find](https://imgur.com/fs7bBgV.png)
+
+Follow the SMTP TCP stream when you find it, you will see something like this:
+
+![SMTP e-mail](https://imgur.com/EoIVfJW.png)
+
+<pre>Subject: MICHAEL HAS ESCAPED!
+
+Laurie! Michael has escaped the sanitarium and is in the house! Use this to find him:
+
+CLIENT_RANDOM 4CD4ADF90628A9AFB29D50F093A5FAD4FC09CCF3F173E52F7B2390573989659F E8AC4AFFCDAD005F5ED4E29D2625A49378A25E7D5B85D5418AC51C1D0CC50B52B39DB3998C606202339178C1EA441CE0</pre>
+
+Fortunately, Wireshark has a function to include a key for decrypting traffic so let's save this key to a file:
+
+<pre>echo "CLIENT_RANDOM 4CD4ADF90628A9AFB29D50F093A5FAD4FC09CCF3F173E52F7B2390573989659F E8AC4AFFCDAD005F5ED4E29D2625A49378A25E7D5B85D5418AC51C1D0CC50B52B39DB3998C606202339178C1EA441CE0" > key.txt</pre>
+
+Now add this by going to Edit > Preferences > Protocols Dropdown > TLS then import your key:
+
+![Import Key](https://imgur.com/SScBwmU.png)
+
+Go back to the SSL traffic on port 443, you will see a 2 new HTTP packets:
+
+![HTTP SSL](https://imgur.com/iqKSYGU.png)
+
+The user requested the file /michael.txt. Analyse the file information by looking under "Hypertext Transfer Protocol".
+
+### Extract the RTP stream. What is the audio file from?
+
 
 

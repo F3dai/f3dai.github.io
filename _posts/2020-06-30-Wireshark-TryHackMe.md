@@ -1,6 +1,5 @@
 ---
-published: false
-publish: true
+published: true
 category: Writeup
 title: Wireshark CTF - TryHackMe Walkthrough
 author: F3dai

@@ -1,5 +1,10 @@
 ---
 published: false
+publish: true
+category: Writeup
+title: Wireshark CTF - TryHackMe Walkthrough
+author: F3dai
+image: 'https://imgur.com/sUbOkno.png'
 ---
 Wireshark CTFs - "Wireshark capture the flag challenges from all over the internet.. in one room" This is a TryHackMe box. To access this you must sign up to [https://tryhackme.com/](https://tryhackme.com/).
 
@@ -351,6 +356,46 @@ Go back to the SSL traffic on port 443, you will see a 2 new HTTP packets:
 The user requested the file /michael.txt. Analyse the file information by looking under "Hypertext Transfer Protocol".
 
 ### Extract the RTP stream. What is the audio file from?
+
+What is RTP?
+
+*The Real-time Transport Protocol (RTP) is a network protocol for delivering audio and video over IP networks. RTP is used in communication and entertainment systems that involve streaming media, such as telephony, video teleconference* - [Wikipedia](https://en.wikipedia.org/wiki/Real-time_Transport_Protocol)
+
+If the traffic isn't encrypted, we can extract this to rebuild an audio file. I looked into the Wireshark function where you can automatically identify the RTP data but no luck.
+
+In short, when communicating over a network, it is either send over TCP or UDP protocol on the Transport Layer (OSI Ref). Both have benefits and disadvantages but I won't go into it too much as this isn't a networking lesson. TCP is great for reliable communication because it confirms everything is correctly sent (Handshakes, ACK packets etc), for example, e-mailing, viewing web pages etc whereas UDP is great for fast communication that need a continuous flow like streaming media, calling etc because it does not check if every packet has been received (so there will be some packet loss).
+
+For this reason, let's look for UDP packets - I sorted the traffic by protocol to find UDP at the top. 
+
+As you can see, Wireshark is has identified these as just UDP datagrams, not RTP. Therefore, we need to decode this as RTP. Right click a packet in the stream and select decode as:
+
+![Decode as](https://imgur.com/9vBfR2k.png)
+
+![Decode Box](https://imgur.com/Hj7hHZV.png)
+
+You will be prompted with a box which has *UDP* for Field and *(none)* for Current. We need to change the current to RTP. Use the dropdown to find RTP and save this.
+
+You may have noticed all the UDP traffic on Wireshark changed to RTP protocol:
+
+[UDP to RTP](https://imgur.com/poFIoiZ.png)
+
+We can now go to Telephony > RTP > RTP Streams to view the RTP data.
+
+![Select RTP](https://imgur.com/FFK66rr.png)
+
+You should see something like this:
+
+![View RTP](https://imgur.com/85gkqmG.png)
+
+Right click the RTP Stream it found and go on "Analyse". This will bring you to a new window that shows a lot more data about the RTP stream Wireshark identified. 
+
+![RTP data](https://imgur.com/dTjAWfD.png)
+
+We have the option to Play Stream (bottom right).
+
+![Audio](https://imgur.com/8DBbvkD.png)
+
+
 
 
 

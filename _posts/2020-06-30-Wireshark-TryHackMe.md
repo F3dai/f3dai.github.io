@@ -151,7 +151,7 @@ Similar to ROT13 - this function translates each character 3 places forward, so 
 
 <pre>def caesar(plaintext, shift=-3):</pre>
 
-Now let's add an encrypt() function:
+Now let's add a decrypt() function:
 
 **decode()**:
 
@@ -366,7 +366,7 @@ In short, when communicating over a network, it is either send over TCP or UDP p
 
 For this reason, let's look for UDP packets - I sorted the traffic by protocol to find UDP at the top. 
 
-As you can see, Wireshark is has identified these as just UDP datagrams, not RTP. Therefore, we need to decode this as RTP. Right click a packet in the stream and select decode as:
+As you can see, Wireshark has identified these as just UDP datagrams, not RTP. Therefore, we need to decode this as RTP. Right click a packet in the stream and select decode as:
 
 ![Decode as](https://imgur.com/9vBfR2k.png)
 
@@ -376,7 +376,7 @@ You will be prompted with a box which has *UDP* for Field and *(none)* for Curre
 
 You may have noticed all the UDP traffic on Wireshark changed to RTP protocol:
 
-[UDP to RTP](https://imgur.com/poFIoiZ.png)
+![UDP to RTP](https://imgur.com/poFIoiZ.png)
 
 We can now go to Telephony > RTP > RTP Streams to view the RTP data.
 
@@ -395,6 +395,3 @@ We have the option to Play Stream (bottom right).
 ![Audio](https://imgur.com/8DBbvkD.png)
 
 This is from Great Pumpkin, Charlie Brown.
-
-
-

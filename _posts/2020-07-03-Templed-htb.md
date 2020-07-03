@@ -9,7 +9,7 @@ Templed - "I found the following message in a temple, I had the sensation that t
 
 **URL:** [Crypto Challenges](https://www.hackthebox.eu/home/challenges/Crypto)
 
-**Difficulty:** Medium
+**Difficulty:** Easy
 
 **Author:** Xh4H
 

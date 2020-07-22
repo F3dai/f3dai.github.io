@@ -5,6 +5,51 @@ image: 'https://imgur.com/RqxE8Cn.png'
 category: Writeup
 author: F3dai
 ---
+Year of the Fox - "Don't underestimate the sly old fox... This room includes a competition with over $4,000 worth of prizes to celebrate TryHackMe hitting 100k members!". This is a TryHackMe box. To access this you must sign up to [https://tryhackme.com/](https://tryhackme.com/).
+
+**URL:** [Year of the Fox](https://tryhackme.com/room/yotf)
+
+**Difficulty:** Hard
+
+**Author:** MuirlandOracle
+
+## Enumeration
+
+We are given the IP 10.10.174.149. Run an nmap scan with the following command:
+
+<pre>nmap -p- -A -o portscan 10.10.174.149</pre>
+
+Here are the open ports:
+
+<pre>80/tcp  open  http        Apache httpd 2.4.29
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: 401 Unauthorized
+139/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: YEAROFTHEFOX)
+445/tcp open  netbios-ssn Samba smbd 4.7.6-Ubuntu (workgroup: YEAROFTHEFOX)
+Service Info: Hosts: year-of-the-fox.lan, YEAR-OF-THE-FOX
+
+Host script results:
+|_clock-skew: mean: -19m58s, deviation: 34m37s, median: 0s
+|_nbstat: NetBIOS name: YEAR-OF-THE-FOX, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; (unknown)
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.7.6-Ubuntu)
+|   Computer name: year-of-the-fox
+|   NetBIOS computer name: YEAR-OF-THE-FOX\x00
+|   Domain name: lan
+|   FQDN: year-of-the-fox.lan
+|_  System time: 2020-07-21T11:08:04+01:00
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2020-07-21T10:08:04
+|_  start_date: N/A</pre>
+
 Let's enumerate our first port - 80:
 
 ![port 80](https://imgur.com/xT4s0Tg.png)
@@ -55,11 +100,11 @@ I attempted to brute-force the web login with user rascal using hydra:
 
 ![hydra](https://imgur.com/xSu2LFf.png)
 
-![web page authenticated](https://imgur.com/undefined)
+![web page authenticated](https://imgur.com/roPVoMC.png)
 
 This appears to be a search engine. I enter some queries in, it only seems to output the following file names:
 
-![search](https://imgur.com/khdvBUc)
+![search](https://imgur.com/khdvBUc.png)
 
 I couldn't find a way of viewing these files so my next thought was to test out the actual input itself. I turned on my web proxy and used Burp Suite to intercept the web request:
 
@@ -280,6 +325,4 @@ And that's it. We are root. We successfully manipulated the $PATH variable so ou
 
 ![root](https://imgur.com/mUqUHNM.png)
 
-Turns out the root flag is in rascals home directory. 
-
-
+Turns out the root flag is in rascals home directory.

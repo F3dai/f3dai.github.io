@@ -5,8 +5,6 @@ title: The Caeser Cipher
 author: F3dai
 image: https://imgur.com/LtdjX4l.png
 ---
-# The Caeser Cipher
-
 This article will be outlining what the Caeser Cipher is and how to encrypt/decrypt using the Caeser Cipher tool from Github.
 
 ## What is the Caeser Cipher?

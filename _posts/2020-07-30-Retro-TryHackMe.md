@@ -3,7 +3,7 @@ published: true
 title: Retro - TryHackMe Walkthrough
 category: Writeup
 author: F3dai
-image: 'https://imgur.com/RIQkBU2'
+image: 'https://imgur.com/RIQkBU2.png'
 ---
 Retro - "New high score! Can you time travel? If not, you might want to think about the next best thing." This is a TryHackMe box. To access this you must sign up to [https://tryhackme.com/](https://tryhackme.com/). 
 
@@ -122,13 +122,13 @@ What else could we do with these credentials? Maybe the other open port for RDP.
  
 We successfully got an RDP session:
  
-![RDP](https://imgur.com/EEEpRetro CTF)
+![RDP](https://imgur.com/Xzbdk0e.png)
  
 The user flag is on the desktop.
  
 ## root.txt
  
-I saw the machine has Chrome installed which is not my default so I checked to see if I could find anything on there. 
+I saw the machine has Chrome installed which is not by default so I checked to see if I could find anything on there. 
 
 I saw this:
 
@@ -153,9 +153,7 @@ OS Name:                   Microsoft Windows Server 2016 Standard
 OS Version:                10.0.14393 N/A Build 14393
 OS Manufacturer:           Microsoft Corporation</pre>
 
-Researching OS 10.0.14393 N/A Build 14393
-
-I also ran Windows Exploit Suggester:
+I researched a bit about OS 10.0.14393 N/A Build 14393 and also ran Windows Exploit Suggester:
 
 [Windows Exploit Suggester - Github](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)
 
@@ -172,6 +170,5 @@ Now run the executable (not from terminal) and you will be given a terminal with
 ![rooted](https://imgur.com/bl6ZRVP.png)
 
 The last flag is in the admins Desktop directory.
-Xil.png)
  
 The user flag is on the desktop in the Admin's directory.

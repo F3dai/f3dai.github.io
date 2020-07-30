@@ -169,6 +169,4 @@ Now run the executable (not from terminal) and you will be given a terminal with
 
 ![rooted](https://imgur.com/bl6ZRVP.png)
 
-The last flag is in the admins Desktop directory.
- 
-The user flag is on the desktop in the Admin's directory.
+The last flag is in the admins Desktop directory. Thank you for reading.

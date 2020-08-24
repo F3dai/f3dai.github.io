@@ -1,6 +1,6 @@
 ---
 published: true
-title: Dave's Blog
+title: Dave's Blog - TryHackMe Walkthrough
 category: Writeup
 author: F3dai
 image: 'https://imgur.com/KRG9rBC.png'

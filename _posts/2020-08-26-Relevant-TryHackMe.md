@@ -5,9 +5,9 @@ author: F3dai
 category: Writeup
 image: 'https://imgur.com/EbY8m0j.png'
 ---
-Relevant - "My friend Dave made his own blog! You should go check it out. The machine may take a few minutes to fully start up."
+Relevant - "Penetration Testing Challenge. You have been assigned to a client that wants a penetration test conducted on an environment due to be released to production in seven days.  "
 
-**URL:** [Dave's Blog](https://tryhackme.com/room/relevant)
+**URL:** [Relevant](https://tryhackme.com/room/relevant)
 
 **Difficulty:** Medium
 

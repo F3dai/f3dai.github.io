@@ -91,7 +91,7 @@ Now we can try and download all of their git files using the following script:
 
 [Git Repository Downloader - Github](https://github.com/SLMT/ctf-tools/tree/master/git-repository-downloader)
 
-<pre>wget https://raw.githubusercontent.com/SLMT/ctf-tools/master/git-repository-downloader/git-downloader.py
+<pre>wget https://raw.githubusercontent.com/SLMT/ctf-tools/master/git-repository-downloader/git-downloader.py</pre>
 
 For some reason, this script had the wrong way slashes so I edited the script to use / instead of \, otherwise it wasn't downloading the files properly. I'm pretty sure there are better scripts to use but I chose this. 
 

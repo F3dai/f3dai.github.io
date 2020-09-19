@@ -167,13 +167,13 @@ This is an example of a payload, taken from the website:
 
 Let's change the variable names as our code will be slightly different. For example, nonce = n, hostname = host, hmac = h. This is our final payload:
 
-<pre>?nonce[]=&hostname=securify.nl&hmac=c8ef9458af67da9c9086078ad3acc8ae71713af4e27d35fd8d02d0078f7ca3f5</pre>
+<pre>?n[]=&host=securify.nl&h=c8ef9458af67da9c9086078ad3acc8ae71713af4e27d35fd8d02d0078f7ca3f5</pre>
 
 ![final payload hmac](https://imgur.com/kgwc0PC.png)
 
 We have some new credentials: 
 
-evs:9FRe8VUuhFhd3GyAtjxWn0e9RfSGv7xm
+<pre>evs:9FRe8VUuhFhd3GyAtjxWn0e9RfSGv7xm</pre>
 
 I also added this domain to my etc hosts file: shell.harder.local/
 

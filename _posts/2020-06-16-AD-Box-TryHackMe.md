@@ -96,11 +96,7 @@ Whenever ports 139 and 445 are open, I always start by using **enum4linux** to e
 
 ![enum4linux](https://imgur.com/MbN6yLQ.png)
 
-We've got some interesting information back. We've identified some known usernames:
-
-<pre>Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none</pre>
-
-And also a domain name:
+We've identified the domain name:
 
 <pre>Domain Name: THM-AD</pre>
 
@@ -110,12 +106,12 @@ I will be installing a tool called **Kerbrute**. This essentially **bruteforces*
 
 Let's install this tool on the local machine with [golang](https://www.ostechnix.com/install-go-language-linux/)
 
-The challenge provides us with a username and password, let's download them both onto our local machine:
+The challenge provides us with username and password wordlists, let's download them both onto our local machine:
 
 <pre>wget https://raw.githubusercontent.com/Sq00ky/attacktive-directory-tools/master/userlist.txt
 wget https://raw.githubusercontent.com/Sq00ky/attacktive-directory-tools/master/passwordlist.txt</pre>
 
-Now we can attempt to brute with kerberos:
+Now we can attempt to enumerate the user's using a brute-force approach with kerberos:
 
 <pre>cd ~/go/bin
 ./kerbrute userenum --dc 10.10.156.50 -d 10.10.156.50 ../../TryHackMe/Attacktive_Directory/userlist.txt -t 100</pre>
@@ -160,7 +156,7 @@ After a few minutes, we have a list of usernames:
 2020/06/17 05:52:04 >  [+] VALID USERNAME:       ori@spookysec.local
 2020/06/17 05:52:09 >  [+] VALID USERNAME:       ROBIN@spookysec.local</pre>
 
-The **svc-admin** and **Administrator** users look interesting.
+The **svc-admin** (maybe a service admin account?) and **Administrator** users look interesting. It's usually wise to disable the administrator account on a network, but they haven't here. 
 
 ## Exploiting Kerberos
 
@@ -171,6 +167,8 @@ We now want to crack Active Directory passwords with AS-REP Roasting. This is an
 Pre-authentication is the first step in Kerberos authentication, and is designed to prevent brute-force password guessing attacks. 
 
 Although it's unlikely accounts are ever set up without pre-authentication, it is always possible to find these vulnerable users. 
+
+Here is a snapshot of 'poorly' configured Kerberos, where pre-authentication has been turned off. 
 
 ![kerboros config](https://imgur.com/CJsdr6X.png)
 
@@ -194,7 +192,7 @@ Let's try this out with the two interesting users we validated earlier:
 
 ![GetNPUsers admin](https://imgur.com/yk0Tkig.png)
 
-This user doesn't seem vulnerable.
+This user doesn't seem vulnerable, or it is disabled, as we mentioned before.
 
 **svc-admin**:
 
@@ -265,9 +263,9 @@ This looks like it has been encrypted. I used cyberchef to identify and decrypt 
 
 Now that we have new user account credentials, we may have more privileges on the system than before. The username of the account "backup" gets us thinking. What is this the backup account to?
 
-"Well, it is the backup account for the Domain Controller. This account has a unique permission that allows all Active Directory changes to be synced with this user account. This includes password hashes.
+*"Well, it is the backup account for the Domain Controller. This account has a unique permission that allows all Active Directory changes to be synced with this user account. This includes password hashes.*
 
-Knowing this, we can use another tool within Impacket called "secretsdump.py". This will allow us to retrieve all of the password hashes that this user account (that is synced with the domain controller) has to offer. Exploiting this, we will effectively have full control over the AD Domain."
+*Knowing this, we can use another tool within Impacket called "secretsdump.py". This will allow us to retrieve all of the password hashes that this user account (that is synced with the domain controller) has to offer. Exploiting this, we will effectively have full control over the AD Domain."*
 
 ^ Taken from the challenge.
 
@@ -285,7 +283,7 @@ If you followed the impacket installation steps on TryHackMe, the python file wi
 
 ![results](https://imgur.com/iWDsXxq.png)
 
-We now have a dump of the DC hashes, including the Administrator password hash.
+We now have a dump of the DC hashes, including the Administrator password hash, guess it hasn't been disabled :) 
 
 <pre>Administrator:500:aad3b435b51404eeaad3b435b51404ee:e******************************b:::</pre>
 

@@ -338,7 +338,7 @@ Let's install it by visiting http://blob.thm/blogFeedback
 
 I ran the following command:
 
-<pre>strings blogFeedback | less<pre>
+<pre>strings blogFeedback | less</pre>
 
 We can see some potentially interesting stuff going on so I'd like to analyse this more with a tool called Ghidra. 
 

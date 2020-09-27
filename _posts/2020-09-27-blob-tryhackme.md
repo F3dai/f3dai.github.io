@@ -138,6 +138,8 @@ Wfuzz found /login:
 
 I tried using the password we have for bob, but no luck.
 
+## User
+
 No luck on port 21 either (ftp).
 
 445 looks like another Apache default page with something interesting in the source code:

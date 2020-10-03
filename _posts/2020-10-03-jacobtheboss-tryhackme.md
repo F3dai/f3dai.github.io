@@ -211,7 +211,7 @@ This dump confirms that portmapper is running on port 111.
 
 I tried connecting with the following command but no luck without a password:
 
-<pre>rpcclient --I jacobtheboss.box</pr>
+<pre>rpcclient --I jacobtheboss.box</pre>
 
 And
 

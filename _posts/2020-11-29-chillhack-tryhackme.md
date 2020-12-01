@@ -195,7 +195,7 @@ It's executing as apaar. We can get some sort of shell now as that user.
 
 Let's try executing /bin/bash:
 
-Welcome to helpdesk. Feel free to talk to anyone at any time!
+<pre>Welcome to helpdesk. Feel free to talk to anyone at any time!
 
 Enter the person whom you want to talk with: d
 Hello user! I am d,  Please enter your message: /bin/bash</pre>

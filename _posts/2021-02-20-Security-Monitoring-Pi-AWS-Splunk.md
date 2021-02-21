@@ -1,8 +1,9 @@
 ---
-published: false
-title: Pi + AWS = Security Monitoring
+published: true
+title: Pi + IDS = Security Monitoring
 author: f3dai
 image: 'https://imgur.com/55RpuAS.png'
+category: Other
 ---
 An effective security monitoring system using a Pi. Similar concept applies for any sized organisation with better hardware and more complex network, so scale as you wish.
 
@@ -35,7 +36,7 @@ I'm using a Pi 4 with Raspian installed. If you haven't setup the OS on your Pi 
 
 [Raspberry Pi Software - Downloads](https://www.raspberrypi.org/software/)
 
-Not going to cover booting up the OS for the first time. Setup headless / connect to monitor, whatever floats your boat.
+Not going to cover booting up the OS for the first time. Setup headless / connect to monitor, whatever floats your boat. Find the IP through your router interface if headless.
 
 Let's start off by installing an (N)IDS. You have quite a few to choose from and at this point it comes down to personal preference. Suricata is probably my favourite, I have also tried Snort and Zeek. For this article I will use Zeek. This part will vary depending on your OS obviously.
 
@@ -150,9 +151,9 @@ Let's launch an EC2 instance (a virtual server hosted in the cloud). I chose Ubu
 
 Before launching, let's edit the security groups so it looks like the following: 
 
-![AWS security group](https://imgur.com/2Jimxxp.png)
+![AWS security group](https://imgur.com/4jfzef9.png)
 
-Port 8000 will be the web inteface for accessing splunk with our browser.
+Port 8000 will be the web inteface for accessing splunk with our browser and port 9997 will be how Splunk Enterprise will receive logs. 9997 is the standard port to use but you can use any others, I will get into this later on and you can always change it later.
 
 Setup a key, launch it and connect to it by SSH using whatever tool you want. I'm using a terminal emulator - **PuTTY**. You will need to find your key with Pageant or specify it by command line with "ssh ubuntu@ipaddress -i key". If you chose an Ubuntu server like myself, connect to the user "ubuntu".
 
@@ -201,6 +202,133 @@ Cool, it's running. We can check the instance IP:8000 on our browser:
 
 ![Splunk Login](https://imgur.com/elPBqQ1.png)
 
+Log in with the credentials you specified. Now that this is up, we can look at setting up how we send logs into our Splunk instance.
+
+## Forward Data to Splunk Enterprise
+
+We will be using Splunk's Universal Forwarder to ship our logs to Splunk. The most common way to use the universal forwarder is to send data to a Splunk Enterprise indexer or indexer cluster. You can have multiple forwarders sending data into your Splunk indexers. See this topology provided by Splunk:
+
+![Forwarder Topology](https://imgur.com/ivn5OF2.png)
+
+_**We will be installing the UF on our Pi as this will be collecting our logs we want to ship to Splunk**_
+
+**Let's configure receiving on Splunk Enterprise first**:
+
+Enable a receiver. The receiver will be considered an indexer or a cluster of indexers. Go to Settings > Forwarding and receiving. 
+
+![Receiving Splunk](https://imgur.com/NKK3KCz.png)
+
+Create a new receiving port, the conventional port is 9997 but you can choose whatever you like. Make sure this port has been whitelisted / added to your security group in the AWS console. 
+
+![Receiving Port](https://imgur.com/bNfP4nt.png)
+
+Save. 
+
+**Installing the Universal Forwarder:**
+
+[Universal Forwarder - Downloads](https://www.splunk.com/en_us/download/universal-forwarder.html)
+
+Choose Linux, whichever distribution based on the OS of your Pi. Install to _/opt/splunkforwarder_. My wget command:
+
+<pre>wget -O splunkforwarder-8.1.2-545206cc9f70-linux-2.6-amd64.deb 'https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=8.1.2&product=universalforwarder&filename=splunkforwarder-8.1.2-545206cc9f70-linux-2.6-amd64.deb&wget=true'
+dpkg -i splunk_package_name.deb</pre>
+
+You may choose to add /opt/splunkforwarder/bin to your PATH in ~/.profile, the same way we did earlier on in this article. So $SPLUNK_HOME in this article will be wherever you installed the UF. /opt/splunkforwarder in this case.
+
+**Start the UF:**
+
+<pre>$SPLUNK_HOME/bin/splunk start --accept-license</pre>
+
+And restart whenever making a config change:
+
+<pre>$SPLUNK_HOME/bin/splunk stop</pre>
+
+Pretty straight forward. So let's make some config changes!
+
+These are the important config files you should be aware of:
+
+- **inputs.conf** controls how the forwarder collects data.
+- **outputs.conf** controls how the forwarder sends data to an indexer or other forwarder.
+- **server.conf** for connection and performance tuning.
+- **deploymentclient.conf** for connecting to a deployment server.
+
+So let's specify the data forwarding at _$SPLUNKHOME/etc/system/local/outputs.conf_. This is mine:
+
+<pre>[tcpout]
+defaultGroup = default-autolb-group
+
+[tcpout:default-autolb-group]
+server = receiving-instance-ip:9997
+
+[tcpout-server://receiving-instance-ip:9997]</pre>
+
+Reload the UF and we should expect the events to go into our Splunk Server:
+
+<pre>$SPLUNKHOME/bin/splunk restart</pre>
+
+We can now optionally install an app for Splunk which will help parse and create dashboards for ourselves. You have 2 options:
+
+[Corelight - featuring dashboards](https://splunkbase.splunk.com/app/3884/)
+
+[Splunk Add-on for Zeek aka Bro - no dashboards, Splunk Built](https://splunkbase.splunk.com/app/1617/)
+
+I used the Splunk Built option, it's up to you. Install the app, go to **Splunk > Apps > Manage Apps > Install from file > reboot**. 
+
+Then go to **Settings -> Knowledge -> Event types > App dropdown > Corelight App and select Corelight_idx on the page**:
+
+![Corelight](https://imgur.com/dNDfoyn.png)
+
+Then make the search string _index=zeek_ like so:
+
+![search string](https://imgur.com/aTX99WH.png)
+
+I found this log is good for debugging:
+
+<pre>tail var/log/splunk/splunkd.log</pre>
+
+You should see something like:
+
+<pre>INFO  TcpOutputProc - Found currently active indexer. Connected to idx=instance-ip:9997, reuse=1.</pre>
+
+Check if you can see logs by using the search query:
+
+**index=zeek**
+
+## SPAN (Switched Port Analyzer)
+
+This part is optional, and only relevant if you're using a switch.
+
+If you are going for my first recommended tology with a switch, you'll need to port mirror to configure the SPAN port. I'm using a GS305E, Netgear switch. Regardless of the make it should be pretty straight forward to setup port mirroring. This is what I have plugged in by ethernet:
+
+- Port 1: Router
+- Port 2: RPi (IDS)
+- Port 3: Ethernet Device 
+
+![port mirroring](https://imgur.com/FCTGXyn.png)
+
+If you're using your own wireless AP, make sure you attach this to the switch and mirror it to port 2 or whatever your IDS is on.
+
+You may as well just mirror all of your ports to your IDS, tho nothing is plugged in. Future you can just plug into the switch without logging onto the interface to port mirror.
+
+## Pi AP
+
+This part is optional, and only relevant if your Pi is capable of becoming a wireless AP. 
+
+I found this github repo very useful and effective. It does the job. However, it's no longer maintained so this may only be relevant at the time of writing this. 
+
+[create_ap - github](https://github.com/oblique/create_ap)
+
+I imagine there are lots of other lovely github repos, or you can just do it manually:
+
+[RPi Bridged Wireless AP](https://www.raspberrypi.org/documentation/configuration/wireless/access-point-bridged.md)
+
+Again, this part varies depending on how you want your topology but I didn't want to create any subnets so I just created a bridged AP. 
+
+## fin
+
+Any device you want monitored, you attach to your switch by ethernet or connect to your Pi AP. 
+
+Thanks!
 
 
 

@@ -2,7 +2,7 @@
 published: true
 title: Pi + IDS = Security Monitoring
 author: f3dai
-image: 'https://imgur.com/55RpuAS.png'
+image: 'https://imgur.com/R5CBJ8Q.png'
 category: Other
 ---
 An effective security monitoring system using a Pi. Similar concept applies for any sized organisation with better hardware and more complex network, so scale as you wish.
@@ -32,7 +32,7 @@ If you only want to monitor wireless devices, or you don't want to purchase a sw
 
 ![pi logo](https://imgur.com/eIDcULe.png)
 
-I'm using a Pi 4 with Raspian installed. If you haven't setup the OS on your Pi yet, you'll need to use the Raspberry Pi imager to burn your desired OS on the micro SD card. Find download links here:
+I'm using a Pi 4 with Raspian installed. If you haven't setup the OS on your Pi yet, you'll need to use the Raspberry Pi imager to burn your desired OS on the macro SD card. Find download links here:
 
 [Raspberry Pi Software - Downloads](https://www.raspberrypi.org/software/)
 
@@ -77,7 +77,7 @@ Now install with these commands:
 <pre>./configure
 make</pre>
 
-This will take a very long time. Took me quite a few hours so I left it overnight. Once this has completed, run the following:
+This will take a relatively long time. Took me quite a few hours so I left it overnight. Once this has completed, run the following:
 
 <pre>sudo make install</pre>
 
@@ -137,13 +137,13 @@ tail /opt/zeek/logs/current/conn.log</pre>
 
 ## Splunk
 
-We will be using Splunk to ingest our data so we can monitor and investigate logs. I used this because it seems to be one of the most popular tools for this scenario. You also have choises like the ELK stack to look into which is also very powerful for alerting. However, I'm going to use Splunk as it looks like there is currently more community support at the time of writing this.
+We will be using Splunk to ingest our data so we can monitor and investigate logs. I used this because it seems to be one of the most popular tools for this scenario. You also have choices like the ELK stack to look into which is also very powerful for alerting. However, I'm going to use Splunk as it looks like there is currently more community support at the time of writing this.
 
-![splunk logo](https://imgur.com/BUOJOEr.png)
+![splunk logo](https://imgur.com/vVlfWBr.png)
 
-You can choose to host this on whatever you like. I will be using my AWS student account. I've previously done this on a virtual machine and have it running all the time. I think a more realistic solution would be the cloud, it's reliable.
+You can choose to host this on whatever you like. I will be using my AWS student account. I have previously done this on a virtual machine and had it running all the time. I think a more realistic solution would be the cloud, it's reliable.
 
-The installation is also versatile, you can deploy and launch a docker container on a virtual machine pretty quickly. 
+The installation is also versatile and easy, you can deploy and launch a docker container on a virtual machine, install by package or whatever you like. You can take a look at the docker repo, though we won't be doing this method:
 
 [Splunk - Docker](https://hub.docker.com/u/splunk/#!)
 
@@ -252,7 +252,7 @@ These are the important config files you should be aware of:
 - **server.conf** for connection and performance tuning.
 - **deploymentclient.conf** for connecting to a deployment server.
 
-So let's specify the data forwarding at _$SPLUNKHOME/etc/system/local/outputs.conf_. This is mine:
+So, let's specify the data forwarding at _$SPLUNKHOME/etc/system/local/outputs.conf_. This is mine:
 
 <pre>[tcpout]
 defaultGroup = default-autolb-group
@@ -298,7 +298,7 @@ Check if you can see logs by using the search query:
 
 This part is optional, and only relevant if you're using a switch.
 
-If you are going for my first recommended tology with a switch, you'll need to port mirror to configure the SPAN port. I'm using a GS305E, Netgear switch. Regardless of the make it should be pretty straight forward to setup port mirroring. This is what I have plugged in by ethernet:
+If you are going for my first recommended topology with a switch, you'll need to port mirror to configure the SPAN port. I'm using a GS305E, Netgear switch. Regardless of the make it should be pretty straight forward to setup port mirroring. This is what I have plugged in by ethernet:
 
 - Port 1: Router
 - Port 2: RPi (IDS)
@@ -308,13 +308,13 @@ If you are going for my first recommended tology with a switch, you'll need to p
 
 If you're using your own wireless AP, make sure you attach this to the switch and mirror it to port 2 or whatever your IDS is on.
 
-You may as well just mirror all of your ports to your IDS, tho nothing is plugged in. Future you can just plug into the switch without logging onto the interface to port mirror.
+You may as well just mirror all of your ports to your IDS, though nothing is plugged in. Future you can just plug into the switch without logging onto the interface to port mirror.
 
 ## Pi AP
 
 This part is optional, and only relevant if your Pi is capable of becoming a wireless AP. 
 
-I found this github repo very useful and effective. It does the job. However, it's no longer maintained so this may only be relevant at the time of writing this. 
+I found this github repo especially  useful and effective. In particular, it does the job. However, it's no longer maintained so this may only be relevant at the time of writing this. 
 
 [create_ap - github](https://github.com/oblique/create_ap)
 

@@ -30,7 +30,7 @@ If you only want to monitor wireless devices, or you don't want to purchase a sw
 
 ## Raspberry Pi 4
 
-![pi logo](https://imgur.com/eIDcULe.png)
+![pi logo](https://imgur.com/R5CBJ8Q.png)
 
 I'm using a Pi 4 with Raspian installed. If you haven't setup the OS on your Pi yet, you'll need to use the Raspberry Pi imager to burn your desired OS on the macro SD card. Find download links here:
 
